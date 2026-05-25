@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Parcel Tiles API
+  description: |
+    ATTOM Parcel Tiles API delivers vector tiles of U.S. parcel boundaries suitable
+    for rendering on web/mobile maps (Mapbox, MapLibre, Leaflet). Tiles are addressed
+    by zoom (z), tile column (x), and tile row (y) and authenticated with an ATTOM
+    API key.
+  version: v1
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+  - url: https://api.gateway.attomdata.com
+    description: ATTOM API Production Gateway
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Parcel Tiles
+    description: Vector parcel boundary tiles.
+paths:
+  /parceltileapi/v1/tile/{z}/{x}/{y}:
+    get:
+      summary: Get Parcel Vector Tile
+      description: Fetch a single Mapbox-style vector parcel tile for the requested z/x/y.
+      operationId: getParcelTile
+      tags: [Parcel Tiles]
+      parameters:
+        - name: z
+          in: path
+          required: true
+          description: Tile zoom level.
+          schema:
+            type: integer
+            minimum: 0
+            maximum: 22
+        - name: x
+          in: path
+          required: true
+          description: Tile column.
+          schema:
+            type: integer
+        - name: y
+          in: path
+          required: true
+          description: Tile row.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Mapbox vector tile (MVT).
+          content:
+            application/vnd.mapbox-vector-tile:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized — missing or invalid API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Tile not available at the requested zoom/position.
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key.
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/attomdata/main/json-schema/attom-avm-schema.json",
+  "title": "ATTOM AVM",
+  "description": "Automated Valuation Model (AVM) record for a property.",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "object",
+      "properties": {
+        "scr": { "type": "integer", "description": "AVM confidence score (0-100)." },
+        "value": { "type": "integer", "description": "AVM point estimate (USD)." },
+        "high": { "type": "integer", "description": "Upper bound of AVM range." },
+        "low": { "type": "integer", "description": "Lower bound of AVM range." },
+        "valueRange": { "type": "integer" },
+        "confidence": { "type": "string", "description": "Confidence band classification." }
+      }
+    },
+    "AVMModel": {
+      "type": "object",
+      "properties": {
+        "FSDscore": { "type": "integer", "description": "Forecast Standard Deviation score." }
+      }
+    },
+    "eventDate": { "type": "string", "format": "date" }
+  },
+  "required": ["amount"]
+}

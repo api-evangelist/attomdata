@@ -1,0 +1,200 @@
+specification: API Commons Vocabulary
+specificationVersion: '0.1'
+provider: ATTOM
+providerId: attomdata
+created: '2026-05-25'
+modified: '2026-05-25'
+description: Operational and capability vocabulary for the ATTOM property-data platform.
+sources:
+  - https://api.developer.attomdata.com/docs
+  - https://www.attomdata.com/glossary/
+
+domains:
+  - id: property
+    name: Property
+    description: Core property characteristics, identifiers, and ownership.
+    terms:
+      - attomid
+      - apn
+      - fips
+      - parcel
+      - sfr
+      - condo
+      - multi-family
+      - propertyType
+      - propertySubType
+      - landUse
+      - absenteeOwner
+      - corporateOwner
+      - mailingAddress
+  - id: assessment
+    name: Assessment
+    description: Tax assessment values, taxes paid, exemptions.
+    terms:
+      - assessedValue
+      - marketValue
+      - appraisedValue
+      - taxAmount
+      - taxYear
+      - exemption
+      - improvementValue
+      - landValue
+  - id: sale
+    name: Sale
+    description: Sales transactions, deed records, and pricing.
+    terms:
+      - saleAmount
+      - saleDate
+      - deedType
+      - warrantyDeed
+      - grantDeed
+      - quitClaimDeed
+      - armsLength
+      - distressedSale
+      - reoSale
+      - pricePerSquareFoot
+      - salesHistory
+      - salesTrend
+      - comparableSales
+      - comps
+  - id: avm
+    name: AVM
+    description: Automated Valuation Model outputs.
+    terms:
+      - avm
+      - attomAvm
+      - confidenceScore
+      - fsdScore
+      - valueRange
+      - rentalAvm
+      - homeEquity
+  - id: mortgage
+    name: Mortgage
+    description: Mortgage and lien records.
+    terms:
+      - mortgageAmount
+      - mortgageDate
+      - mortgageLender
+      - interestRate
+      - loanTerm
+      - trustDeed
+      - firstMortgage
+      - juniorMortgage
+      - lienHolder
+  - id: foreclosure
+    name: Foreclosure
+    description: Pre-foreclosure and foreclosure status.
+    terms:
+      - preforeclosure
+      - noticeOfDefault
+      - lisPendens
+      - trusteeSale
+      - foreclosureAuction
+      - reo
+  - id: permits
+    name: Building Permits
+    description: Building, renovation, and construction permits.
+    terms:
+      - buildingPermit
+      - permitType
+      - permitStatus
+      - jobValue
+      - issueDate
+  - id: geography
+    name: Geography
+    description: Geographic identifiers and boundary metadata.
+    terms:
+      - geoIdV4
+      - cbsa
+      - county
+      - state
+      - neighborhood
+      - zip
+      - censusTract
+      - schoolDistrict
+      - geographyTypeAbbreviation
+  - id: community
+    name: Community
+    description: Neighborhood community attributes.
+    terms:
+      - demographics
+      - population
+      - households
+      - medianHouseholdIncome
+      - ownerOccupiedPercent
+      - renterOccupiedPercent
+      - crimeIndex
+      - violentCrimeIndex
+      - propertyCrimeIndex
+      - schoolRating
+      - commuteTime
+      - weatherProfile
+  - id: poi
+    name: Points of Interest
+    description: Business and POI categorization.
+    terms:
+      - poi
+      - lineOfBusiness
+      - industry
+      - category
+      - businessName
+      - distance
+
+capabilities:
+  - id: property-detail
+    name: Property Detail
+    description: Look up a property by AttomID or address.
+  - id: assessment-history
+    name: Assessment History
+    description: Multi-year assessed-value and tax history.
+  - id: sales-history
+    name: Sales History
+    description: Ten-year sales transaction history.
+  - id: avm-current
+    name: Current AVM
+    description: ATTOM AVM point estimate with confidence band.
+  - id: avm-history
+    name: AVM History
+    description: Historical AVM valuations across multiple as-of dates.
+  - id: rental-avm
+    name: Rental AVM
+    description: Estimated monthly rent.
+  - id: home-equity
+    name: Home Equity
+    description: Estimated home equity (AVM minus loans).
+  - id: comparable-sales
+    name: Comparable Sales
+    description: Subject-property comps for valuation and underwriting.
+  - id: all-events
+    name: All Events
+    description: Combined assessment + AVM + sales events.
+  - id: pre-foreclosure
+    name: Pre-Foreclosure
+    description: Notice of default and lis pendens status.
+  - id: building-permits
+    name: Building Permits
+    description: Permit records by property.
+  - id: school-assignment
+    name: School Assignment
+    description: Assigned schools and district by property.
+  - id: transportation-noise
+    name: Transportation Noise
+    description: Road, air, and rail noise score by property.
+  - id: boundary-detail
+    name: Boundary Detail
+    description: GeoJSON polygons by geoIdV4.
+  - id: hierarchy-lookup
+    name: Hierarchy Lookup
+    description: Geographic hierarchy resolution by lat/lon.
+  - id: location-lookup-v4
+    name: Location Lookup (v4)
+    description: Resolve any geoIdV4 to its location record.
+  - id: poi-search
+    name: POI Search
+    description: POI search by point or address.
+  - id: community-profile
+    name: Community Profile
+    description: Neighborhood demographics, crime, weather, commute.
+  - id: parcel-tiles
+    name: Parcel Tiles
+    description: Vector parcel tiles for web/mobile maps.

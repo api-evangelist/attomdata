@@ -1,0 +1,121 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "attom": "https://api.gateway.attomdata.com/propertyapi/v1.0.0/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Property": {
+      "@id": "schema:House",
+      "@context": {
+        "attomId": { "@id": "attom:Property/attomId", "@type": "xsd:integer" },
+        "apn": { "@id": "attom:Property/apn", "@type": "xsd:string" },
+        "fips": { "@id": "attom:Property/fips", "@type": "xsd:string" },
+        "address": { "@id": "schema:address" },
+        "location": { "@id": "schema:geo" },
+        "yearBuilt": { "@id": "schema:dateBuilt", "@type": "xsd:integer" },
+        "lotSize": { "@id": "schema:lotSize", "@type": "xsd:decimal" },
+        "buildingSize": { "@id": "schema:floorSize" },
+        "bedrooms": { "@id": "schema:numberOfBedrooms", "@type": "xsd:integer" },
+        "bathrooms": { "@id": "schema:numberOfBathroomsTotal", "@type": "xsd:number" },
+        "owner": { "@id": "schema:owner" },
+        "summary": { "@id": "attom:Property/summary" }
+      }
+    },
+
+    "Address": {
+      "@id": "schema:PostalAddress",
+      "@context": {
+        "line1": { "@id": "schema:streetAddress" },
+        "locality": { "@id": "schema:addressLocality" },
+        "countrySubd": { "@id": "schema:addressRegion" },
+        "postal1": { "@id": "schema:postalCode" },
+        "country": { "@id": "schema:addressCountry" }
+      }
+    },
+
+    "Location": {
+      "@id": "schema:GeoCoordinates",
+      "@context": {
+        "latitude": { "@id": "schema:latitude", "@type": "xsd:decimal" },
+        "longitude": { "@id": "schema:longitude", "@type": "xsd:decimal" }
+      }
+    },
+
+    "Assessment": {
+      "@id": "attom:Assessment",
+      "@context": {
+        "assessedValue": { "@id": "attom:Assessment/assdttlvalue", "@type": "xsd:integer" },
+        "marketValue": { "@id": "attom:Assessment/mktttlvalue", "@type": "xsd:integer" },
+        "appraisedValue": { "@id": "attom:Assessment/apprttlvalue", "@type": "xsd:integer" },
+        "taxAmount": { "@id": "attom:Assessment/taxamt", "@type": "xsd:decimal" },
+        "taxYear": { "@id": "attom:Assessment/taxyear", "@type": "xsd:integer" }
+      }
+    },
+
+    "Sale": {
+      "@id": "schema:SellAction",
+      "@context": {
+        "saleAmount": { "@id": "schema:price", "@type": "xsd:integer" },
+        "saleDate": { "@id": "schema:endTime", "@type": "xsd:date" },
+        "deedType": { "@id": "attom:Sale/saledocType" },
+        "transactionType": { "@id": "attom:Sale/saletranstype" },
+        "pricePerSquareFoot": { "@id": "attom:Sale/pricepersizeunit", "@type": "xsd:decimal" }
+      }
+    },
+
+    "AVM": {
+      "@id": "attom:AVM",
+      "@context": {
+        "estimatedValue": { "@id": "attom:AVM/value", "@type": "xsd:integer" },
+        "estimatedLow": { "@id": "attom:AVM/low", "@type": "xsd:integer" },
+        "estimatedHigh": { "@id": "attom:AVM/high", "@type": "xsd:integer" },
+        "confidenceScore": { "@id": "attom:AVM/scr", "@type": "xsd:integer" },
+        "eventDate": { "@id": "attom:AVM/eventDate", "@type": "xsd:date" }
+      }
+    },
+
+    "Owner": {
+      "@id": "schema:Person",
+      "@context": {
+        "firstName": { "@id": "schema:givenName" },
+        "lastName": { "@id": "schema:familyName" },
+        "mailingAddress": { "@id": "attom:Owner/mailingaddressoneline" },
+        "corporateIndicator": { "@id": "attom:Owner/corporateindicator" }
+      }
+    },
+
+    "Area": {
+      "@id": "schema:AdministrativeArea",
+      "@context": {
+        "geoIdV4": { "@id": "attom:Area/geoIdV4" },
+        "name": { "@id": "schema:name" },
+        "type": { "@id": "schema:additionalType" },
+        "boundary": { "@id": "schema:hasMap" }
+      }
+    },
+
+    "Community": {
+      "@id": "schema:Place",
+      "@context": {
+        "demographics": { "@id": "attom:Community/demographics" },
+        "crime": { "@id": "attom:Community/crime" },
+        "weather": { "@id": "attom:Community/weather" },
+        "commute": { "@id": "attom:Community/commute" }
+      }
+    },
+
+    "POI": {
+      "@id": "schema:LocalBusiness",
+      "@context": {
+        "businessName": { "@id": "schema:name" },
+        "category": { "@id": "schema:category" },
+        "industry": { "@id": "attom:POI/industry" },
+        "lineOfBusiness": { "@id": "attom:POI/lineOfBusiness" },
+        "distance": { "@id": "attom:POI/distance", "@type": "xsd:decimal" }
+      }
+    }
+  }
+}

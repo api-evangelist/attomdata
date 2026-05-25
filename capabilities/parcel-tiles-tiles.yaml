@@ -1,0 +1,92 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ATTOM Parcel Tiles API — Tiles
+  description: 'ATTOM Parcel Tiles — Mapbox-style vector tiles of U.S. parcel boundaries. Self-contained
+    Naftiko capability covering one ATTOM business surface.'
+  tags:
+  - ATTOM
+  - Parcel
+  - Tiles
+  - Mapping
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ATTOM_API_KEY: ATTOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: parcel-tiles
+    baseUri: https://api.gateway.attomdata.com
+    description: ATTOM Parcel Tiles business capability.
+    resources:
+    - name: parcel-tile
+      path: /parceltileapi/v1/tile/{z}/{x}/{y}
+      operations:
+      - name: getparceltile
+        method: GET
+        description: ATTOM Get Parcel Vector Tile
+        outputRawFormat: binary
+        outputParameters:
+        - name: result
+          type: bytes
+          value: $.
+        inputParameters:
+        - name: z
+          in: path
+          type: integer
+          required: true
+        - name: x
+          in: path
+          type: integer
+          required: true
+        - name: y
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.ATTOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: parcel-tiles-rest
+    port: 8080
+    description: REST adapter for ATTOM Parcel Tiles.
+    resources:
+    - path: /v1/tile/{z}/{x}/{y}
+      name: parcel-tile
+      operations:
+      - method: GET
+        name: getparceltile
+        description: ATTOM Get Parcel Vector Tile
+        call: parcel-tiles.getparceltile
+        with:
+          z: rest.path.z
+          x: rest.path.x
+          y: rest.path.y
+        outputParameters:
+        - type: bytes
+          mapping: $.
+  - type: mcp
+    namespace: parcel-tiles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ATTOM Parcel Tiles.
+    tools:
+    - name: attom-get-parcel-tile
+      description: ATTOM Get Parcel Vector Tile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: parcel-tiles.getparceltile
+      with:
+        z: tools.z
+        x: tools.x
+        y: tools.y
+      outputParameters:
+      - type: bytes
+        mapping: $.

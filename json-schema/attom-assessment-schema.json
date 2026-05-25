@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/attomdata/main/json-schema/attom-assessment-schema.json",
+  "title": "ATTOM Assessment",
+  "description": "Assessed-value, tax, and market-value record for a property.",
+  "type": "object",
+  "properties": {
+    "appraised": {
+      "type": "object",
+      "properties": {
+        "apprimprvalue": { "type": "integer", "description": "Appraised improvement value (USD)." },
+        "apprlandvalue": { "type": "integer", "description": "Appraised land value (USD)." },
+        "apprttlvalue": { "type": "integer", "description": "Total appraised value (USD)." }
+      }
+    },
+    "assessed": {
+      "type": "object",
+      "properties": {
+        "assdimprvalue": { "type": "integer" },
+        "assdlandvalue": { "type": "integer" },
+        "assdttlvalue": { "type": "integer" }
+      }
+    },
+    "market": {
+      "type": "object",
+      "properties": {
+        "mktimprvalue": { "type": "integer" },
+        "mktlandvalue": { "type": "integer" },
+        "mktttlvalue": { "type": "integer" }
+      }
+    },
+    "tax": {
+      "type": "object",
+      "properties": {
+        "taxamt": { "type": "number", "description": "Tax amount (USD)." },
+        "taxpereszidx": { "type": "number", "description": "Tax per square-foot index." },
+        "taxyear": { "type": "integer" },
+        "exemption": { "type": "object", "description": "Tax exemption flags." },
+        "exemptiontype": { "type": "string" }
+      }
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "owner1": { "type": "object" },
+        "owner2": { "type": "object" },
+        "corporateindicator": { "type": "string" }
+      }
+    }
+  }
+}

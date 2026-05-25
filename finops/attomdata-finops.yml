@@ -1,0 +1,78 @@
+specification: API Commons FinOps
+specificationVersion: '0.1'
+provider: ATTOM
+providerId: attomdata
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+description: |
+  FinOps alignment for ATTOM Data. ATTOM monetizes via contract — annual API
+  subscription, bulk-data license, or cloud/AI data delivery (Snowflake,
+  Databricks, MCP) — not per-call PAYG. There is no public usage-cost API and
+  no per-call invoice surface; cost reporting flows from ATTOM account
+  management. Mapping below shows how ATTOM commercial inputs map to FOCUS /
+  FinOps Framework concepts.
+sources:
+  - https://api.developer.attomdata.com/
+  - https://www.attomdata.com/solutions/property-data-api/
+  - https://www.attomdata.com/solutions/bulk-data-licensing/
+  - https://www.attomdata.com/solutions/cloud-delivery/
+
+billingModel:
+  type: contract
+  invoicing: annual
+  selfServeMetering: false
+  payAsYouGo: false
+  description: |
+    Customers commit to an annual contract sized by their expected request volume
+    and resource mix. Overages are addressed contractually rather than via a
+    self-serve metered surface.
+
+focusMappings:
+  - focusColumn: BillingAccountId
+    attomEquivalent: ATTOM customer account ID assigned at contract signing.
+  - focusColumn: ServiceName
+    attomEquivalent: ATTOM Property API / Area API / POI API / Community API / Parcel Tiles API / Bulk Data License / Cloud Delivery.
+  - focusColumn: ServiceCategory
+    attomEquivalent: PropertyIntelligence / Geography / POI / Community / Parcel / Bulk / CloudDelivery.
+  - focusColumn: ProviderName
+    attomEquivalent: ATTOM
+  - focusColumn: ChargeCategory
+    attomEquivalent: Subscription (contract) — not per-unit metered.
+  - focusColumn: BilledCost
+    attomEquivalent: Contract amount (annual or contract term).
+  - focusColumn: PricingUnit
+    attomEquivalent: Contract / not metered.
+  - focusColumn: PricingQuantity
+    attomEquivalent: 1 (single contract).
+  - focusColumn: BillingPeriodStart
+    attomEquivalent: Contract start date.
+  - focusColumn: BillingPeriodEnd
+    attomEquivalent: Contract end date.
+
+practices:
+  - id: attribute-cost
+    name: Cost Allocation
+    description: |
+      Allocate the annual ATTOM contract across consuming business units by
+      tagging requests with internal account identifiers (e.g., business
+      vertical, product line) before they hit the gateway. ATTOM does not
+      attribute cost on the provider side.
+  - id: forecast-volume
+    name: Forecasting
+    description: |
+      Capture request counts per ATTOM resource (property, sale, AVM, etc.)
+      monthly and project against the contracted ceiling so renewal sizing can
+      be discussed with the account team well before contract end.
+  - id: optimize-resource-mix
+    name: Optimization
+    description: |
+      Prefer `snapshot` packages over `detail` where downstream consumers do not
+      need the full record, and prefer `allevents` over multiple per-resource
+      calls when consolidating assessment + AVM + sale data. Cache long-lived
+      records (e.g., AttomID-by-address) to reduce duplicate calls.
+  - id: monitor-overage
+    name: Overage Monitoring
+    description: |
+      Alert when monthly call volume exceeds the prorated annual contract ceiling
+      to avoid surprise contract-amendment conversations at renewal.

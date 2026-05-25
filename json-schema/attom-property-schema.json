@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/attomdata/main/json-schema/attom-property-schema.json",
+  "title": "ATTOM Property",
+  "description": "A single property record returned by the ATTOM Property API.",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "object",
+      "properties": {
+        "Id": { "type": "integer", "description": "Internal ATTOM property identifier." },
+        "fips": { "type": "string", "description": "Five-digit FIPS county code." },
+        "apn": { "type": "string", "description": "Assessor's Parcel Number." },
+        "attomId": { "type": "integer", "description": "Public-facing ATTOM ID." }
+      },
+      "required": ["attomId"]
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "country": { "type": "string" },
+        "countrySubd": { "type": "string", "description": "Country subdivision (state code)." },
+        "line1": { "type": "string" },
+        "line2": { "type": "string" },
+        "locality": { "type": "string", "description": "City." },
+        "matchCode": { "type": "string", "description": "ATTOM address-match confidence code." },
+        "oneLine": { "type": "string", "description": "Single-line concatenated address." },
+        "postal1": { "type": "string", "description": "5-digit ZIP." },
+        "postal2": { "type": "string", "description": "ZIP+4 extension." },
+        "postal3": { "type": "string" }
+      },
+      "required": ["oneLine"]
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "accuracy": { "type": "string" },
+        "latitude": { "type": "string" },
+        "longitude": { "type": "string" },
+        "geoid": { "type": "string" },
+        "geoIdV4": { "type": "object" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "absenteeInd": { "type": "string", "description": "Indicator of absentee ownership." },
+        "propclass": { "type": "string" },
+        "propsubtype": { "type": "string" },
+        "proptype": { "type": "string" },
+        "yearbuilt": { "type": "integer" },
+        "propLandUse": { "type": "string" }
+      }
+    },
+    "building": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "type": "object",
+          "properties": {
+            "bldgsize": { "type": "integer" },
+            "livingsize": { "type": "integer" },
+            "grosssize": { "type": "integer" }
+          }
+        },
+        "rooms": {
+          "type": "object",
+          "properties": {
+            "bathstotal": { "type": "number" },
+            "beds": { "type": "integer" }
+          }
+        }
+      }
+    },
+    "lot": {
+      "type": "object",
+      "properties": {
+        "lotnum": { "type": "string" },
+        "lotsize1": { "type": "number", "description": "Lot size in acres." },
+        "lotsize2": { "type": "number", "description": "Lot size in square feet." },
+        "zoningType": { "type": "string" }
+      }
+    },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "corporateindicator": { "type": "string" },
+        "owner1": { "type": "object" },
+        "owner2": { "type": "object" },
+        "mailingaddressoneline": { "type": "string" }
+      }
+    },
+    "vintage": {
+      "type": "object",
+      "properties": {
+        "lastModified": { "type": "string", "format": "date-time" },
+        "pubDate": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "required": ["identifier", "address"]
+}

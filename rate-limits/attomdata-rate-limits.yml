@@ -1,0 +1,84 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: ATTOM
+providerId: attomdata
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+description: |
+  ATTOM does not publish numeric per-second rate limits on its public developer
+  portal. Trial keys are throttled to a capped number of total calls (daily and
+  monthly), and production keys carry per-contract throughput. The policy
+  entries below capture the visible policy posture; consumers should inspect
+  the standard ATTOM error envelope for `code: 401/429/500` and consult their
+  account team for negotiated limits.
+sources:
+  - https://api.developer.attomdata.com/
+  - https://api.developer.attomdata.com/docs
+
+policies:
+  - id: attomdata-trial-cap
+    name: Trial Call Cap
+    description: |
+      Trial API keys are subject to a capped number of calls (daily and monthly).
+      The exact cap is documented to the developer at sign-up time and may change
+      without notice.
+    type: total-quota
+    scope: api-key
+    timeFrame: monthly
+    limit: contact-portal
+    response:
+      whenExceeded:
+        status: 429
+        envelope:
+          Response:
+            status:
+              version: '1.0.0'
+              code: '429'
+              msg: 'Quota Exceeded'
+              total: '0'
+              page: '0'
+              pagesize: '0'
+
+  - id: attomdata-production-throughput
+    name: Production Throughput
+    description: |
+      Production API keys carry per-contract throughput (requests/second and
+      monthly call totals) negotiated with ATTOM sales. Consumers should expect
+      throttling at the gateway when contracted thresholds are exceeded.
+    type: requests-per-second
+    scope: api-key
+    timeFrame: second
+    limit: contact-sales
+
+  - id: attomdata-authentication-failure
+    name: Authentication Failure
+    description: |
+      Requests without the `apikey` header (or with an invalid key) are rejected
+      at the gateway with HTTP 401 and the ATTOM error envelope.
+    type: auth-failure
+    response:
+      whenExceeded:
+        status: 401
+        envelope:
+          Response:
+            status:
+              version: '1.0.0'
+              code: '401'
+              msg: 'Unauthorized'
+              total: '0'
+              page: '0'
+              pagesize: '0'
+
+headers:
+  request:
+    - name: apikey
+      description: ATTOM-issued API key. Required on every call.
+      required: true
+  response:
+    - name: X-RateLimit-Limit
+      description: Not publicly documented; some ATTOM endpoints surface gateway rate-limit headers.
+      required: false
+    - name: X-RateLimit-Remaining
+      description: Not publicly documented; gateway-emitted when present.
+      required: false

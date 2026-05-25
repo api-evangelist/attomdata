@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/attomdata/main/json-schema/attom-community-schema.json",
+  "title": "ATTOM Community",
+  "description": "Neighborhood community profile (demographics, crime, weather, commute).",
+  "type": "object",
+  "properties": {
+    "geoIdV4": { "type": "string" },
+    "name": { "type": "string" },
+    "demographics": {
+      "type": "object",
+      "properties": {
+        "population": { "type": "integer" },
+        "households": { "type": "integer" },
+        "medianAge": { "type": "number" },
+        "medianHouseholdIncome": { "type": "integer" },
+        "ownerOccupiedPercent": { "type": "number" },
+        "renterOccupiedPercent": { "type": "number" }
+      }
+    },
+    "crime": {
+      "type": "object",
+      "properties": {
+        "crimeIndex": { "type": "number" },
+        "violentCrimeIndex": { "type": "number" },
+        "propertyCrimeIndex": { "type": "number" }
+      }
+    },
+    "weather": {
+      "type": "object",
+      "properties": {
+        "annualAvgPrecipitation": { "type": "number" },
+        "annualAvgSnowfall": { "type": "number" },
+        "januaryAvgLowTemp": { "type": "number" },
+        "julyAvgHighTemp": { "type": "number" }
+      }
+    },
+    "commute": {
+      "type": "object",
+      "properties": {
+        "avgCommuteMinutes": { "type": "number" },
+        "commuteByCarPercent": { "type": "number" },
+        "commuteByPublicTransitPercent": { "type": "number" }
+      }
+    }
+  },
+  "required": ["geoIdV4"]
+}

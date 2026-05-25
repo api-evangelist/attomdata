@@ -1,0 +1,98 @@
+aid: attomdata
+name: ATTOM
+reviewed: '2026-05-25'
+reviewer: Kin Lane
+tier: 1
+tierRationale: |
+  Tier-1 — ATTOM operates a real, working developer platform at
+  api.developer.attomdata.com with interactive documentation, a self-serve
+  30-day trial sign-up, four production REST APIs (Property, Area, POI,
+  Community) plus Parcel Tiles, a public Postman collection on GitHub
+  (AttomDataSolutions/postman-collections) covering 35+ Property endpoints
+  and the full Area/POI/Community surface, language-specific PHP sample
+  repos (Sample_Code, School_Sample_Code, POI_Sample_Code,
+  Community_Sample_Code), live gateway behavior consistent with documented
+  authentication (`apikey` header) and ATTOM error envelope, and a publicly
+  visible commercial surface (Property Data API, Bulk Data Licensing,
+  Cloud / AI delivery via Snowflake/Databricks/MCP). ATTOM does not publish
+  a single canonical OpenAPI/Swagger file, but the Postman collection is
+  comprehensive and live, the gateway responds with the documented status
+  envelope, and the developer portal documents all resources, packages,
+  and authentication. No public status page, no public per-call price list,
+  no per-second rate-limit headers publicly documented — these are why ATTOM
+  sits at Tier-1 rather than higher.
+
+summary: |
+  ATTOM is the U.S. market-leader for property and real-estate intelligence,
+  covering 160M+ properties with assessor, deed, mortgage, AVM, foreclosure,
+  permit, school, and area data. Five distinct APIs serve property records,
+  geography, POIs, neighborhood community profiles, and parcel tiles, all
+  authenticated via the `apikey` header against api.gateway.attomdata.com.
+  Commercial model is contract-only (annual API subscription, bulk file
+  license, or Snowflake/Databricks/MCP delivery); the developer platform
+  offers a self-serve free 30-day trial.
+
+scores:
+  documentation: 4
+  reference: 3
+  openapi: 3
+  postman: 5
+  sdks: 3
+  authentication: 4
+  pricing: 2
+  rateLimits: 2
+  changeLog: 2
+  statusPage: 1
+  github: 4
+  support: 4
+
+strengths:
+  - Wide, deep U.S. property coverage (160M+ properties; 50 states).
+  - Five APIs with clear resource/package structure (snapshot/detail/history).
+  - Interactive developer portal with self-serve free 30-day trial.
+  - Pre-built Postman collections on GitHub covering 35+ Property endpoints
+    plus the Area, POI, and Community surfaces.
+  - PHP sample-code repos for Property, School, POI, and Community.
+  - Multiple delivery modes — REST API, bulk files, Snowflake/Databricks data
+    shares, and an MCP Server for AI/agent consumption.
+  - Standardized ATTOM error envelope across all endpoints
+    (Response.status.{version,code,msg,total,page,pagesize}).
+
+weaknesses:
+  - No single canonical OpenAPI/Swagger file is published; integrators must
+    derive specs from documentation or Postman.
+  - No public status page or incident history.
+  - No public per-call price list — production pricing is contact-sales only.
+  - Per-second rate limits are not publicly documented; trial quotas are
+    surfaced at sign-up, not in docs.
+  - No changelog/release-notes feed visible from the developer portal home.
+  - SDKs are PHP-only and unmaintained (last pushes are years old).
+  - No webhooks or async/event delivery; data is poll-only via REST.
+
+recommendations:
+  - Publish a single canonical OpenAPI 3.1 document per API (Property, Area,
+    POI, Community, Parcel Tiles) alongside the Postman collection.
+  - Stand up status.attomdata.com (Statuspage-class) with per-API uptime,
+    incidents, and scheduled maintenance.
+  - Publish a public changelog feed (RSS/JSON) for the API gateway and
+    underlying data refresh cadence.
+  - Document rate limits in the developer portal — even directional bands
+    (calls/minute, monthly cap) help integrators size production traffic.
+  - Modernize sample code in TypeScript and Python; deprecate the stale PHP
+    repos or replace them with generator-driven SDKs from OpenAPI.
+  - Introduce webhooks for property events (new sale, new permit, AVM tick)
+    to reduce polling cost for high-coverage integrators.
+  - Surface per-key usage metering via a self-serve dashboard so customers
+    can see their contracted-volume burn-down without contacting sales.
+
+references:
+  - https://www.attomdata.com/
+  - https://api.developer.attomdata.com/
+  - https://api.developer.attomdata.com/docs
+  - https://api.developer.attomdata.com/docs/guides
+  - https://api.developer.attomdata.com/signup
+  - https://www.attomdata.com/solutions/property-data-api/
+  - https://www.attomdata.com/solutions/bulk-data-licensing/
+  - https://www.attomdata.com/solutions/cloud-delivery/
+  - https://github.com/AttomDataSolutions
+  - https://github.com/AttomDataSolutions/postman-collections

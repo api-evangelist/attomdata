@@ -1,0 +1,49 @@
+{
+  "summary": "Neighborhood community profile by geoIdV4",
+  "request": {
+    "method": "GET",
+    "url": "https://api.gateway.attomdata.com/v4.0.0/neighborhood/community?geoIdv4=abcdef1234567890abcdef1234567890",
+    "headers": {
+      "apikey": "YOUR_ATTOM_API_KEY",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": {
+      "version": "4.0.0",
+      "code": 0,
+      "msg": "SuccessWithResult",
+      "total": 1
+    },
+    "response": {
+      "community": {
+        "geoIdV4": "abcdef1234567890abcdef1234567890",
+        "name": "Berkeley, Denver, CO",
+        "demographics": {
+          "population": 8125,
+          "households": 3540,
+          "medianAge": 36.2,
+          "medianHouseholdIncome": 92450,
+          "ownerOccupiedPercent": 61.4,
+          "renterOccupiedPercent": 38.6
+        },
+        "crime": {
+          "crimeIndex": 112.0,
+          "violentCrimeIndex": 78.0,
+          "propertyCrimeIndex": 134.0
+        },
+        "weather": {
+          "annualAvgPrecipitation": 14.3,
+          "annualAvgSnowfall": 56.5,
+          "januaryAvgLowTemp": 17.4,
+          "julyAvgHighTemp": 88.0
+        },
+        "commute": {
+          "avgCommuteMinutes": 24.6,
+          "commuteByCarPercent": 72.1,
+          "commuteByPublicTransitPercent": 8.4
+        }
+      }
+    }
+  }
+}

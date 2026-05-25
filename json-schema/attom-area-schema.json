@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/attomdata/main/json-schema/attom-area-schema.json",
+  "title": "ATTOM Area",
+  "description": "Geographic area record (state, county, CBSA, neighborhood, ZIP).",
+  "type": "object",
+  "properties": {
+    "geoIdV4": { "type": "string", "description": "ATTOM v4 geography identifier." },
+    "geoId": { "type": "string", "description": "Legacy ATTOM geoID." },
+    "name": { "type": "string" },
+    "type": { "type": "string", "description": "Geography type (state, county, CBSA, neighborhood, ZIP)." },
+    "countrySubd": { "type": "string", "description": "State code." },
+    "country": { "type": "string" },
+    "center": {
+      "type": "object",
+      "properties": {
+        "latitude": { "type": "string" },
+        "longitude": { "type": "string" }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "description": "GeoJSON boundary geometry.",
+      "properties": {
+        "type": { "type": "string", "enum": ["Polygon", "MultiPolygon"] },
+        "coordinates": { "type": "array" }
+      }
+    }
+  },
+  "required": ["geoIdV4", "type"]
+}

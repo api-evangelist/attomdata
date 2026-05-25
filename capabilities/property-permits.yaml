@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ATTOM Property API — Building Permits
+  description: 'ATTOM Building Permits — building permit records associated with a property. Self-contained
+    Naftiko capability covering one ATTOM business surface.'
+  tags:
+  - ATTOM
+  - Building Permits
+  - Construction
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ATTOM_API_KEY: ATTOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: property-permits
+    baseUri: https://api.gateway.attomdata.com
+    description: ATTOM Property — Building Permits business capability.
+    resources:
+    - name: building-permits
+      path: /propertyapi/v1.0.0/property/buildingpermits
+      operations:
+      - name: getbuildingpermits
+        method: GET
+        description: ATTOM Get Property Building Permits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.ATTOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: property-permits-rest
+    port: 8080
+    description: REST adapter for ATTOM Property — Building Permits.
+    resources:
+    - path: /v1/property/buildingpermits
+      name: building-permits
+      operations:
+      - method: GET
+        name: getbuildingpermits
+        description: ATTOM Get Property Building Permits
+        call: property-permits.getbuildingpermits
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: property-permits-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ATTOM Property — Building Permits.
+    tools:
+    - name: attom-get-building-permits
+      description: ATTOM Get Property Building Permits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-permits.getbuildingpermits
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.

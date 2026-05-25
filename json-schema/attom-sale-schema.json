@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/attomdata/main/json-schema/attom-sale-schema.json",
+  "title": "ATTOM Sale",
+  "description": "Property sales-transaction record.",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "object",
+      "properties": {
+        "saleamt": { "type": "integer", "description": "Sale amount (USD)." },
+        "salecode": { "type": "string", "description": "ATTOM sale code." },
+        "saledisclosuretype": { "type": "integer", "description": "Disclosure type code." },
+        "saledocnum": { "type": "string", "description": "Recording document number." },
+        "saledocType": { "type": "string", "description": "Deed type (warranty deed, grant deed, etc.)." },
+        "saletranstype": { "type": "string", "description": "Transaction type (arm's length, distressed)." }
+      }
+    },
+    "calculation": {
+      "type": "object",
+      "properties": {
+        "pricepersizeunit": { "type": "number", "description": "Price per square foot." }
+      }
+    },
+    "salesearchdate": { "type": "string", "format": "date" },
+    "saleTransDate": { "type": "string", "format": "date" },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "saleSearchDate": { "type": "string" },
+        "saleTransDate": { "type": "string" }
+      }
+    }
+  }
+}

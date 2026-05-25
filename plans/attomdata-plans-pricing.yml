@@ -1,0 +1,118 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: ATTOM
+providerId: attomdata
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Real Estate
+  - Property Data
+  - Mortgage
+  - AVM
+description: |
+  ATTOM does not publish per-call list pricing on its public site. The developer
+  platform offers a free 30-day trial via api.developer.attomdata.com/signup;
+  production plans (annual API subscriptions, bulk-data licensing, and cloud
+  delivery via Snowflake/Databricks) are negotiated with ATTOM sales. The
+  entries below capture the publicly visible commercial surface so downstream
+  tooling can detect "contact-sales" pricing without inventing dollar amounts.
+sources:
+  - https://api.developer.attomdata.com/
+  - https://api.developer.attomdata.com/signup
+  - https://www.attomdata.com/solutions/property-data-api/
+  - https://www.attomdata.com/solutions/bulk-data-licensing/
+  - https://www.attomdata.com/solutions/cloud-delivery/
+
+plans:
+  - id: attomdata-trial
+    name: Free 30-Day Trial
+    type: trial
+    description: |
+      Free 30-day developer trial via the ATTOM Developer Platform. Provides an
+      API key with a capped number of calls across the Property, Area, POI, and
+      Community APIs for evaluation. Self-serve sign-up at
+      api.developer.attomdata.com/signup.
+    entries:
+      - label: Trial period
+        name: trial-window
+        type: duration
+        metric: days
+        limit: 30
+        timeFrame: usage
+        geo: US
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Property, Area, POI, and Community API access
+      - name: Interactive documentation and Postman collections
+      - name: Capped daily/monthly call quota during the trial
+      - name: Sandbox-style usage; not for production volumes
+
+  - id: attomdata-api-subscription
+    name: ATTOM API Subscription
+    type: contact-sales
+    description: |
+      Annual ATTOM Property Data API subscription. Tiered by API volume, resource
+      mix (property/AVM/sale/owner/permits), and geographic coverage. Quoted by
+      ATTOM sales.
+    entries:
+      - label: Annual API subscription
+        name: api-subscription
+        type: contact-sales
+        metric: contract
+        timeFrame: annual
+        geo: US
+        unit: 1
+        price: contact-sales
+        userMultiplied: false
+    elements:
+      - name: Production API key with negotiated request quota
+      - name: Choice of resource packages (snapshot, detail, history, expanded)
+      - name: SLA, support tier, and contractual data redistribution rights
+      - name: Coverage of all 50 U.S. states and 160M+ properties
+
+  - id: attomdata-bulk-licensing
+    name: Bulk Data Licensing
+    type: contact-sales
+    description: |
+      Bulk file delivery of ATTOM property, assessment, sale, owner, mortgage,
+      foreclosure, and parcel datasets. Refresh cadence and file format
+      negotiated by contract.
+    entries:
+      - label: Bulk data license
+        name: bulk-license
+        type: contact-sales
+        metric: contract
+        timeFrame: annual
+        geo: US
+        unit: 1
+        price: contact-sales
+        userMultiplied: false
+    elements:
+      - name: National or geographic-subset bulk files
+      - name: Initial backfill plus periodic refreshes (daily/weekly/monthly)
+      - name: Customer-managed warehouse delivery
+
+  - id: attomdata-cloud-delivery
+    name: Cloud / AI Data Delivery
+    type: contact-sales
+    description: |
+      ATTOM data delivered into Snowflake, Databricks, or via ATTOM's MCP Server
+      for AI-native consumption. Quoted by ATTOM sales.
+    entries:
+      - label: Cloud share or MCP server
+        name: cloud-delivery
+        type: contact-sales
+        metric: contract
+        timeFrame: annual
+        geo: US
+        unit: 1
+        price: contact-sales
+        userMultiplied: false
+    elements:
+      - name: Snowflake Secure Data Share
+      - name: Databricks Delta Share
+      - name: ATTOM MCP Server for LLM/agent consumption

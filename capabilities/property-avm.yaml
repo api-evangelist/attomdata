@@ -1,0 +1,223 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ATTOM Property API — AVM
+  description: 'ATTOM AVM — Automated Valuation Model: current AVM, AVM history, rental AVM, and home equity.
+    Self-contained Naftiko capability covering one ATTOM business surface.'
+  tags:
+  - ATTOM
+  - AVM
+  - Valuation
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ATTOM_API_KEY: ATTOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: property-avm
+    baseUri: https://api.gateway.attomdata.com
+    description: ATTOM Property — AVM business capability.
+    resources:
+    - name: attom-avm-detail
+      path: /propertyapi/v1.0.0/attomavm/detail
+      operations:
+      - name: getattomavmdetail
+        method: GET
+        description: ATTOM Get ATTOM AVM Detail
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    - name: avm-history
+      path: /propertyapi/v1.0.0/avmhistory/detail
+      operations:
+      - name: getavmhistorydetail
+        method: GET
+        description: ATTOM Get AVM History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    - name: rental-avm
+      path: /propertyapi/v1.0.0/valuation/rentalavm
+      operations:
+      - name: getrentalavm
+        method: GET
+        description: ATTOM Get Rental AVM
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    - name: home-equity
+      path: /propertyapi/v1.0.0/valuation/homeequity
+      operations:
+      - name: gethomeequity
+        method: GET
+        description: ATTOM Get Home Equity Estimate
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.ATTOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: property-avm-rest
+    port: 8080
+    description: REST adapter for ATTOM Property — AVM.
+    resources:
+    - path: /v1/attomavm/detail
+      name: attom-avm-detail
+      operations:
+      - method: GET
+        name: getattomavmdetail
+        description: ATTOM Get ATTOM AVM Detail
+        call: property-avm.getattomavmdetail
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/avmhistory/detail
+      name: avm-history
+      operations:
+      - method: GET
+        name: getavmhistorydetail
+        description: ATTOM Get AVM History
+        call: property-avm.getavmhistorydetail
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/valuation/rentalavm
+      name: rental-avm
+      operations:
+      - method: GET
+        name: getrentalavm
+        description: ATTOM Get Rental AVM
+        call: property-avm.getrentalavm
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/valuation/homeequity
+      name: home-equity
+      operations:
+      - method: GET
+        name: gethomeequity
+        description: ATTOM Get Home Equity Estimate
+        call: property-avm.gethomeequity
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: property-avm-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ATTOM Property — AVM.
+    tools:
+    - name: attom-get-avm-detail
+      description: ATTOM Get ATTOM AVM Detail
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-avm.getattomavmdetail
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attom-get-avm-history
+      description: ATTOM Get AVM History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-avm.getavmhistorydetail
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attom-get-rental-avm
+      description: ATTOM Get Rental AVM
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-avm.getrentalavm
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attom-get-home-equity
+      description: ATTOM Get Home Equity Estimate
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-avm.gethomeequity
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.

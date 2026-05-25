@@ -1,0 +1,65 @@
+{
+  "summary": "POI search within 0.25 mile of 4529 Winona Court, Denver, CO",
+  "request": {
+    "method": "GET",
+    "url": "https://api.gateway.attomdata.com/v4/neighborhood/poi?address=4529%20Winona%20Court%2C%20Denver%2C%20CO%2080212&radius=0.25&category=Restaurants",
+    "headers": {
+      "apikey": "YOUR_ATTOM_API_KEY",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": {
+      "version": "4.0.0",
+      "code": 0,
+      "msg": "SuccessWithResult",
+      "total": 3
+    },
+    "response": {
+      "results": [
+        {
+          "Id": "POI-001",
+          "BusinessName": "Hops & Pie",
+          "Address": "3920 Tennyson St",
+          "City": "Denver",
+          "State": "CO",
+          "ZipCode": "80212",
+          "Latitude": 39.7708,
+          "Longitude": -105.0457,
+          "Distance": 0.18,
+          "Category": "Restaurants",
+          "LineOfBusiness": "Pizza",
+          "Industry": "Food Service"
+        },
+        {
+          "Id": "POI-002",
+          "BusinessName": "Berkeley Donuts",
+          "Address": "4040 Tennyson St",
+          "City": "Denver",
+          "State": "CO",
+          "ZipCode": "80212",
+          "Latitude": 39.7721,
+          "Longitude": -105.0457,
+          "Distance": 0.21,
+          "Category": "Restaurants",
+          "LineOfBusiness": "Bakery",
+          "Industry": "Food Service"
+        },
+        {
+          "Id": "POI-003",
+          "BusinessName": "The Lazy Dog Sports Bar & Grill",
+          "Address": "4360 Tennyson St",
+          "City": "Denver",
+          "State": "CO",
+          "ZipCode": "80212",
+          "Latitude": 39.7740,
+          "Longitude": -105.0455,
+          "Distance": 0.24,
+          "Category": "Restaurants",
+          "LineOfBusiness": "Sports Bar",
+          "Industry": "Food Service"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ATTOM Property API — All Events
+  description: 'ATTOM All Events — combined assessment, AVM, and sales-transaction events for a property.
+    Self-contained Naftiko capability covering one ATTOM business surface.'
+  tags:
+  - ATTOM
+  - All Events
+  - Combined
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ATTOM_API_KEY: ATTOM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: property-allevents
+    baseUri: https://api.gateway.attomdata.com
+    description: ATTOM Property — All Events business capability.
+    resources:
+    - name: allevents-detail
+      path: /propertyapi/v1.0.0/allevents/detail
+      operations:
+      - name: getalleventsdetail
+        method: GET
+        description: ATTOM Get All Events Detail
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    - name: allevents-snapshot
+      path: /propertyapi/v1.0.0/allevents/snapshot
+      operations:
+      - name: getalleventssnapshot
+        method: GET
+        description: ATTOM Get All Events Snapshot
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: AttomID
+          in: query
+          type: string
+          required: false
+        - name: address
+          in: query
+          type: string
+          required: false
+    authentication:
+      type: apikey
+      key: apikey
+      value: '{{env.ATTOM_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: property-allevents-rest
+    port: 8080
+    description: REST adapter for ATTOM All Events.
+    resources:
+    - path: /v1/allevents/detail
+      name: allevents-detail
+      operations:
+      - method: GET
+        name: getalleventsdetail
+        description: ATTOM Get All Events Detail
+        call: property-allevents.getalleventsdetail
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/allevents/snapshot
+      name: allevents-snapshot
+      operations:
+      - method: GET
+        name: getalleventssnapshot
+        description: ATTOM Get All Events Snapshot
+        call: property-allevents.getalleventssnapshot
+        with:
+          AttomID: rest.query.AttomID
+          address: rest.query.address
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: property-allevents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ATTOM All Events.
+    tools:
+    - name: attom-get-all-events-detail
+      description: ATTOM Get All Events Detail
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-allevents.getalleventsdetail
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: attom-get-all-events-snapshot
+      description: ATTOM Get All Events Snapshot
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: property-allevents.getalleventssnapshot
+      with:
+        AttomID: tools.AttomID
+        address: tools.address
+      outputParameters:
+      - type: object
+        mapping: $.

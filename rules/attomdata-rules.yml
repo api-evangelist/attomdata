@@ -1,0 +1,107 @@
+extends: spectral:oas
+rules:
+  # Operation conventions
+  attom-operation-id-pattern:
+    description: ATTOM operationIds must be lowerCamelCase verb-resource ("getPropertyDetail", "searchPois").
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  attom-operation-summary-title-case:
+    description: Operation summaries must use Title Case ("Get Property Detail", not "Get property detail").
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-zA-Z0-9'\\-]*\\s?)+$"
+
+  attom-operation-tag-required:
+    description: Every operation must have at least one tag.
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  # Path conventions
+  attom-path-no-trailing-slash:
+    description: Paths must not end with a trailing slash (except the root).
+    severity: error
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(\\/|.*[^/])$"
+      field: "@key"
+
+  attom-path-kebab-or-flat:
+    description: ATTOM paths use flat-case or single-word segments (no camelCase except v4 endpoints).
+    severity: warn
+    given: $.paths
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[a-zA-Z0-9{}\\-_./]*$"
+      field: "@key"
+
+  # Auth
+  attom-security-apikey-header:
+    description: ATTOM APIs MUST authenticate via the `apikey` header.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            ".*":
+              type: object
+              required: [type, in, name]
+              properties:
+                type:
+                  const: apiKey
+                in:
+                  const: header
+                name:
+                  const: apikey
+
+  attom-global-security-required:
+    description: Specs must declare a top-level security requirement.
+    severity: error
+    given: $
+    then:
+      field: security
+      function: truthy
+
+  # Servers
+  attom-server-base-url:
+    description: ATTOM servers should point at api.gateway.attomdata.com.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://api\\.gateway\\.attomdata\\.com.*$"
+
+  # Schemas
+  attom-status-envelope:
+    description: Every 200 response schema should reference a status block.
+    severity: info
+    given: $.components.schemas
+    then:
+      function: truthy
+      field: Status
+
+  # Info block
+  attom-info-contact-email:
+    description: info.contact.email should be set to datacustomercare@attomdata.com.
+    severity: warn
+    given: $.info.contact
+    then:
+      field: email
+      function: truthy
