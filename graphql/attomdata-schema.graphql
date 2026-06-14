@@ -1,0 +1,1011 @@
+"""
+ATTOM Data GraphQL Schema
+Conceptual schema covering ATTOM Property, Assessment, Sales, Mortgage, Foreclosure,
+Owner, School, Community, Demographics, POI, Permit, and Area Intelligence APIs.
+"""
+
+# ─── Root Types ────────────────────────────────────────────────────────────────
+
+type Query {
+  """Look up a property by AttomID, address, or APN."""
+  property(attomId: ID, address1: String, address2: String, apn: String, fips: String): Property
+
+  """Search properties within a radius or bounding box."""
+  propertySearch(
+    latitude: Float
+    longitude: Float
+    radius: Float
+    minLat: Float
+    minLon: Float
+    maxLat: Float
+    maxLon: Float
+    pageSize: Int
+    page: Int
+  ): PropertySearchResult
+
+  """Retrieve assessment details for a property."""
+  assessment(attomId: ID, address1: String, address2: String): Assessment
+
+  """Retrieve assessment history for a property."""
+  assessmentHistory(attomId: ID, address1: String, address2: String, startYear: Int, endYear: Int): [Assessment]
+
+  """Retrieve the most recent sale for a property."""
+  sale(attomId: ID, address1: String, address2: String): Sale
+
+  """Retrieve sale history for a property."""
+  salesHistory(attomId: ID, address1: String, address2: String): [Sale]
+
+  """Find comparable sales near a property."""
+  salesComparables(attomId: ID, address1: String, address2: String, miles: Float, pageSize: Int): [Sale]
+
+  """Current AVM (Automated Valuation Model) estimate."""
+  avm(attomId: ID, address1: String, address2: String): HVA
+
+  """AVM history for a property."""
+  avmHistory(attomId: ID, address1: String, address2: String): [HVA]
+
+  """Rental AVM estimate."""
+  rentalAvm(attomId: ID, address1: String, address2: String): HVA
+
+  """Home equity estimate."""
+  homeEquity(attomId: ID, address1: String, address2: String): HVA
+
+  """Pre-foreclosure / foreclosure status."""
+  foreclosure(attomId: ID, address1: String, address2: String): Foreclosure
+
+  """Building permits on a property."""
+  buildingPermits(attomId: ID, address1: String, address2: String): [Permit]
+
+  """All events (sales, assessment, foreclosure, permit) for a property."""
+  allEvents(attomId: ID, address1: String, address2: String): AllEvents
+
+  """School assignment for a property address."""
+  schools(address1: String, address2: String): [School]
+
+  """Transportation noise index for a property."""
+  transportationNoise(attomId: ID, address1: String, address2: String): HazardDetails
+
+  """Points of Interest near a location."""
+  poi(latitude: Float!, longitude: Float!, radius: Float, category: String, page: Int, pageSize: Int): [POI]
+
+  """Community / neighborhood profile by geoIdV4."""
+  community(geoIdV4: String!): Community
+
+  """Area boundary (GeoJSON polygon) by geoId."""
+  areaBoundary(geoId: String!, geoIdType: String): AreaBoundary
+
+  """Geographic hierarchy for a lat/lon."""
+  areaHierarchy(latitude: Float!, longitude: Float!): AreaHierarchy
+
+  """List available counties for a state."""
+  counties(state: String!): [AreaUnit]
+
+  """Resolve a geoIdV4 to its location metadata."""
+  locationLookup(geoIdV4: String!, geoType: String): AreaUnit
+}
+
+# ─── Property ──────────────────────────────────────────────────────────────────
+
+type PropertySearchResult {
+  total: Int
+  page: Int
+  pageSize: Int
+  properties: [Property]
+}
+
+type Property {
+  """Unique ATTOM identifier."""
+  attomId: ID!
+  identifier: PropertyIdentifiers
+  address: PropertyAddress
+  summary: PropertyDetails
+  building: Building
+  lot: Lot
+  assessment: Assessment
+  sale: Sale
+  owner: Owner
+  mortgage: MortgageDetails
+  foreclosure: Foreclosure
+  permits: [Permit]
+  schools: [School]
+  avm: HVA
+  rentalAvm: HVA
+  homeEquity: HVA
+  community: Community
+  hazards: HazardDetails
+}
+
+type PropertyDetails {
+  propertyType: PropertyType
+  yearBuilt: Int
+  bedrooms: Int
+  bathrooms: Float
+  grossArea: Float
+  livingArea: Float
+  stories: Int
+  units: Int
+  garage: String
+  pool: Boolean
+  fireplace: Boolean
+  basement: String
+  roofType: String
+  constructionType: String
+  condition: String
+  quality: String
+}
+
+enum PropertyType {
+  SINGLE_FAMILY
+  CONDO
+  TOWNHOUSE
+  MULTI_FAMILY
+  MOBILE_HOME
+  COMMERCIAL
+  AGRICULTURAL
+  VACANT_LAND
+  OTHER
+}
+
+type PropertyAddress {
+  line1: String
+  line2: String
+  city: String
+  state: String
+  zip: String
+  zip4: String
+  county: String
+  country: String
+  latitude: Float
+  longitude: Float
+  formattedAddress: String
+}
+
+type PropertyIdentifiers {
+  attomId: ID
+  apn: APN
+  fips: FIPS
+  parcelId: String
+  geoIdV4: String
+  censusBlock: String
+  censusTract: String
+  taxId: String
+}
+
+type APN {
+  apn: String
+  apnOrig: String
+  apnFormatted: String
+}
+
+type FIPS {
+  stFips: String
+  cntyFips: String
+  fips: String
+}
+
+# ─── Building / Lot ────────────────────────────────────────────────────────────
+
+type Building {
+  yearBuilt: Int
+  effectiveYearBuilt: Int
+  grossArea: Int
+  livingArea: Int
+  stories: Float
+  units: Int
+  bedrooms: Int
+  bathrooms: Float
+  halfBaths: Int
+  fireplaces: Int
+  garage: GarageDetails
+  basement: BasementDetails
+  roof: RoofDetails
+  construction: ConstructionDetails
+  pool: Boolean
+  centralAir: Boolean
+  heating: String
+  cooling: String
+}
+
+type GarageDetails {
+  type: String
+  spaces: Int
+  area: Int
+}
+
+type BasementDetails {
+  type: String
+  area: Int
+  finished: Boolean
+}
+
+type RoofDetails {
+  type: String
+  material: String
+}
+
+type ConstructionDetails {
+  frameType: String
+  exteriorWalls: String
+  foundationType: String
+}
+
+type Lot {
+  lotSize1: Float
+  lotSize2: Float
+  depth: Float
+  frontage: Float
+  shape: String
+  zoningCode: String
+  zoningDescription: String
+  landUse: String
+  landUseCode: String
+}
+
+# ─── Assessment ────────────────────────────────────────────────────────────────
+
+type Assessment {
+  attomId: ID
+  year: Int
+  taxYear: Int
+  assessedValue: AssessedValue
+  marketValue: MarketValue
+  improvement: Improvement
+  land: Land
+  tax: TaxDetails
+  exemptions: [ExemptionType]
+  assessmentDetails: AssessmentDetails
+}
+
+type AssessmentDetails {
+  jurisdictionName: String
+  assessmentYear: Int
+  filingDate: String
+  assessedImprovementValue: Float
+  assessedLandValue: Float
+  assessedTotalValue: Float
+  marketImprovementValue: Float
+  marketLandValue: Float
+  marketTotalValue: Float
+}
+
+type AssessedValue {
+  total: Float
+  improvement: Float
+  land: Float
+}
+
+type MarketValue {
+  total: Float
+  improvement: Float
+  land: Float
+}
+
+type Improvement {
+  value: Float
+  percent: Float
+}
+
+type Land {
+  value: Float
+  acres: Float
+  squareFeet: Float
+}
+
+type TaxDetails {
+  taxAmt: Float
+  taxYear: Int
+  taxDelinquentYear: Int
+}
+
+enum ExemptionType {
+  HOMESTEAD
+  SENIOR
+  VETERAN
+  DISABILITY
+  AGRICULTURAL
+  CHARITABLE
+  GOVERNMENT
+  OTHER
+}
+
+# ─── Deed ──────────────────────────────────────────────────────────────────────
+
+type Deed {
+  attomId: ID
+  deedDetails: DeedDetails
+  buyer: Buyer
+  seller: Seller
+  mortgage: MortgageDetails
+}
+
+type DeedDetails {
+  documentType: String
+  recordingDate: String
+  transferDate: TransferDate
+  documentNumber: String
+  bookNumber: String
+  pageNumber: String
+  instrumentNumber: String
+  county: String
+  state: String
+}
+
+type TransferDate {
+  date: String
+  year: Int
+  month: Int
+  day: Int
+}
+
+type Buyer {
+  name1: String
+  name2: String
+  address: PropertyAddress
+  ownershipRights: String
+  ownerType: String
+}
+
+type Seller {
+  name1: String
+  name2: String
+  address: PropertyAddress
+}
+
+# ─── Mortgage ──────────────────────────────────────────────────────────────────
+
+type MortgageDetails {
+  loanAmount: LienAmount
+  lender: Lender
+  lienType: LienType
+  loanType: String
+  interestRate: Float
+  interestRateType: String
+  maturityDate: String
+  dueDate: String
+  term: Int
+  recordingDate: String
+  documentNumber: String
+}
+
+type Lender {
+  name: String
+  code: String
+  type: String
+  address: PropertyAddress
+}
+
+enum LienType {
+  FIRST
+  SECOND
+  THIRD
+  HELOC
+  OTHER
+}
+
+type LienAmount {
+  amount: Float
+  currency: String
+}
+
+# ─── Sales ─────────────────────────────────────────────────────────────────────
+
+type Sale {
+  attomId: ID
+  saleDetails: SaleDetails
+  salePrice: SalePrice
+  buyer: Buyer
+  seller: Seller
+  deed: Deed
+  mortgage: MortgageDetails
+}
+
+type SaleDetails {
+  documentDate: String
+  saleDate: SaleDate
+  recordingDate: String
+  deedType: String
+  saleType: SaleType
+  pricePerSquareFoot: Float
+  distressed: Boolean
+  reo: Boolean
+  armLength: Boolean
+}
+
+type SaleDate {
+  date: String
+  year: Int
+  month: Int
+  day: Int
+}
+
+type SalePrice {
+  amount: Float
+  currency: String
+  saleCode: String
+}
+
+enum SaleType {
+  ARMS_LENGTH
+  REO
+  SHORT_SALE
+  FORECLOSURE
+  INTER_FAMILY
+  NEW_CONSTRUCTION
+  CORPORATE
+  OTHER
+}
+
+# ─── Foreclosure ───────────────────────────────────────────────────────────────
+
+type Foreclosure {
+  attomId: ID
+  foreclosureDetails: ForeclosureDetails
+  stage: ForeclosureStage
+  dates: ForeclosureDate
+  lender: Lender
+  amount: LienAmount
+  trustee: String
+  caseNumber: String
+}
+
+type ForeclosureDetails {
+  defaultAmount: Float
+  originalLoanAmount: Float
+  recordingDate: String
+  documentType: String
+  jurisdiction: String
+  county: String
+  state: String
+}
+
+enum ForeclosureStage {
+  PRE_FORECLOSURE
+  NOTICE_OF_DEFAULT
+  NOTICE_OF_SALE
+  AUCTION
+  REO
+  WITHDRAWN
+  REDEEMED
+}
+
+type ForeclosureDate {
+  defaultDate: String
+  recordingDate: String
+  auctionDate: String
+  reoDate: String
+}
+
+# ─── Listing ───────────────────────────────────────────────────────────────────
+
+type Listing {
+  listingId: ID
+  listingDetails: ListingDetails
+  status: ListingStatus
+  listPrice: ListPrice
+  property: Property
+  agent: Agent
+  broker: Broker
+  daysOnMarket: Int
+  listingDate: String
+  expirationDate: String
+  closingDate: String
+}
+
+type ListingDetails {
+  mlsId: String
+  mlsName: String
+  description: String
+  publicRemarks: String
+  privateRemarks: String
+  listingUrl: String
+  virtualTourUrl: String
+  openHouseDate: String
+}
+
+enum ListingStatus {
+  ACTIVE
+  PENDING
+  CONTINGENT
+  SOLD
+  EXPIRED
+  WITHDRAWN
+  CANCELLED
+  OFF_MARKET
+}
+
+type ListPrice {
+  amount: Float
+  currency: String
+  pricePerSqFt: Float
+}
+
+type Agent {
+  id: ID
+  firstName: String
+  lastName: String
+  email: String
+  phone: String
+  licenseNumber: String
+  brokerageId: String
+}
+
+type Broker {
+  id: ID
+  name: String
+  address: PropertyAddress
+  phone: String
+  licenseNumber: String
+}
+
+# ─── Owner ─────────────────────────────────────────────────────────────────────
+
+type Owner {
+  attomId: ID
+  ownerDetails: OwnerDetails
+  ownerAddress: OwnerAddress
+  occupancy: Occupancy
+}
+
+type OwnerDetails {
+  name1Full: String
+  name2Full: String
+  ownerType: String
+  ownershipRights: String
+  trustName: String
+  corporateName: String
+  mailingAddress: OwnerAddress
+}
+
+type OwnerAddress {
+  line1: String
+  line2: String
+  city: String
+  state: String
+  zip: String
+  country: String
+  matchCode: String
+}
+
+enum Occupancy {
+  OWNER_OCCUPIED
+  TENANT_OCCUPIED
+  VACANT
+  SEASONAL
+  UNKNOWN
+}
+
+# ─── Schools ───────────────────────────────────────────────────────────────────
+
+type School {
+  id: ID
+  schoolDetails: SchoolDetails
+  rating: SchoolRating
+  district: SchoolDistrict
+  address: PropertyAddress
+  gradeRange: String
+  enrollment: Int
+  schoolType: SchoolType
+}
+
+type SchoolDetails {
+  name: String
+  phone: String
+  website: String
+  principalName: String
+  ncesId: String
+  stateId: String
+}
+
+type SchoolRating {
+  greatSchoolsRating: Float
+  parentRating: Float
+  studentTeacherRatio: Float
+  testScoreRating: Float
+}
+
+type SchoolDistrict {
+  id: ID
+  name: String
+  phone: String
+  website: String
+  ncesDistrictId: String
+  stateDistrictId: String
+  address: PropertyAddress
+}
+
+enum SchoolType {
+  ELEMENTARY
+  MIDDLE
+  HIGH
+  K_8
+  K_12
+  PRIVATE
+  CHARTER
+  MAGNET
+}
+
+# ─── POI ───────────────────────────────────────────────────────────────────────
+
+type POI {
+  id: ID
+  poiDetails: POIDetails
+  poiType: POIType
+  address: PropertyAddress
+  distance: Float
+  latitude: Float
+  longitude: Float
+  phone: String
+  website: String
+  hours: String
+}
+
+type POIDetails {
+  name: String
+  category: String
+  subCategory: String
+  lineOfBusiness: String
+  industry: String
+  sicCode: String
+  naicsCode: String
+  chainName: String
+  employeeCount: Int
+}
+
+enum POIType {
+  RESTAURANT
+  BANK
+  RETAIL
+  HEALTHCARE
+  EDUCATION
+  RECREATION
+  TRANSPORTATION
+  GOVERNMENT
+  HOTEL
+  GAS_STATION
+  GROCERY
+  PHARMACY
+  OTHER
+}
+
+# ─── Community / Demographics ──────────────────────────────────────────────────
+
+type Community {
+  geoIdV4: String
+  name: String
+  communityDetails: CommunityDetails
+  demographics: Demographics
+  crime: Crime
+  schools: [School]
+  weather: WeatherDetails
+  commute: CommuteDetails
+}
+
+type CommunityDetails {
+  neighborhood: String
+  city: String
+  county: String
+  state: String
+  zip: String
+  cbsa: String
+  population: Int
+  households: Int
+  medianHomeValue: Float
+  medianHouseholdIncome: Float
+  walkScore: Int
+  transitScore: Int
+  bikeScore: Int
+}
+
+type Demographics {
+  demographicsDetails: DemographicsDetails
+  income: Income
+  population: PopulationDetails
+  housing: HousingDemographics
+  education: EducationDemographics
+}
+
+type DemographicsDetails {
+  medianAge: Float
+  averageHouseholdSize: Float
+  medianHouseholdIncome: Float
+  perCapitaIncome: Float
+  povertyRate: Float
+  unemploymentRate: Float
+}
+
+type Income {
+  medianHouseholdIncome: Float
+  perCapitaIncome: Float
+  incomeGrowthRate: Float
+  incomeDistribution: [IncomeRange]
+}
+
+type IncomeRange {
+  range: String
+  percentage: Float
+  count: Int
+}
+
+type PopulationDetails {
+  total: Int
+  growthRate: Float
+  density: Float
+  ageDistribution: [AgeRange]
+  raceDistribution: [RaceSegment]
+}
+
+type AgeRange {
+  range: String
+  percentage: Float
+  count: Int
+}
+
+type RaceSegment {
+  race: String
+  percentage: Float
+  count: Int
+}
+
+type HousingDemographics {
+  totalUnits: Int
+  ownerOccupied: Int
+  renterOccupied: Int
+  vacant: Int
+  medianHomeValue: Float
+  medianRent: Float
+  homeValueGrowthRate: Float
+}
+
+type EducationDemographics {
+  highSchoolGraduate: Float
+  someCollege: Float
+  bachelorsOrHigher: Float
+  graduateDegree: Float
+}
+
+# ─── Crime ─────────────────────────────────────────────────────────────────────
+
+type Crime {
+  crimeDetails: CrimeDetails
+  crimeIndex: CrimeIndex
+}
+
+type CrimeDetails {
+  violent: CrimeCategory
+  property: CrimeCategory
+  total: CrimeCategory
+  year: Int
+}
+
+type CrimeCategory {
+  count: Int
+  rate: Float
+  nationalAvg: Float
+}
+
+type CrimeIndex {
+  violent: Int
+  property: Int
+  total: Int
+  nationalBaseline: Int
+}
+
+# ─── Hazards ───────────────────────────────────────────────────────────────────
+
+type HazardDetails {
+  floodZone: FloodZone
+  transportationNoise: NoiseDetails
+  earthquake: EarthquakeDetails
+  wildfire: WildfireDetails
+  hurricane: HurricaneDetails
+  hail: HailDetails
+  wind: WindDetails
+  tornado: TornadoDetails
+}
+
+type FloodZone {
+  code: String
+  description: String
+  femaZone: String
+  firmPanelId: String
+  inFloodZone: Boolean
+  sfha: Boolean
+}
+
+type NoiseDetails {
+  airportNoise: Int
+  roadNoise: Int
+  railNoise: Int
+  totalNoise: Int
+  noiseScore: Int
+}
+
+type EarthquakeDetails {
+  riskScore: Int
+  peakGroundAcceleration: Float
+}
+
+type WildfireDetails {
+  riskScore: Int
+  riskCategory: String
+}
+
+type HurricaneDetails {
+  riskScore: Int
+  category: String
+}
+
+type HailDetails {
+  riskScore: Int
+  frequency: Float
+}
+
+type WindDetails {
+  riskScore: Int
+  speedDesignCriteria: Float
+}
+
+type TornadoDetails {
+  riskScore: Int
+  frequency: Float
+}
+
+# ─── Building Permits ──────────────────────────────────────────────────────────
+
+type Permit {
+  permitId: ID
+  permitDetails: PermitDetails
+  attomId: ID
+  address: PropertyAddress
+}
+
+type PermitDetails {
+  permitNumber: String
+  permitType: String
+  permitSubType: String
+  description: String
+  status: String
+  issuedDate: String
+  filedDate: String
+  finalDate: String
+  expiredDate: String
+  contractor: ContractorDetails
+  estimatedCost: Float
+  actualCost: Float
+  jobValue: Float
+  squareFootage: Float
+  jurisdiction: String
+  county: String
+  state: String
+}
+
+type ContractorDetails {
+  name: String
+  licenseNumber: String
+  address: PropertyAddress
+  phone: String
+}
+
+# ─── HVA (Valuation) ───────────────────────────────────────────────────────────
+
+type HVA {
+  attomId: ID
+  amount: HVAAmount
+  eventDate: String
+  calculated: HVACalcDetails
+  estimateDetails: HVAEstimateDetails
+}
+
+type HVAAmount {
+  value: Float
+  high: Float
+  low: Float
+  mid: Float
+  currency: String
+}
+
+type HVACalcDetails {
+  model: String
+  version: String
+  confidenceScore: Float
+  forecastStandardDeviation: Float
+  valuationDate: String
+}
+
+type HVAEstimateDetails {
+  valuationType: ValuationType
+  pricePerSqFt: Float
+  rentPerMonth: Float
+  grossYield: Float
+  capRate: Float
+}
+
+enum ValuationType {
+  AVM
+  RENTAL_AVM
+  HOME_EQUITY
+  OPINION
+}
+
+# ─── All Events ────────────────────────────────────────────────────────────────
+
+type AllEvents {
+  attomId: ID
+  sales: [Sale]
+  assessments: [Assessment]
+  foreclosures: [Foreclosure]
+  permits: [Permit]
+  deeds: [Deed]
+  mortgages: [MortgageDetails]
+}
+
+# ─── Area / Boundary ───────────────────────────────────────────────────────────
+
+type AreaBoundary {
+  geoId: String
+  geoIdType: String
+  name: String
+  geojson: String
+}
+
+type AreaHierarchy {
+  latitude: Float
+  longitude: Float
+  nation: AreaUnit
+  state: AreaUnit
+  county: AreaUnit
+  cbsa: AreaUnit
+  zip: AreaUnit
+  neighborhood: AreaUnit
+  schoolDistrict: AreaUnit
+}
+
+type AreaUnit {
+  geoId: String
+  geoIdV4: String
+  name: String
+  type: String
+  abbreviation: String
+  fips: String
+}
+
+type WeatherDetails {
+  avgHighTemperature: Float
+  avgLowTemperature: Float
+  avgAnnualRainfall: Float
+  avgAnnualSnowfall: Float
+  sunnyDaysPerYear: Int
+  weatherScore: Int
+}
+
+type CommuteDetails {
+  avgCommuteTime: Int
+  driveAlonePercent: Float
+  carpoolPercent: Float
+  publicTransitPercent: Float
+  walkPercent: Float
+  bikePercent: Float
+  workFromHomePercent: Float
+}
+
+# ─── Auth / API Key ────────────────────────────────────────────────────────────
+
+"""
+ATTOM API uses an API key passed as the `apikey` HTTP header.
+All queries require a valid APIKey.
+"""
+type APIKey {
+  key: String!
+  created: String
+  expires: String
+  scopes: [String]
+  rateLimit: Int
+  remainingCalls: Int
+}
+
+type Token {
+  accessToken: String
+  tokenType: String
+  expiresIn: Int
+  scope: String
+}
