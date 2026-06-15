@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM POI API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "POI Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search POIs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4/neighborhood/poi",
+            "params": [
+              {
+                "name": "point",
+                "value": "",
+                "type": "query",
+                "description": "Latitude,longitude pair (e.g., \"39.7710,-104.9636\")."
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Postal address; combine with `radius` to search around it."
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in miles."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated category names."
+              },
+              {
+                "name": "lineofbusiness",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated line-of-business codes."
+              },
+              {
+                "name": "industry",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated industry codes."
+              }
+            ]
+          },
+          "docs": "Search points of interest. Provide either `point` (lat/lon) **or** `address`\nplus a `radius`. Optional filters narrow results to categories, lines of business,\nor specific industries.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "POI Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup POI Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4/neighborhood/poi/categorylookup",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Category name to look up."
+              },
+              {
+                "name": "lineofbusiness",
+                "value": "",
+                "type": "query",
+                "description": "Line-of-business code or name."
+              },
+              {
+                "name": "industry",
+                "value": "",
+                "type": "query",
+                "description": "Industry code or name."
+              }
+            ]
+          },
+          "docs": "Look up POI category metadata by category name, line of business, or industry."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Community API",
+    "version": "v4.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Community",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Neighborhood Community Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4.0.0/neighborhood/community",
+            "params": [
+              {
+                "name": "geoIdv4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 neighborhood geography identifier."
+              }
+            ]
+          },
+          "docs": "Return the community profile (demographics, crime, weather, commute, education) for a neighborhood geoIdV4."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Location",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup Location By GeoIdV4",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4/location/lookup",
+            "params": [
+              {
+                "name": "geoIdV4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 geography identifier."
+              },
+              {
+                "name": "geographyTypeAbbreviation",
+                "value": "",
+                "type": "query",
+                "description": "Two-letter geography-type abbreviation (ZI ZIP, ND neighborhood, CO county, ST state)."
+              }
+            ]
+          },
+          "docs": "Resolve a geoIdV4 plus optional geography-type abbreviation to a location record."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

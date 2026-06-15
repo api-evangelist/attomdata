@@ -1,0 +1,460 @@
+{
+  "item": [
+    {
+      "id": "f54ad85a-6007-42ce-863f-8e3e2d983a4f",
+      "name": "POI Search",
+      "description": {
+        "content": "Search points of interest by point or address.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b16bf19c-57b3-49bb-8e72-5a077f00dbd0",
+          "name": "Search POIs",
+          "request": {
+            "name": "Search POIs",
+            "description": {
+              "content": "Search points of interest. Provide either `point` (lat/lon) **or** `address`\nplus a `radius`. Optional filters narrow results to categories, lines of business,\nor specific industries.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "neighborhood",
+                "poi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "point",
+                  "value": "<string>",
+                  "description": "Latitude,longitude pair (e.g., \"39.7710,-104.9636\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Postal address; combine with `radius` to search around it."
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<float>",
+                  "description": "(Required) Search radius in miles."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Comma-separated category names."
+                },
+                {
+                  "disabled": false,
+                  "key": "lineofbusiness",
+                  "value": "<string>",
+                  "description": "Comma-separated line-of-business codes."
+                },
+                {
+                  "disabled": false,
+                  "key": "industry",
+                  "value": "<string>",
+                  "description": "Comma-separated industry codes."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ed10a3a-6391-4aa3-8719-238d31d12faf",
+              "name": "POI search envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "neighborhood",
+                    "poi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lineofbusiness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industry",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 7427,\n    \"msg\": \"string\",\n    \"total\": 3292\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"Id\": \"string\",\n        \"BusinessName\": \"string\",\n        \"Address\": \"string\",\n        \"City\": \"string\",\n        \"State\": \"string\",\n        \"ZipCode\": \"string\",\n        \"PhoneNumber\": \"string\",\n        \"Latitude\": 8168.005553263694,\n        \"Longitude\": 8575.180154463778,\n        \"Distance\": 1467.6683588885908,\n        \"Category\": \"string\",\n        \"LineOfBusiness\": \"string\",\n        \"Industry\": \"string\"\n      },\n      {\n        \"Id\": \"string\",\n        \"BusinessName\": \"string\",\n        \"Address\": \"string\",\n        \"City\": \"string\",\n        \"State\": \"string\",\n        \"ZipCode\": \"string\",\n        \"PhoneNumber\": \"string\",\n        \"Latitude\": 4962.1962365114905,\n        \"Longitude\": 3643.515376764187,\n        \"Distance\": 190.48640894243297,\n        \"Category\": \"string\",\n        \"LineOfBusiness\": \"string\",\n        \"Industry\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db174695-aa2b-4902-bdd8-ddf577076fad",
+              "name": "ATTOM error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "neighborhood",
+                    "poi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lineofbusiness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industry",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": {\n    \"status\": {\n      \"version\": \"string\",\n      \"code\": 9997,\n      \"msg\": \"string\",\n      \"total\": 9587\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "669eae98-7d3e-4e2e-b814-1827d1a72842",
+              "name": "ATTOM error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "neighborhood",
+                    "poi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "address",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lineofbusiness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industry",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": {\n    \"status\": {\n      \"version\": \"string\",\n      \"code\": 9997,\n      \"msg\": \"string\",\n      \"total\": 9587\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0711e25a-9569-4753-8385-2f31fcf3ce85",
+      "name": "POI Categories",
+      "description": {
+        "content": "Lookup of POI categories, lines of business, and industries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca8410af-9a85-4126-a2a4-e189d5ff7341",
+          "name": "Lookup POI Categories",
+          "request": {
+            "name": "Lookup POI Categories",
+            "description": {
+              "content": "Look up POI category metadata by category name, line of business, or industry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "neighborhood",
+                "poi",
+                "categorylookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Category name to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "lineofbusiness",
+                  "value": "<string>",
+                  "description": "Line-of-business code or name."
+                },
+                {
+                  "disabled": false,
+                  "key": "industry",
+                  "value": "<string>",
+                  "description": "Industry code or name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b49f80a5-5ed6-41cb-88de-fe691c55de6c",
+              "name": "Category lookup envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "neighborhood",
+                    "poi",
+                    "categorylookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lineofbusiness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industry",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 7975,\n    \"msg\": \"string\",\n    \"total\": 5461\n  },\n  \"response\": {\n    \"categories\": [\n      {\n        \"category\": \"string\",\n        \"lineOfBusiness\": \"string\",\n        \"industry\": \"string\",\n        \"code\": \"string\"\n      },\n      {\n        \"category\": \"string\",\n        \"lineOfBusiness\": \"string\",\n        \"industry\": \"string\",\n        \"code\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "220481c1-6d13-4bd8-876a-9868932742a3",
+    "name": "ATTOM POI API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Points of Interest (POI) API returns businesses and points of interest\nby point (lat/lon + radius) or by address. Supports 120+ business categories\nincluding restaurants, banks, retail, services, and recreation, with optional\nfilters by line of business, industry, and category name.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

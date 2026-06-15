@@ -1,0 +1,239 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Boundary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Boundary Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/boundary/detail",
+            "params": [
+              {
+                "name": "geoIdV4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 geography identifier."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Boundary serialization format."
+              },
+              {
+                "name": "mime",
+                "value": "",
+                "type": "query",
+                "description": "Response media type."
+              }
+            ]
+          },
+          "docs": "Return GeoJSON boundary polygons for the requested geography identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hierarchy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup Geographic Hierarchy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/hierarchy/lookup",
+            "params": [
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location."
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location."
+              }
+            ]
+          },
+          "docs": "Return the geographic hierarchy (state, county, CBSA, ZIP, neighborhood) for a latitude/longitude."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/state/lookup",
+            "params": [
+              {
+                "name": "geoIdV4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 geography identifier."
+              },
+              {
+                "name": "mime",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Return state metadata for the requested geography identifier."
+        },
+        {
+          "info": {
+            "name": "Lookup Counties By State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/county/lookup",
+            "params": [
+              {
+                "name": "stateId",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM state identifier or FIPS state code."
+              }
+            ]
+          },
+          "docs": "Return all counties within the requested state."
+        },
+        {
+          "info": {
+            "name": "Lookup CBSAs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/cbsa/lookup",
+            "params": [
+              {
+                "name": "geoIdV4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 state geography identifier."
+              }
+            ]
+          },
+          "docs": "Return Core-Based Statistical Areas (CBSAs) for a state geography identifier."
+        },
+        {
+          "info": {
+            "name": "Lookup By GeoID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/geoid/lookup",
+            "params": [
+              {
+                "name": "geoId",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM geoID."
+              },
+              {
+                "name": "geoType",
+                "value": "",
+                "type": "query",
+                "description": "Geography-type abbreviation (e.g., ST state, CO county, ND neighborhood, ZI ZIP)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Resolve an ATTOM legacy or v4 geoID with optional geography type and pagination."
+        },
+        {
+          "info": {
+            "name": "Lookup Legacy GeoCode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/geoId/legacyLookup",
+            "params": [
+              {
+                "name": "geoId",
+                "value": "",
+                "type": "query",
+                "description": "Legacy ATTOM geoID."
+              }
+            ]
+          },
+          "docs": "Resolve a legacy ATTOM geoID (numeric county or state code) to area metadata."
+        },
+        {
+          "info": {
+            "name": "Lookup Location By GeoIdV4",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4/location/lookup",
+            "params": [
+              {
+                "name": "geoidv4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 geography identifier."
+              },
+              {
+                "name": "geographyTypeAbbreviation",
+                "value": "",
+                "type": "query",
+                "description": "Two-letter geography-type abbreviation (CO county, ST state, ND neighborhood, ZI ZIP, etc.)."
+              }
+            ]
+          },
+          "docs": "Resolve any geoIdV4 (with optional geography-type abbreviation) to its location metadata."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

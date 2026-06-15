@@ -1,0 +1,317 @@
+{
+  "item": [
+    {
+      "id": "75b9f972-3061-4a9e-aceb-b7dc74517f17",
+      "name": "Parcel Tiles",
+      "description": {
+        "content": "Vector parcel boundary tiles.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f544f4c3-c5a9-4d07-b2af-4fd2dc38f688",
+          "name": "Get Parcel Vector Tile",
+          "request": {
+            "name": "Get Parcel Vector Tile",
+            "description": {
+              "content": "Fetch a single Mapbox-style vector parcel tile for the requested z/x/y.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "parceltileapi",
+                "v1",
+                "tile",
+                ":z",
+                ":x",
+                ":y"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "z",
+                  "description": "(Required) Tile zoom level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "x",
+                  "description": "(Required) Tile column."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "y",
+                  "description": "(Required) Tile row."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mapbox-vector-tile"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b92b7ca0-071d-4358-88c3-9c688bc1d8bf",
+              "name": "Mapbox vector tile (MVT).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parceltileapi",
+                    "v1",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile column."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile row."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mapbox-vector-tile"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mapbox-vector-tile"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92cd9c6a-8bad-44cb-a9a6-64149bfcd17e",
+              "name": "Unauthorized — missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parceltileapi",
+                    "v1",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile column."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile row."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": {\n    \"status\": {\n      \"version\": \"string\",\n      \"code\": 4132,\n      \"msg\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22a99642-b0b4-4c42-afcd-5c5f9f132483",
+              "name": "Tile not available at the requested zoom/position.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parceltileapi",
+                    "v1",
+                    "tile",
+                    ":z",
+                    ":x",
+                    ":y"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile column."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Tile row."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d1c85446-19b8-4f20-8a28-b78cf050c934",
+    "name": "ATTOM Parcel Tiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Parcel Tiles API delivers vector tiles of U.S. parcel boundaries suitable\nfor rendering on web/mobile maps (Mapbox, MapLibre, Leaflet). Tiles are addressed\nby zoom (z), tile column (x), and tile row (y) and authenticated with an ATTOM\nAPI key.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}
