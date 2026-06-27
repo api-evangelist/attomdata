@@ -33,7 +33,7 @@ apis:
   - url: json-ld/attomdata-context.jsonld
     type: JSONLD
   - url: examples/attom-property-detail-example.json
-    type: Example
+    type: Examples
   - url: graphql/attomdata-graphql.md
     type: GraphQL
   description: Comprehensive property intelligence for 160M+ U.S. properties. Resources
@@ -65,7 +65,7 @@ apis:
   - url: json-schema/attom-area-schema.json
     type: JSONSchema
   - url: examples/attom-area-hierarchy-example.json
-    type: Example
+    type: Examples
   description: Area and boundary lookup for state, county, CBSA, neighborhood, school
     zone, ZIP, and other geographic units. Resources include /area/boundary/detail
     (GeoJSON boundary polygons), /area/hierarchy/lookup (geographic hierarchy for
@@ -87,7 +87,7 @@ apis:
   - url: openapi/attom-poi-api-openapi.yml
     type: OpenAPI
   - url: examples/attom-poi-search-example.json
-    type: Example
+    type: Examples
   description: Points of Interest search and category lookup across 120+ business
     categories — restaurants, banks, shopping, services, and more. Search by point
     (lat/lon + radius) or address; filter by category, line of business, and industry.
@@ -112,7 +112,7 @@ apis:
   - url: json-schema/attom-community-schema.json
     type: JSONSchema
   - url: examples/attom-community-neighborhood-example.json
-    type: Example
+    type: Examples
   description: Neighborhood-level community profile data including demographics, population,
     household income, crime indices, weather, commute, education, and quality-of-life
     metrics. Resources cover /v4.0.0/neighborhood/community (community profile by
@@ -175,7 +175,7 @@ common:
   type: Documentation
 - url: https://api.developer.attomdata.com/signup
   name: Sign Up — Free 30-Day Trial
-  type: SignUp
+  type: Signup
 - url: https://api.developer.attomdata.com/login
   name: Developer Login
   type: Login
@@ -223,16 +223,16 @@ common:
   type: Postman
 - url: https://github.com/AttomDataSolutions/Sample_Code
   name: Sample Code Repository (PHP)
-  type: SDK
+  type: SDKs
 - url: https://github.com/AttomDataSolutions/School_Sample_Code
   name: School Sample Code (PHP)
-  type: SDK
+  type: SDKs
 - url: https://github.com/AttomDataSolutions/POI_Sample_Code
   name: POI Sample Code (PHP)
-  type: SDK
+  type: SDKs
 - url: https://github.com/AttomDataSolutions/Community_Sample_Code
   name: Community Sample Code (PHP)
-  type: SDK
+  type: SDKs
 - type: ContactEmail
   url: mailto:datacustomercare@attomdata.com
 - type: ContactPhone
