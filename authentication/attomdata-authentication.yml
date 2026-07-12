@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/attom-area-api-openapi.yml, openapi/attom-community-api-openapi.yml, openapi/attom-parcel-tiles-api-openapi.yml,
+  openapi/attom-poi-api-openapi.yml, openapi/attom-property-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: apikey
+  description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+  sources:
+  - openapi/attom-area-api-openapi.yml
+  - openapi/attom-community-api-openapi.yml
+  - openapi/attom-parcel-tiles-api-openapi.yml
+  - openapi/attom-poi-api-openapi.yml
+  - openapi/attom-property-api-openapi.yml
