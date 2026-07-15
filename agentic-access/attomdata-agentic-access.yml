@@ -1,0 +1,485 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/attom-area-api-openapi.yml, openapi/attom-community-api-openapi.yml, openapi/attom-parcel-tiles-api-openapi.yml,
+  openapi/attom-poi-api-openapi.yml, openapi/attom-property-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 47
+  by_action_class:
+    connected: 47
+  by_consequence:
+    read: 47
+  human_in_the_loop_required: 0
+operations:
+- path: /areaapi/area/boundary/detail
+  method: get
+  operationId: getBoundaryDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /areaapi/area/hierarchy/lookup
+  method: get
+  operationId: getHierarchyLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /areaapi/area/state/lookup
+  method: get
+  operationId: getStateLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /areaapi/area/county/lookup
+  method: get
+  operationId: getCountyLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /areaapi/area/cbsa/lookup
+  method: get
+  operationId: getCbsaLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /areaapi/area/geoid/lookup
+  method: get
+  operationId: getGeoIdLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /areaapi/area/geoId/legacyLookup
+  method: get
+  operationId: getGeoCodeLegacyLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v4/location/lookup
+  method: get
+  operationId: getLocationLookupV4
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v4.0.0/neighborhood/community
+  method: get
+  operationId: getNeighborhoodCommunity
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v4/location/lookup
+  method: get
+  operationId: getLocationLookup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /parceltileapi/v1/tile/{z}/{x}/{y}
+  method: get
+  operationId: getParcelTile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v4/neighborhood/poi
+  method: get
+  operationId: searchPois
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v4/neighborhood/poi/categorylookup
+  method: get
+  operationId: lookupPoiCategories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/address
+  method: get
+  operationId: searchPropertyAddress
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/snapshot
+  method: get
+  operationId: getPropertySnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/detail
+  method: get
+  operationId: getPropertyDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/detailwithschools
+  method: get
+  operationId: getPropertyDetailWithSchools
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/detailmortgage
+  method: get
+  operationId: getPropertyDetailMortgage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/detailowner
+  method: get
+  operationId: getPropertyDetailOwner
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/detailmortgageowner
+  method: get
+  operationId: getPropertyDetailMortgageOwner
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/basicprofile
+  method: get
+  operationId: getPropertyBasicProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/basichistory
+  method: get
+  operationId: getPropertyBasicHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/expandedprofile
+  method: get
+  operationId: getPropertyExpandedProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/expandedhistory
+  method: get
+  operationId: getPropertyExpandedHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/buildingpermits
+  method: get
+  operationId: getPropertyBuildingPermits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /property/id
+  method: get
+  operationId: searchPropertyId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transportationnoise
+  method: get
+  operationId: getTransportationNoise
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /enumerations/detail
+  method: get
+  operationId: getEnumerationsDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /assessment/snapshot
+  method: get
+  operationId: getAssessmentSnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /assessment/detail
+  method: get
+  operationId: getAssessmentDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /assessmenthistory/detail
+  method: get
+  operationId: getAssessmentHistoryDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /attomavm/detail
+  method: get
+  operationId: getAttomAvmDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /avm/snapshot
+  method: get
+  operationId: getAvmSnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /avm/detail
+  method: get
+  operationId: getAvmDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /avmhistory/detail
+  method: get
+  operationId: getAvmHistoryDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /valuation/rentalavm
+  method: get
+  operationId: getRentalAvm
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /valuation/homeequity
+  method: get
+  operationId: getHomeEquity
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sale/snapshot
+  method: get
+  operationId: getSaleSnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /sale/detail
+  method: get
+  operationId: getSaleDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /saleshistory/snapshot
+  method: get
+  operationId: getSalesHistorySnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /saleshistory/detail
+  method: get
+  operationId: getSalesHistoryDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /salescomparables/address/{street}/{citystatezip}
+  method: get
+  operationId: getSalesComparables
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /transaction/salestrend
+  method: get
+  operationId: getSalesTrend
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /allevents/snapshot
+  method: get
+  operationId: getAllEventsSnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /allevents/detail
+  method: get
+  operationId: getAllEventsDetail
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /preforeclosure/details
+  method: get
+  operationId: getPreforeclosureDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /school/snapshot
+  method: get
+  operationId: getSchoolSnapshot
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
