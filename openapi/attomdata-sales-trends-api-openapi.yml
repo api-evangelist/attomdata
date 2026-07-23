@@ -1,0 +1,166 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events Sales Trends API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: Sales Trends
+  description: Aggregated sales trends for a geography.
+paths:
+  /transaction/salestrend:
+    get:
+      summary: Get Sales Trend
+      description: Average and median sales prices for the past two years for the requested geography.
+      operationId: getSalesTrend
+      tags:
+      - Sales Trends
+      parameters:
+      - name: geoIdV4
+        in: query
+        required: true
+        description: ATTOM v4 geography identifier (state, county, CBSA, ZIP, neighborhood).
+        schema:
+          type: string
+      - name: interval
+        in: query
+        required: false
+        description: Time interval ("Yearly", "Monthly").
+        schema:
+          type: string
+          enum:
+          - Yearly
+          - Monthly
+          default: Yearly
+      responses:
+        '200':
+          $ref: '#/components/responses/SaleResponse'
+components:
+  schemas:
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+        countrySubd:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        locality:
+          type: string
+        matchCode:
+          type: string
+        oneLine:
+          type: string
+        postal1:
+          type: string
+        postal2:
+          type: string
+        postal3:
+          type: string
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    SaleEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              sale:
+                $ref: '#/components/schemas/Sale'
+    Sale:
+      type: object
+      properties:
+        amount:
+          type: object
+          properties:
+            saleamt:
+              type: integer
+            salecode:
+              type: string
+            saledisclosuretype:
+              type: integer
+            saledocnum:
+              type: string
+            saledocType:
+              type: string
+            saletranstype:
+              type: string
+        calculation:
+          type: object
+          properties:
+            pricepersizeunit:
+              type: number
+        salesearchdate:
+          type: string
+        saleTransDate:
+          type: string
+  responses:
+    SaleResponse:
+      description: Sale envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SaleEnvelope'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

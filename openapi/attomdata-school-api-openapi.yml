@@ -1,0 +1,302 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events School API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: School
+  description: School assignments and attendance-zone associations.
+paths:
+  /property/detailwithschools:
+    get:
+      summary: Get Property Detail With Schools
+      description: Property detail plus assigned schools and school district attributes.
+      operationId: getPropertyDetailWithSchools
+      tags:
+      - School
+      parameters:
+      - $ref: '#/components/parameters/AttomIDQuery'
+      - $ref: '#/components/parameters/AddressQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/PropertyResponse'
+  /school/snapshot:
+    get:
+      summary: Get School Snapshot
+      description: Schools and school-district attributes associated with a property.
+      operationId: getSchoolSnapshot
+      tags:
+      - School
+      parameters:
+      - $ref: '#/components/parameters/AttomIDQuery'
+      - $ref: '#/components/parameters/AddressQuery'
+      responses:
+        '200':
+          $ref: '#/components/responses/PropertyResponse'
+components:
+  schemas:
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
+    Property:
+      type: object
+      properties:
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        lot:
+          $ref: '#/components/schemas/Lot'
+        area:
+          type: object
+        address:
+          $ref: '#/components/schemas/Address'
+        location:
+          $ref: '#/components/schemas/Location'
+        summary:
+          $ref: '#/components/schemas/Summary'
+        building:
+          $ref: '#/components/schemas/Building'
+        owner:
+          $ref: '#/components/schemas/Owner'
+        mortgage:
+          $ref: '#/components/schemas/Mortgage'
+        vintage:
+          $ref: '#/components/schemas/Vintage'
+    Summary:
+      type: object
+      properties:
+        absenteeInd:
+          type: string
+        propclass:
+          type: string
+        propsubtype:
+          type: string
+        proptype:
+          type: string
+        yearbuilt:
+          type: integer
+        propLandUse:
+          type: string
+    PropertyEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+        countrySubd:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        locality:
+          type: string
+        matchCode:
+          type: string
+        oneLine:
+          type: string
+        postal1:
+          type: string
+        postal2:
+          type: string
+        postal3:
+          type: string
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    Vintage:
+      type: object
+      properties:
+        lastModified:
+          type: string
+        pubDate:
+          type: string
+    Building:
+      type: object
+      properties:
+        size:
+          type: object
+          properties:
+            bldgsize:
+              type: integer
+            grosssize:
+              type: integer
+            livingsize:
+              type: integer
+            universalsize:
+              type: integer
+        rooms:
+          type: object
+          properties:
+            bathstotal:
+              type: number
+            beds:
+              type: integer
+            roomsTotal:
+              type: integer
+        construction:
+          type: object
+          properties:
+            condition:
+              type: string
+            constructionType:
+              type: string
+            wallType:
+              type: string
+            roofCover:
+              type: string
+        summary:
+          type: object
+          properties:
+            yearbuilteffective:
+              type: integer
+            yearbuilt:
+              type: integer
+    Mortgage:
+      type: object
+      properties:
+        FirstConcurrent:
+          type: object
+          properties:
+            amount:
+              type: integer
+            date:
+              type: string
+            lender:
+              type: object
+              properties:
+                fullName:
+                  type: string
+            interestRate:
+              type: number
+            term:
+              type: string
+            trustDeedDocumentNumber:
+              type: string
+    Location:
+      type: object
+      properties:
+        accuracy:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        distance:
+          type: number
+        geoid:
+          type: string
+        geoIdV4:
+          type: object
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
+    Lot:
+      type: object
+      properties:
+        lotnum:
+          type: string
+        lotsize1:
+          type: number
+        lotsize2:
+          type: number
+        zoningType:
+          type: string
+  responses:
+    PropertyResponse:
+      description: Property record envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PropertyEnvelope'
+  parameters:
+    AddressQuery:
+      name: address
+      in: query
+      required: false
+      description: Full street address as a single string.
+      schema:
+        type: string
+      example: 4529 Winona Court, Denver, CO 80212
+    AttomIDQuery:
+      name: AttomID
+      in: query
+      required: false
+      description: ATTOM property identifier.
+      schema:
+        type: string
+      example: '145423726'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

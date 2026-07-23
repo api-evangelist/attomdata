@@ -1,0 +1,170 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events POI Search API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: POI Search
+  description: Search points of interest by point or address.
+paths:
+  /v4/neighborhood/poi:
+    get:
+      summary: Search POIs
+      description: 'Search points of interest. Provide either `point` (lat/lon) **or** `address`
+
+        plus a `radius`. Optional filters narrow results to categories, lines of business,
+
+        or specific industries.
+
+        '
+      operationId: searchPois
+      tags:
+      - POI Search
+      parameters:
+      - name: point
+        in: query
+        required: false
+        description: Latitude,longitude pair (e.g., "39.7710,-104.9636").
+        schema:
+          type: string
+      - name: address
+        in: query
+        required: false
+        description: Postal address; combine with `radius` to search around it.
+        schema:
+          type: string
+      - name: radius
+        in: query
+        required: true
+        description: Search radius in miles.
+        schema:
+          type: number
+          format: float
+          minimum: 0
+      - name: category
+        in: query
+        required: false
+        description: Comma-separated category names.
+        schema:
+          type: string
+      - name: lineofbusiness
+        in: query
+        required: false
+        description: Comma-separated line-of-business codes.
+        schema:
+          type: string
+      - name: industry
+        in: query
+        required: false
+        description: Comma-separated industry codes.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: POI search envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoiEnvelope'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    PoiEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Poi'
+    Poi:
+      type: object
+      properties:
+        Id:
+          type: string
+        BusinessName:
+          type: string
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        ZipCode:
+          type: string
+        PhoneNumber:
+          type: string
+        Latitude:
+          type: number
+        Longitude:
+          type: number
+        Distance:
+          type: number
+          description: Distance from the search point, in miles.
+        Category:
+          type: string
+        LineOfBusiness:
+          type: string
+        Industry:
+          type: string
+  responses:
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

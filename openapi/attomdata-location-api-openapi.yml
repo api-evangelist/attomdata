@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events Location API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: Location
+  description: Resolve a location by geoIdV4.
+paths:
+  /v4/location/lookup:
+    get:
+      summary: Lookup Location By GeoIdV4
+      description: Resolve a geoIdV4 plus optional geography-type abbreviation to a location record.
+      operationId: getLocationLookup
+      tags:
+      - Location
+      parameters:
+      - name: geoIdV4
+        in: query
+        required: true
+        description: ATTOM v4 geography identifier.
+        schema:
+          type: string
+      - name: geographyTypeAbbreviation
+        in: query
+        required: false
+        description: Two-letter geography-type abbreviation (ZI ZIP, ND neighborhood, CO county, ST state).
+        schema:
+          type: string
+          enum:
+          - ZI
+          - ND
+          - CO
+          - ST
+          - NB
+          - SC
+      responses:
+        '200':
+          description: Location envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationEnvelope'
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    LocationEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Location'
+    Location:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        geographyTypeAbbreviation:
+          type: string
+        name:
+          type: string
+        countrySubd:
+          type: string
+        country:
+          type: string
+        boundary:
+          type: object
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

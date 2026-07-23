@@ -1,0 +1,248 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events Lookup API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: Lookup
+  description: Lookup of state, county, CBSA, and geoID metadata.
+paths:
+  /areaapi/area/state/lookup:
+    get:
+      summary: Lookup State
+      description: Return state metadata for the requested geography identifier.
+      operationId: getStateLookup
+      tags:
+      - Lookup
+      parameters:
+      - name: geoIdV4
+        in: query
+        required: true
+        description: ATTOM v4 geography identifier.
+        schema:
+          type: string
+      - name: mime
+        in: query
+        required: false
+        schema:
+          type: string
+          default: json
+      responses:
+        '200':
+          description: State lookup envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaEnvelope'
+  /areaapi/area/county/lookup:
+    get:
+      summary: Lookup Counties By State
+      description: Return all counties within the requested state.
+      operationId: getCountyLookup
+      tags:
+      - Lookup
+      parameters:
+      - name: stateId
+        in: query
+        required: true
+        description: ATTOM state identifier or FIPS state code.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: County lookup envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaEnvelope'
+  /areaapi/area/cbsa/lookup:
+    get:
+      summary: Lookup CBSAs
+      description: Return Core-Based Statistical Areas (CBSAs) for a state geography identifier.
+      operationId: getCbsaLookup
+      tags:
+      - Lookup
+      parameters:
+      - name: geoIdV4
+        in: query
+        required: true
+        description: ATTOM v4 state geography identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CBSA lookup envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaEnvelope'
+  /areaapi/area/geoid/lookup:
+    get:
+      summary: Lookup By GeoID
+      description: Resolve an ATTOM legacy or v4 geoID with optional geography type and pagination.
+      operationId: getGeoIdLookup
+      tags:
+      - Lookup
+      parameters:
+      - name: geoId
+        in: query
+        required: true
+        description: ATTOM geoID.
+        schema:
+          type: string
+      - name: geoType
+        in: query
+        required: false
+        description: Geography-type abbreviation (e.g., ST state, CO county, ND neighborhood, ZI ZIP).
+        schema:
+          type: string
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 100
+      responses:
+        '200':
+          description: GeoID lookup envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaEnvelope'
+  /areaapi/area/geoId/legacyLookup:
+    get:
+      summary: Lookup Legacy GeoCode
+      description: Resolve a legacy ATTOM geoID (numeric county or state code) to area metadata.
+      operationId: getGeoCodeLegacyLookup
+      tags:
+      - Lookup
+      parameters:
+      - name: geoId
+        in: query
+        required: true
+        description: Legacy ATTOM geoID.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Legacy GeoCode envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaEnvelope'
+  /v4/location/lookup:
+    get:
+      summary: Lookup Location By GeoIdV4
+      description: Resolve any geoIdV4 (with optional geography-type abbreviation) to its location metadata.
+      operationId: getLocationLookupV4
+      tags:
+      - Lookup
+      parameters:
+      - name: geoidv4
+        in: query
+        required: false
+        description: ATTOM v4 geography identifier.
+        schema:
+          type: string
+      - name: geographyTypeAbbreviation
+        in: query
+        required: false
+        description: Two-letter geography-type abbreviation (CO county, ST state, ND neighborhood, ZI ZIP, etc.).
+        schema:
+          type: string
+          enum:
+          - CO
+          - ST
+          - ND
+          - ZI
+          - MS
+          - NB
+          - SC
+      responses:
+        '200':
+          description: V4 location envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AreaEnvelope'
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    Area:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        geoId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        countrySubd:
+          type: string
+        country:
+          type: string
+        center:
+          type: object
+          properties:
+            latitude:
+              type: string
+            longitude:
+              type: string
+    AreaEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Area'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

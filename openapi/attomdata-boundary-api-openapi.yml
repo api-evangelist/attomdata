@@ -1,0 +1,148 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events Boundary API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: Boundary
+  description: GeoJSON boundary polygons by geography identifier.
+paths:
+  /areaapi/area/boundary/detail:
+    get:
+      summary: Get Boundary Detail
+      description: Return GeoJSON boundary polygons for the requested geography identifier.
+      operationId: getBoundaryDetail
+      tags:
+      - Boundary
+      parameters:
+      - name: geoIdV4
+        in: query
+        required: true
+        description: ATTOM v4 geography identifier.
+        schema:
+          type: string
+      - name: format
+        in: query
+        required: false
+        description: Boundary serialization format.
+        schema:
+          type: string
+          enum:
+          - geojson
+          - wkt
+          default: geojson
+      - name: mime
+        in: query
+        required: false
+        description: Response media type.
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      responses:
+        '200':
+          description: GeoJSON boundary envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoundaryEnvelope'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    Boundary:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        type:
+          type: string
+        geometry:
+          type: object
+          description: GeoJSON geometry.
+          properties:
+            type:
+              type: string
+              enum:
+              - Polygon
+              - MultiPolygon
+            coordinates:
+              type: array
+              items:
+                type: array
+        properties:
+          type: object
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    BoundaryEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - FeatureCollection
+            features:
+              type: array
+              items:
+                $ref: '#/components/schemas/Boundary'
+  responses:
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

@@ -1,12 +1,18 @@
 openapi: 3.1.0
 info:
-  title: ATTOM Parcel Tiles API
-  description: |
-    ATTOM Parcel Tiles API delivers vector tiles of U.S. parcel boundaries suitable
-    for rendering on web/mobile maps (Mapbox, MapLibre, Leaflet). Tiles are addressed
-    by zoom (z), tile column (x), and tile row (y) and authenticated with an ATTOM
-    API key.
-  version: v1
+  title: ATTOM Area All Events Parcel Tiles API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
   contact:
     name: ATTOM Data Customer Care
     email: datacustomercare@attomdata.com
@@ -15,41 +21,42 @@ info:
     name: ATTOM Data Terms of Use
     url: https://www.attomdata.com/terms-of-use/
 servers:
-  - url: https://api.gateway.attomdata.com
-    description: ATTOM API Production Gateway
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
 security:
-  - ApiKeyAuth: []
+- ApiKeyAuth: []
 tags:
-  - name: Parcel Tiles
-    description: Vector parcel boundary tiles.
+- name: Parcel Tiles
+  description: Vector parcel boundary tiles.
 paths:
   /parceltileapi/v1/tile/{z}/{x}/{y}:
     get:
       summary: Get Parcel Vector Tile
       description: Fetch a single Mapbox-style vector parcel tile for the requested z/x/y.
       operationId: getParcelTile
-      tags: [Parcel Tiles]
+      tags:
+      - Parcel Tiles
       parameters:
-        - name: z
-          in: path
-          required: true
-          description: Tile zoom level.
-          schema:
-            type: integer
-            minimum: 0
-            maximum: 22
-        - name: x
-          in: path
-          required: true
-          description: Tile column.
-          schema:
-            type: integer
-        - name: y
-          in: path
-          required: true
-          description: Tile row.
-          schema:
-            type: integer
+      - name: z
+        in: path
+        required: true
+        description: Tile zoom level.
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 22
+      - name: x
+        in: path
+        required: true
+        description: Tile column.
+        schema:
+          type: integer
+      - name: y
+        in: path
+        required: true
+        description: Tile row.
+        schema:
+          type: integer
       responses:
         '200':
           description: Mapbox vector tile (MVT).
@@ -67,12 +74,6 @@ paths:
         '404':
           description: Tile not available at the requested zoom/position.
 components:
-  securitySchemes:
-    ApiKeyAuth:
-      type: apiKey
-      in: header
-      name: apikey
-      description: ATTOM-issued API key.
   schemas:
     Status:
       type: object
@@ -91,3 +92,9 @@ components:
           properties:
             status:
               $ref: '#/components/schemas/Status'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

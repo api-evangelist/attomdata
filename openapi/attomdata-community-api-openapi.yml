@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events Community API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: Community
+  description: Neighborhood community profile (demographics, crime, weather, commute).
+paths:
+  /v4.0.0/neighborhood/community:
+    get:
+      summary: Get Neighborhood Community Profile
+      description: Return the community profile (demographics, crime, weather, commute, education) for a neighborhood geoIdV4.
+      operationId: getNeighborhoodCommunity
+      tags:
+      - Community
+      parameters:
+      - name: geoIdv4
+        in: query
+        required: true
+        description: ATTOM v4 neighborhood geography identifier.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Community profile envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityEnvelope'
+        '400':
+          $ref: '#/components/responses/ErrorResponse'
+        '401':
+          $ref: '#/components/responses/ErrorResponse'
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    Commute:
+      type: object
+      properties:
+        avgCommuteMinutes:
+          type: number
+        commuteByCarPercent:
+          type: number
+        commuteByPublicTransitPercent:
+          type: number
+    Weather:
+      type: object
+      properties:
+        annualAvgPrecipitation:
+          type: number
+        annualAvgSnowfall:
+          type: number
+        januaryAvgLowTemp:
+          type: number
+        julyAvgHighTemp:
+          type: number
+    Demographics:
+      type: object
+      properties:
+        population:
+          type: integer
+        households:
+          type: integer
+        medianAge:
+          type: number
+        medianHouseholdIncome:
+          type: integer
+        ownerOccupiedPercent:
+          type: number
+        renterOccupiedPercent:
+          type: number
+    CommunityEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            community:
+              $ref: '#/components/schemas/Community'
+    Community:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        name:
+          type: string
+        demographics:
+          $ref: '#/components/schemas/Demographics'
+        crime:
+          $ref: '#/components/schemas/Crime'
+        weather:
+          $ref: '#/components/schemas/Weather'
+        commute:
+          $ref: '#/components/schemas/Commute'
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    Crime:
+      type: object
+      properties:
+        crimeIndex:
+          type: number
+        violentCrimeIndex:
+          type: number
+        propertyCrimeIndex:
+          type: number
+  responses:
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.

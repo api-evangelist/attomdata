@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Area All Events Hierarchy API
+  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+
+    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+
+    latitude/longitude to a geographic hierarchy, list counties within a state,
+
+    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+
+    identifier (geoIdV4) to its location metadata.
+
+    '
+  version: v1.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+- url: https://api.gateway.attomdata.com
+  description: ATTOM API Production Gateway
+security:
+- ApiKeyAuth: []
+tags:
+- name: Hierarchy
+  description: Geographic hierarchy lookup from coordinates.
+paths:
+  /areaapi/area/hierarchy/lookup:
+    get:
+      summary: Lookup Geographic Hierarchy
+      description: Return the geographic hierarchy (state, county, CBSA, ZIP, neighborhood) for a latitude/longitude.
+      operationId: getHierarchyLookup
+      tags:
+      - Hierarchy
+      parameters:
+      - name: latitude
+        in: query
+        required: true
+        description: Latitude of the location.
+        schema:
+          type: number
+          format: float
+      - name: longitude
+        in: query
+        required: true
+        description: Longitude of the location.
+        schema:
+          type: number
+          format: float
+      responses:
+        '200':
+          description: Geographic hierarchy envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HierarchyEnvelope'
+components:
+  schemas:
+    HierarchyEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            hierarchy:
+              type: array
+              items:
+                $ref: '#/components/schemas/HierarchyLevel'
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    HierarchyLevel:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        geoTypeAbbreviation:
+          type: string
+        name:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
