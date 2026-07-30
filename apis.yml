@@ -1,142 +1,690 @@
 aid: attomdata
 url: https://raw.githubusercontent.com/api-evangelist/attomdata/refs/heads/main/apis.yml
 apis:
-- aid: attomdata:attom-property-api
-  name: ATTOM Property API
-  tags:
-  - Property
-  - Real Estate
-  - Assessment
-  - AVM
-  - Sales
-  - Mortgage
-  - Owner
-  - Building Permits
-  - Foreclosure
+- aid: attomdata:attomdata-all-events-api
+  name: ATTOM All Events API
+  description: Combined assessment, AVM, and sales-transaction events.
   humanURL: https://api.developer.attomdata.com/docs
   baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
-  properties:
-  - url: https://api.developer.attomdata.com/docs
-    type: Documentation
-  - url: openapi/attom-property-api-openapi.yml
-    type: OpenAPI
-  - url: https://github.com/AttomDataSolutions/postman-collections
-    type: Postman
-  - url: json-schema/attom-property-schema.json
-    type: JSONSchema
-  - url: json-schema/attom-assessment-schema.json
-    type: JSONSchema
-  - url: json-schema/attom-sale-schema.json
-    type: JSONSchema
-  - url: json-schema/attom-avm-schema.json
-    type: JSONSchema
-  - url: json-ld/attomdata-context.jsonld
-    type: JSONLD
-  - url: examples/attom-property-detail-example.json
-    type: Examples
-  - url: graphql/attomdata-graphql.md
-    type: GraphQL
-  description: Comprehensive property intelligence for 160M+ U.S. properties. Resources
-    cover /property, /assessment, /assessmenthistory, /sale, /saleshistory, /salescomparables,
-    /attomavm, /avm, /avmhistory, /rentalavm, /homeequity, /allevents, /school, /transportationnoise,
-    /preforeclosure, and /property/buildingpermits, each available in `snapshot` and
-    `detail` packages. Returns property characteristics, ownership and mortgage records,
-    assessed values and tax history, sales history, AVM valuations (current and historical),
-    rental AVM, home equity, school assignments, transportation noise, foreclosure
-    status, and building permits. Inputs include AttomID, address, address1/address2,
-    and geographic radius/bounding box.
-- aid: attomdata:attom-area-api
-  name: ATTOM Area API
   tags:
-  - Geography
+  - All Events
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-all-events-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-assessment-api
+  name: ATTOM Assessment API
+  description: Assessed value, tax liability, and assessment history.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Assessment
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-assessment-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-avm-api
+  name: ATTOM AVM API
+  description: Automated Valuation Model — current AVM, AVM history, and rental AVM.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - AVM
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-avm-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-boundary-api
+  name: ATTOM Boundary API
+  description: GeoJSON boundary polygons by geography identifier.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
   - Boundary
-  - Parcel
-  - GeoID
-  - CBSA
-  - County
-  - State
-  humanURL: https://api.developer.attomdata.com/docs
-  baseURL: https://api.gateway.attomdata.com/areaapi
   properties:
-  - url: https://api.developer.attomdata.com/docs
-    type: Documentation
-  - url: openapi/attom-area-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/attom-area-schema.json
-    type: JSONSchema
-  - url: examples/attom-area-hierarchy-example.json
-    type: Examples
-  description: Area and boundary lookup for state, county, CBSA, neighborhood, school
-    zone, ZIP, and other geographic units. Resources include /area/boundary/detail
-    (GeoJSON boundary polygons), /area/hierarchy/lookup (geographic hierarchy for
-    a lat/lon), /area/state/lookup, /area/county/lookup, /area/cbsa/lookup, /area/geoid/lookup,
-    /area/geoId/legacyLookup, and the v4 /v4/location/lookup that resolves any geoIdV4
-    to its location metadata.
-- aid: attomdata:attom-poi-api
-  name: ATTOM POI API
+  - type: OpenAPI
+    url: openapi/attomdata-boundary-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-building-permits-api
+  name: ATTOM Building Permits API
+  description: Building permit records associated with a property.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
   tags:
-  - Points Of Interest
-  - Neighborhood
-  - Business
-  - Search
-  humanURL: https://api.developer.attomdata.com/docs
-  baseURL: https://api.gateway.attomdata.com
+  - Building Permits
   properties:
-  - url: https://api.developer.attomdata.com/docs
-    type: Documentation
-  - url: openapi/attom-poi-api-openapi.yml
-    type: OpenAPI
-  - url: examples/attom-poi-search-example.json
-    type: Examples
-  description: Points of Interest search and category lookup across 120+ business
-    categories — restaurants, banks, shopping, services, and more. Search by point
-    (lat/lon + radius) or address; filter by category, line of business, and industry.
-    Returns POIs with names, categories, distances, and addresses.
-- aid: attomdata:attom-community-api
+  - type: OpenAPI
+    url: openapi/attomdata-building-permits-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-community-api
   name: ATTOM Community API
+  description: Neighborhood community profile (demographics, crime, weather, commute).
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
   tags:
   - Community
-  - Neighborhood
-  - Demographics
-  - Crime
-  - Weather
-  - Schools
-  - Location
-  humanURL: https://api.developer.attomdata.com/docs
-  baseURL: https://api.gateway.attomdata.com
   properties:
-  - url: https://api.developer.attomdata.com/docs
-    type: Documentation
-  - url: openapi/attom-community-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/attom-community-schema.json
-    type: JSONSchema
-  - url: examples/attom-community-neighborhood-example.json
-    type: Examples
-  description: Neighborhood-level community profile data including demographics, population,
-    household income, crime indices, weather, commute, education, and quality-of-life
-    metrics. Resources cover /v4.0.0/neighborhood/community (community profile by
-    geoIdV4) and /v4/location/lookup for resolving locations by geoIdV4 and geography-type
-    abbreviation (ZI, ND, CO, ST, etc.).
-- aid: attomdata:attom-parcel-tiles-api
-  name: ATTOM Parcel Tiles API
+  - type: OpenAPI
+    url: openapi/attomdata-community-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-hierarchy-api
+  name: ATTOM Hierarchy API
+  description: Geographic hierarchy lookup from coordinates.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
   tags:
-  - Parcel
-  - Tiles
-  - Mapping
-  - GeoJSON
-  - Vector Tiles
-  humanURL: https://api.developer.attomdata.com/docs
-  baseURL: https://api.gateway.attomdata.com
+  - Hierarchy
   properties:
-  - url: https://api.developer.attomdata.com/docs
-    type: Documentation
-  - url: openapi/attom-parcel-tiles-api-openapi.yml
-    type: OpenAPI
-  description: Vector parcel tile service for rendering ATTOM parcel boundaries on
-    web/mobile maps. Tile endpoints return styled parcel geometries suitable for Mapbox,
-    MapLibre, and Leaflet integrations. Includes authentication via API key and per-zoom-level
-    tile endpoints.
+  - type: OpenAPI
+    url: openapi/attomdata-hierarchy-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-home-equity-api
+  name: ATTOM Home Equity API
+  description: Estimated home equity calculations.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Home Equity
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-home-equity-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-location-api
+  name: ATTOM Location API
+  description: Resolve a location by geoIdV4.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Location
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-location-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-lookup-api
+  name: ATTOM Lookup API
+  description: Lookup of state, county, CBSA, and geoID metadata.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-lookup-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-parcel-tiles-api
+  name: ATTOM Parcel Tiles API
+  description: Vector parcel boundary tiles.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Parcel Tiles
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-parcel-tiles-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-poi-categories-api
+  name: ATTOM POI Categories API
+  description: Lookup of POI categories, lines of business, and industries.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - POI Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-poi-categories-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-poi-search-api
+  name: ATTOM POI Search API
+  description: Search points of interest by point or address.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - POI Search
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-poi-search-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-pre-foreclosure-api
+  name: ATTOM Pre-Foreclosure API
+  description: Pre-foreclosure status and notice records.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Pre-Foreclosure
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-pre-foreclosure-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-property-api
+  name: ATTOM Property API
+  description: Property characteristics, ownership, mortgage, and address resolution.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Property
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-property-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-sale-api
+  name: ATTOM Sale API
+  description: Sales transactions, sales history, and comparable sales.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Sale
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-sale-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-sales-trends-api
+  name: ATTOM Sales Trends API
+  description: Aggregated sales trends for a geography.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - Sales Trends
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-sales-trends-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
+- aid: attomdata:attomdata-school-api
+  name: ATTOM School API
+  description: School assignments and attendance-zone associations.
+  humanURL: https://api.developer.attomdata.com/docs
+  baseURL: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  tags:
+  - School
+  properties:
+  - type: OpenAPI
+    url: openapi/attomdata-school-api-openapi.yml
+  - type: Documentation
+    url: https://api.developer.attomdata.com/docs
+  - type: Postman
+    url: https://github.com/AttomDataSolutions/postman-collections
+  - type: JSONSchema
+    url: json-schema/attom-property-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-assessment-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-sale-schema.json
+  - type: JSONSchema
+    url: json-schema/attom-avm-schema.json
+  - type: JSONLD
+    url: json-ld/attomdata-context.jsonld
+  - type: Examples
+    url: examples/attom-property-detail-example.json
+  - type: GraphQL
+    url: graphql/attomdata-graphql.md
+  - type: JSONSchema
+    url: json-schema/attom-area-schema.json
+  - type: Examples
+    url: examples/attom-area-hierarchy-example.json
+  - type: Examples
+    url: examples/attom-poi-search-example.json
+  - type: JSONSchema
+    url: json-schema/attom-community-schema.json
+  - type: Examples
+    url: examples/attom-community-neighborhood-example.json
 name: ATTOM
 tags:
 - Real Estate
@@ -158,7 +706,20 @@ tags:
 - Mortgage Technology
 - PropTech
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/attomdata.png
 access: 3rd-Party
 common:
 - type: AgenticAccess
