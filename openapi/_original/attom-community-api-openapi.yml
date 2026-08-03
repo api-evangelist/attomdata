@@ -1,0 +1,207 @@
+openapi: 3.1.0
+info:
+  title: ATTOM Community API
+  description: |
+    ATTOM Community API returns neighborhood-level community profile data including
+    demographics, population, household income, crime indices, weather, commute
+    times, education, and quality-of-life metrics. Use `geoIdV4` and optional
+    geography-type abbreviation to resolve community profiles for neighborhoods,
+    ZIPs, counties, and other geographies.
+  version: v4.0.0
+  contact:
+    name: ATTOM Data Customer Care
+    email: datacustomercare@attomdata.com
+    url: https://api.developer.attomdata.com/
+  license:
+    name: ATTOM Data Terms of Use
+    url: https://www.attomdata.com/terms-of-use/
+servers:
+  - url: https://api.gateway.attomdata.com
+    description: ATTOM API Production Gateway
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Community
+    description: Neighborhood community profile (demographics, crime, weather, commute).
+  - name: Location
+    description: Resolve a location by geoIdV4.
+paths:
+  /v4.0.0/neighborhood/community:
+    get:
+      summary: Get Neighborhood Community Profile
+      description: Return the community profile (demographics, crime, weather, commute, education) for a neighborhood geoIdV4.
+      operationId: getNeighborhoodCommunity
+      tags: [Community]
+      parameters:
+        - name: geoIdv4
+          in: query
+          required: true
+          description: ATTOM v4 neighborhood geography identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Community profile envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommunityEnvelope'
+        '400': { $ref: '#/components/responses/ErrorResponse' }
+        '401': { $ref: '#/components/responses/ErrorResponse' }
+  /v4/location/lookup:
+    get:
+      summary: Lookup Location By GeoIdV4
+      description: Resolve a geoIdV4 plus optional geography-type abbreviation to a location record.
+      operationId: getLocationLookup
+      tags: [Location]
+      parameters:
+        - name: geoIdV4
+          in: query
+          required: true
+          description: ATTOM v4 geography identifier.
+          schema:
+            type: string
+        - name: geographyTypeAbbreviation
+          in: query
+          required: false
+          description: Two-letter geography-type abbreviation (ZI ZIP, ND neighborhood, CO county, ST state).
+          schema:
+            type: string
+            enum: [ZI, ND, CO, ST, NB, SC]
+      responses:
+        '200':
+          description: Location envelope.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationEnvelope'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apikey
+      description: ATTOM-issued API key.
+  schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    Demographics:
+      type: object
+      properties:
+        population:
+          type: integer
+        households:
+          type: integer
+        medianAge:
+          type: number
+        medianHouseholdIncome:
+          type: integer
+        ownerOccupiedPercent:
+          type: number
+        renterOccupiedPercent:
+          type: number
+    Crime:
+      type: object
+      properties:
+        crimeIndex:
+          type: number
+        violentCrimeIndex:
+          type: number
+        propertyCrimeIndex:
+          type: number
+    Weather:
+      type: object
+      properties:
+        annualAvgPrecipitation:
+          type: number
+        annualAvgSnowfall:
+          type: number
+        januaryAvgLowTemp:
+          type: number
+        julyAvgHighTemp:
+          type: number
+    Commute:
+      type: object
+      properties:
+        avgCommuteMinutes:
+          type: number
+        commuteByCarPercent:
+          type: number
+        commuteByPublicTransitPercent:
+          type: number
+    Community:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        name:
+          type: string
+        demographics:
+          $ref: '#/components/schemas/Demographics'
+        crime:
+          $ref: '#/components/schemas/Crime'
+        weather:
+          $ref: '#/components/schemas/Weather'
+        commute:
+          $ref: '#/components/schemas/Commute'
+    CommunityEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            community:
+              $ref: '#/components/schemas/Community'
+    Location:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        geographyTypeAbbreviation:
+          type: string
+        name:
+          type: string
+        countrySubd:
+          type: string
+        country:
+          type: string
+        boundary:
+          type: object
+    LocationEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Location'
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+  responses:
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
