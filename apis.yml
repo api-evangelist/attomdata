@@ -802,8 +802,6 @@ common:
   type: SDKs
 - type: ContactEmail
   url: mailto:datacustomercare@attomdata.com
-- type: ContactPhone
-  url: tel:+18004625125
 - type: Plans
   url: plans/attomdata-plans-pricing.yml
 - type: RateLimits
