@@ -1,0 +1,243 @@
+{
+  "item": [
+    {
+      "id": "414c5486-885f-493d-8038-52b696a5b39f",
+      "name": "Community",
+      "description": {
+        "content": "Neighborhood community profile (demographics, crime, weather, commute).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b617ade-1fdd-4b76-accc-14bcc337ba51",
+          "name": "Get Neighborhood Community Profile",
+          "request": {
+            "name": "Get Neighborhood Community Profile",
+            "description": {
+              "content": "Return the community profile (demographics, crime, weather, commute, education) for a neighborhood geoIdV4.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4.0.0",
+                "neighborhood",
+                "community"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoIdv4",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM v4 neighborhood geography identifier."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8956857-7433-4780-b5d4-42c0b8327260",
+              "name": "Community profile envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4.0.0",
+                    "neighborhood",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdv4",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 5700,\n    \"msg\": \"string\",\n    \"total\": 2330\n  },\n  \"response\": {\n    \"community\": {\n      \"geoIdV4\": \"string\",\n      \"name\": \"string\",\n      \"demographics\": {\n        \"population\": 3868,\n        \"households\": 232,\n        \"medianAge\": 9406.16812284666,\n        \"medianHouseholdIncome\": 4235,\n        \"ownerOccupiedPercent\": 9478.627707318024,\n        \"renterOccupiedPercent\": 6659.33158126681\n      },\n      \"crime\": {\n        \"crimeIndex\": 6262.092969325783,\n        \"violentCrimeIndex\": 8510.190458678391,\n        \"propertyCrimeIndex\": 8570.75291085085\n      },\n      \"weather\": {\n        \"annualAvgPrecipitation\": 1948.5418138199373,\n        \"annualAvgSnowfall\": 9232.871185470509,\n        \"januaryAvgLowTemp\": 9329.994736355306,\n        \"julyAvgHighTemp\": 2447.8483353474257\n      },\n      \"commute\": {\n        \"avgCommuteMinutes\": 4758.469585673029,\n        \"commuteByCarPercent\": 1621.6435272065178,\n        \"commuteByPublicTransitPercent\": 5364.968805909744\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e3c5844-ecaf-40a4-a851-a601f611e50d",
+              "name": "ATTOM error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4.0.0",
+                    "neighborhood",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdv4",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": {\n    \"status\": {\n      \"version\": \"string\",\n      \"code\": 1492,\n      \"msg\": \"string\",\n      \"total\": 7502\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99a2b82f-2858-43e8-bba7-87277eff9bee",
+              "name": "ATTOM error envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4.0.0",
+                    "neighborhood",
+                    "community"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdv4",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Response\": {\n    \"status\": {\n      \"version\": \"string\",\n      \"code\": 1492,\n      \"msg\": \"string\",\n      \"total\": 7502\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "60dbff0e-a694-4aef-b598-ae477ad22b20",
+    "name": "ATTOM Area All Events Community API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

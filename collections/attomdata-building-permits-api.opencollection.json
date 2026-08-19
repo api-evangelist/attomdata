@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events Building Permits API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Building Permits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Property Building Permits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/property/buildingpermits",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Building permit records associated with a property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

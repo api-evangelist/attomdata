@@ -1,0 +1,670 @@
+{
+  "item": [
+    {
+      "id": "62035be8-7ac4-476d-b1cd-6612f399bf2e",
+      "name": "Lookup",
+      "description": {
+        "content": "Lookup of state, county, CBSA, and geoID metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a3b7df0-a152-4618-8609-42ba8e55b93b",
+          "name": "Lookup State",
+          "request": {
+            "name": "Lookup State",
+            "description": {
+              "content": "Return state metadata for the requested geography identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "areaapi",
+                "area",
+                "state",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoIdV4",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM v4 geography identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "mime",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69637b79-b1c5-4282-b267-a53560cbe0e6",
+              "name": "State lookup envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "areaapi",
+                    "area",
+                    "state",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdV4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mime",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8671,\n    \"msg\": \"string\",\n    \"total\": 3604\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47f4ad20-b21a-4800-bbe1-9963f01ed4b3",
+          "name": "Lookup Counties By State",
+          "request": {
+            "name": "Lookup Counties By State",
+            "description": {
+              "content": "Return all counties within the requested state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "areaapi",
+                "area",
+                "county",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stateId",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM state identifier or FIPS state code."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6b07d45-2109-461c-b241-8a853350df24",
+              "name": "County lookup envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "areaapi",
+                    "area",
+                    "county",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stateId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8671,\n    \"msg\": \"string\",\n    \"total\": 3604\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29c06ee6-54cb-4e09-b361-c51f7afe7d88",
+          "name": "Lookup CBSAs",
+          "request": {
+            "name": "Lookup CBSAs",
+            "description": {
+              "content": "Return Core-Based Statistical Areas (CBSAs) for a state geography identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "areaapi",
+                "area",
+                "cbsa",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoIdV4",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM v4 state geography identifier."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de4e2268-daf3-41c6-9756-149d649d3657",
+              "name": "CBSA lookup envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "areaapi",
+                    "area",
+                    "cbsa",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdV4",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8671,\n    \"msg\": \"string\",\n    \"total\": 3604\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "44893e32-0118-475f-a8e9-09fccfaeef6a",
+          "name": "Lookup By GeoID",
+          "request": {
+            "name": "Lookup By GeoID",
+            "description": {
+              "content": "Resolve an ATTOM legacy or v4 geoID with optional geography type and pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "areaapi",
+                "area",
+                "geoid",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoId",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM geoID."
+                },
+                {
+                  "disabled": false,
+                  "key": "geoType",
+                  "value": "<string>",
+                  "description": "Geography-type abbreviation (e.g., ST state, CO county, ND neighborhood, ZI ZIP)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "100"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9357dd3c-4af0-4d33-b159-e528f09762a0",
+              "name": "GeoID lookup envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "areaapi",
+                    "area",
+                    "geoid",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geoType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8671,\n    \"msg\": \"string\",\n    \"total\": 3604\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "165a1f69-98ba-4158-b88d-2066e7470ec0",
+          "name": "Lookup Legacy GeoCode",
+          "request": {
+            "name": "Lookup Legacy GeoCode",
+            "description": {
+              "content": "Resolve a legacy ATTOM geoID (numeric county or state code) to area metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "areaapi",
+                "area",
+                "geoId",
+                "legacyLookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoId",
+                  "value": "<string>",
+                  "description": "(Required) Legacy ATTOM geoID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38187a68-9a5f-4b7c-96f8-7c4b126a304f",
+              "name": "Legacy GeoCode envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "areaapi",
+                    "area",
+                    "geoId",
+                    "legacyLookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8671,\n    \"msg\": \"string\",\n    \"total\": 3604\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b686d564-0f21-40a0-8750-3fbb1e436331",
+          "name": "Lookup Location By GeoIdV4",
+          "request": {
+            "name": "Lookup Location By GeoIdV4",
+            "description": {
+              "content": "Resolve any geoIdV4 (with optional geography-type abbreviation) to its location metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "location",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoidv4",
+                  "value": "<string>",
+                  "description": "ATTOM v4 geography identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "geographyTypeAbbreviation",
+                  "value": "<string>",
+                  "description": "Two-letter geography-type abbreviation (CO county, ST state, ND neighborhood, ZI ZIP, etc.)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3facd46-61a2-42ff-9298-c55e286b1c74",
+              "name": "V4 location envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "location",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoidv4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographyTypeAbbreviation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8671,\n    \"msg\": \"string\",\n    \"total\": 3604\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoId\": \"string\",\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"center\": {\n          \"latitude\": \"string\",\n          \"longitude\": \"string\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9425c76f-62cd-4384-bbef-04fd71deb1a9",
+    "name": "ATTOM Area All Events Lookup API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

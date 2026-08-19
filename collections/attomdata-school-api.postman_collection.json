@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "f0861a82-8169-404d-a96e-791d139363c0",
+      "name": "School",
+      "description": {
+        "content": "School assignments and attendance-zone associations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d70741d-d09a-46aa-aa55-2cd49e9b5502",
+          "name": "Get Property Detail With Schools",
+          "request": {
+            "name": "Get Property Detail With Schools",
+            "description": {
+              "content": "Property detail plus assigned schools and school district attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "property",
+                "detailwithschools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "519dcf83-5abb-4247-bcab-378484bb89f4",
+              "name": "Property record envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "property",
+                    "detailwithschools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 1205,\n    \"msg\": \"string\",\n    \"total\": 1048,\n    \"page\": 2604,\n    \"pagesize\": 2396\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 7429,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 1130\n      },\n      \"lot\": {\n        \"lotnum\": \"string\",\n        \"lotsize1\": 8957.944170434817,\n        \"lotsize2\": 3575.052609139252,\n        \"zoningType\": \"string\"\n      },\n      \"area\": {},\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"location\": {\n        \"accuracy\": \"string\",\n        \"latitude\": \"string\",\n        \"longitude\": \"string\",\n        \"distance\": 3702.4112582164357,\n        \"geoid\": \"string\",\n        \"geoIdV4\": {}\n      },\n      \"summary\": {\n        \"absenteeInd\": \"string\",\n        \"propclass\": \"string\",\n        \"propsubtype\": \"string\",\n        \"proptype\": \"string\",\n        \"yearbuilt\": 5856,\n        \"propLandUse\": \"string\"\n      },\n      \"building\": {\n        \"size\": {\n          \"bldgsize\": 2214,\n          \"grosssize\": 96,\n          \"livingsize\": 7627,\n          \"universalsize\": 9795\n        },\n        \"rooms\": {\n          \"bathstotal\": 8598.206407688505,\n          \"beds\": 2135,\n          \"roomsTotal\": 6334\n        },\n        \"construction\": {\n          \"condition\": \"string\",\n          \"constructionType\": \"string\",\n          \"wallType\": \"string\",\n          \"roofCover\": \"string\"\n        },\n        \"summary\": {\n          \"yearbuilteffective\": 5424,\n          \"yearbuilt\": 6818\n        }\n      },\n      \"owner\": {\n        \"corporateindicator\": \"string\",\n        \"owner1\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"owner2\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"mailingaddressoneline\": \"string\"\n      },\n      \"mortgage\": {\n        \"FirstConcurrent\": {\n          \"amount\": 6906,\n          \"date\": \"string\",\n          \"lender\": {\n            \"fullName\": \"string\"\n          },\n          \"interestRate\": 1806.379559858846,\n          \"term\": \"string\",\n          \"trustDeedDocumentNumber\": \"string\"\n        }\n      },\n      \"vintage\": {\n        \"lastModified\": \"string\",\n        \"pubDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 8068,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 9991\n      },\n      \"lot\": {\n        \"lotnum\": \"string\",\n        \"lotsize1\": 1439.1083852929598,\n        \"lotsize2\": 5928.243168196965,\n        \"zoningType\": \"string\"\n      },\n      \"area\": {},\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"location\": {\n        \"accuracy\": \"string\",\n        \"latitude\": \"string\",\n        \"longitude\": \"string\",\n        \"distance\": 8002.6826621291,\n        \"geoid\": \"string\",\n        \"geoIdV4\": {}\n      },\n      \"summary\": {\n        \"absenteeInd\": \"string\",\n        \"propclass\": \"string\",\n        \"propsubtype\": \"string\",\n        \"proptype\": \"string\",\n        \"yearbuilt\": 2415,\n        \"propLandUse\": \"string\"\n      },\n      \"building\": {\n        \"size\": {\n          \"bldgsize\": 8750,\n          \"grosssize\": 1236,\n          \"livingsize\": 5053,\n          \"universalsize\": 6093\n        },\n        \"rooms\": {\n          \"bathstotal\": 130.27018645572764,\n          \"beds\": 4987,\n          \"roomsTotal\": 1251\n        },\n        \"construction\": {\n          \"condition\": \"string\",\n          \"constructionType\": \"string\",\n          \"wallType\": \"string\",\n          \"roofCover\": \"string\"\n        },\n        \"summary\": {\n          \"yearbuilteffective\": 5927,\n          \"yearbuilt\": 5845\n        }\n      },\n      \"owner\": {\n        \"corporateindicator\": \"string\",\n        \"owner1\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"owner2\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"mailingaddressoneline\": \"string\"\n      },\n      \"mortgage\": {\n        \"FirstConcurrent\": {\n          \"amount\": 797,\n          \"date\": \"string\",\n          \"lender\": {\n            \"fullName\": \"string\"\n          },\n          \"interestRate\": 6436.119743902682,\n          \"term\": \"string\",\n          \"trustDeedDocumentNumber\": \"string\"\n        }\n      },\n      \"vintage\": {\n        \"lastModified\": \"string\",\n        \"pubDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db72a25b-e34c-4f71-9aa1-47cbb9ede2b1",
+          "name": "Get School Snapshot",
+          "request": {
+            "name": "Get School Snapshot",
+            "description": {
+              "content": "Schools and school-district attributes associated with a property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "school",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dacbf87f-4c19-46c9-9290-51d33c661c94",
+              "name": "Property record envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "school",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8540,\n    \"msg\": \"string\",\n    \"total\": 4090,\n    \"page\": 6657,\n    \"pagesize\": 5181\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 4051,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 4345\n      },\n      \"lot\": {\n        \"lotnum\": \"string\",\n        \"lotsize1\": 9159.21318415061,\n        \"lotsize2\": 710.646761192495,\n        \"zoningType\": \"string\"\n      },\n      \"area\": {},\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"location\": {\n        \"accuracy\": \"string\",\n        \"latitude\": \"string\",\n        \"longitude\": \"string\",\n        \"distance\": 7391.483958651916,\n        \"geoid\": \"string\",\n        \"geoIdV4\": {}\n      },\n      \"summary\": {\n        \"absenteeInd\": \"string\",\n        \"propclass\": \"string\",\n        \"propsubtype\": \"string\",\n        \"proptype\": \"string\",\n        \"yearbuilt\": 4997,\n        \"propLandUse\": \"string\"\n      },\n      \"building\": {\n        \"size\": {\n          \"bldgsize\": 3546,\n          \"grosssize\": 3034,\n          \"livingsize\": 3715,\n          \"universalsize\": 5468\n        },\n        \"rooms\": {\n          \"bathstotal\": 2397.25636794443,\n          \"beds\": 633,\n          \"roomsTotal\": 4766\n        },\n        \"construction\": {\n          \"condition\": \"string\",\n          \"constructionType\": \"string\",\n          \"wallType\": \"string\",\n          \"roofCover\": \"string\"\n        },\n        \"summary\": {\n          \"yearbuilteffective\": 4411,\n          \"yearbuilt\": 1571\n        }\n      },\n      \"owner\": {\n        \"corporateindicator\": \"string\",\n        \"owner1\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"owner2\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"mailingaddressoneline\": \"string\"\n      },\n      \"mortgage\": {\n        \"FirstConcurrent\": {\n          \"amount\": 7485,\n          \"date\": \"string\",\n          \"lender\": {\n            \"fullName\": \"string\"\n          },\n          \"interestRate\": 5213.942981115831,\n          \"term\": \"string\",\n          \"trustDeedDocumentNumber\": \"string\"\n        }\n      },\n      \"vintage\": {\n        \"lastModified\": \"string\",\n        \"pubDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 5081,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 1050\n      },\n      \"lot\": {\n        \"lotnum\": \"string\",\n        \"lotsize1\": 2937.0222119364585,\n        \"lotsize2\": 1818.0186409647192,\n        \"zoningType\": \"string\"\n      },\n      \"area\": {},\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"location\": {\n        \"accuracy\": \"string\",\n        \"latitude\": \"string\",\n        \"longitude\": \"string\",\n        \"distance\": 7268.407205669686,\n        \"geoid\": \"string\",\n        \"geoIdV4\": {}\n      },\n      \"summary\": {\n        \"absenteeInd\": \"string\",\n        \"propclass\": \"string\",\n        \"propsubtype\": \"string\",\n        \"proptype\": \"string\",\n        \"yearbuilt\": 8506,\n        \"propLandUse\": \"string\"\n      },\n      \"building\": {\n        \"size\": {\n          \"bldgsize\": 4912,\n          \"grosssize\": 7489,\n          \"livingsize\": 709,\n          \"universalsize\": 7589\n        },\n        \"rooms\": {\n          \"bathstotal\": 6128.552533161254,\n          \"beds\": 109,\n          \"roomsTotal\": 9424\n        },\n        \"construction\": {\n          \"condition\": \"string\",\n          \"constructionType\": \"string\",\n          \"wallType\": \"string\",\n          \"roofCover\": \"string\"\n        },\n        \"summary\": {\n          \"yearbuilteffective\": 6178,\n          \"yearbuilt\": 18\n        }\n      },\n      \"owner\": {\n        \"corporateindicator\": \"string\",\n        \"owner1\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"owner2\": {\n          \"firstnameandmi\": \"string\",\n          \"lastname\": \"string\"\n        },\n        \"mailingaddressoneline\": \"string\"\n      },\n      \"mortgage\": {\n        \"FirstConcurrent\": {\n          \"amount\": 730,\n          \"date\": \"string\",\n          \"lender\": {\n            \"fullName\": \"string\"\n          },\n          \"interestRate\": 145.20324839445652,\n          \"term\": \"string\",\n          \"trustDeedDocumentNumber\": \"string\"\n        }\n      },\n      \"vintage\": {\n        \"lastModified\": \"string\",\n        \"pubDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d57e938e-c550-44bb-9d53-a5e1f49929f6",
+    "name": "ATTOM Area All Events School API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

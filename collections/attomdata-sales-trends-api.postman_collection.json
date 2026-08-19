@@ -1,0 +1,151 @@
+{
+  "item": [
+    {
+      "id": "d2cda089-32c7-461b-b764-d3b747dc7b95",
+      "name": "Sales Trends",
+      "description": {
+        "content": "Aggregated sales trends for a geography.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c698a6e4-ef36-4d47-b40b-dffe8c39f26e",
+          "name": "Get Sales Trend",
+          "request": {
+            "name": "Get Sales Trend",
+            "description": {
+              "content": "Average and median sales prices for the past two years for the requested geography.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transaction",
+                "salestrend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoIdV4",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM v4 geography identifier (state, county, CBSA, ZIP, neighborhood)."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "Yearly",
+                  "description": "Time interval (\"Yearly\", \"Monthly\")."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5658f120-f429-46c6-9379-c22c13c4c41e",
+              "name": "Sale envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transaction",
+                    "salestrend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdV4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "Yearly"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 1202,\n    \"msg\": \"string\",\n    \"total\": 2862,\n    \"page\": 4487,\n    \"pagesize\": 2275\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 2836,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 8780\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 873,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 2701,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 1062.921807655064\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 5938,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 578\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 2674,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 7623,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 5549.111205522453\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ae90eaab-b625-4374-8a08-789329d2c74c",
+    "name": "ATTOM Area All Events Sales Trends API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

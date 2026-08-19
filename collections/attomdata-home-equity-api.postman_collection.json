@@ -1,0 +1,151 @@
+{
+  "item": [
+    {
+      "id": "b80fbd8e-d228-439c-a2a7-e74754edc580",
+      "name": "Home Equity",
+      "description": {
+        "content": "Estimated home equity calculations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ba27a26-aba8-4218-88d7-baca46dbd655",
+          "name": "Get Home Equity Estimate",
+          "request": {
+            "name": "Get Home Equity Estimate",
+            "description": {
+              "content": "Estimated home equity (AVM minus open loan balances).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "valuation",
+                "homeequity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea773c17-c190-4aae-9c20-7ac5adaf01b0",
+              "name": "AVM envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "valuation",
+                    "homeequity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 1516,\n    \"msg\": \"string\",\n    \"total\": 5061,\n    \"page\": 9731,\n    \"pagesize\": 5709\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 5353,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 6711\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 3683,\n          \"value\": 8180,\n          \"high\": 731,\n          \"low\": 7631,\n          \"valueRange\": 5693,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 2010\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 807,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 9576\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 9264,\n          \"value\": 9016,\n          \"high\": 8173,\n          \"low\": 8968,\n          \"valueRange\": 8903,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9261\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e48a4ba4-002b-46e3-9751-fc2c8c1edb09",
+    "name": "ATTOM Area All Events Home Equity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

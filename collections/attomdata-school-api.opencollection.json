@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events School API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "School",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Property Detail With Schools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/property/detailwithschools",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Property detail plus assigned schools and school district attributes."
+        },
+        {
+          "info": {
+            "name": "Get School Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/school/snapshot",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Schools and school-district attributes associated with a property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

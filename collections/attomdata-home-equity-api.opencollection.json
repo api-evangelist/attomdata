@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events Home Equity API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Home Equity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Home Equity Estimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/valuation/homeequity",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Estimated home equity (AVM minus open loan balances)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

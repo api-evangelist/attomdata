@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events Community API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Community",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Neighborhood Community Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4.0.0/neighborhood/community",
+            "params": [
+              {
+                "name": "geoIdv4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 neighborhood geography identifier."
+              }
+            ]
+          },
+          "docs": "Return the community profile (demographics, crime, weather, commute, education) for a neighborhood geoIdV4."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

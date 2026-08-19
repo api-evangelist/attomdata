@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events Assessment API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assessment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Assessment Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/assessment/snapshot",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Compact assessed-value record for a property."
+        },
+        {
+          "info": {
+            "name": "Get Assessment Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/assessment/detail",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Full assessed-value record including tax amount, tax year, market value, and exemption flags."
+        },
+        {
+          "info": {
+            "name": "Get Assessment History Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/assessmenthistory/detail",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              }
+            ]
+          },
+          "docs": "Multi-year history of assessed values and tax amounts for a property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

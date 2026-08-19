@@ -1,0 +1,355 @@
+{
+  "item": [
+    {
+      "id": "626402a2-ea79-44a1-bd93-dc809089df67",
+      "name": "Assessment",
+      "description": {
+        "content": "Assessed value, tax liability, and assessment history.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "90b1e4c3-5a98-4648-ad4b-11d7fed291d3",
+          "name": "Get Assessment Snapshot",
+          "request": {
+            "name": "Get Assessment Snapshot",
+            "description": {
+              "content": "Compact assessed-value record for a property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assessment",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3535f6b-81d9-4bd0-9f89-214350a238a7",
+              "name": "Assessment envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assessment",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 798,\n    \"msg\": \"string\",\n    \"total\": 3157,\n    \"page\": 3214,\n    \"pagesize\": 7109\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 1951,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 5569\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"assessment\": {\n        \"appraised\": {\n          \"apprimprvalue\": 147,\n          \"apprlandvalue\": 8575,\n          \"apprttlvalue\": 9060\n        },\n        \"assessed\": {\n          \"assdimprvalue\": 6332,\n          \"assdlandvalue\": 8924,\n          \"assdttlvalue\": 20\n        },\n        \"market\": {\n          \"mktimprvalue\": 1262,\n          \"mktlandvalue\": 7229,\n          \"mktttlvalue\": 4479\n        },\n        \"tax\": {\n          \"taxamt\": 3247.7920104747327,\n          \"taxpereszidx\": 5557.859345884354,\n          \"taxyear\": 8409\n        },\n        \"owner\": {\n          \"corporateindicator\": \"string\",\n          \"owner1\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"owner2\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"mailingaddressoneline\": \"string\"\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 7998,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 3462\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"assessment\": {\n        \"appraised\": {\n          \"apprimprvalue\": 3097,\n          \"apprlandvalue\": 5090,\n          \"apprttlvalue\": 1945\n        },\n        \"assessed\": {\n          \"assdimprvalue\": 2221,\n          \"assdlandvalue\": 3170,\n          \"assdttlvalue\": 8189\n        },\n        \"market\": {\n          \"mktimprvalue\": 3047,\n          \"mktlandvalue\": 2691,\n          \"mktttlvalue\": 4965\n        },\n        \"tax\": {\n          \"taxamt\": 8474.75648136298,\n          \"taxpereszidx\": 2335.998466026761,\n          \"taxyear\": 7860\n        },\n        \"owner\": {\n          \"corporateindicator\": \"string\",\n          \"owner1\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"owner2\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"mailingaddressoneline\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f383651b-ba0a-404c-8c03-b9a2f1fe54ec",
+          "name": "Get Assessment Detail",
+          "request": {
+            "name": "Get Assessment Detail",
+            "description": {
+              "content": "Full assessed-value record including tax amount, tax year, market value, and exemption flags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assessment",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb6e08b4-eafa-4ac2-9f22-c966c36ed239",
+              "name": "Assessment envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assessment",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 547,\n    \"msg\": \"string\",\n    \"total\": 8030,\n    \"page\": 928,\n    \"pagesize\": 2380\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 6120,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 5064\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"assessment\": {\n        \"appraised\": {\n          \"apprimprvalue\": 1494,\n          \"apprlandvalue\": 3095,\n          \"apprttlvalue\": 5716\n        },\n        \"assessed\": {\n          \"assdimprvalue\": 6208,\n          \"assdlandvalue\": 7693,\n          \"assdttlvalue\": 8567\n        },\n        \"market\": {\n          \"mktimprvalue\": 7173,\n          \"mktlandvalue\": 6227,\n          \"mktttlvalue\": 844\n        },\n        \"tax\": {\n          \"taxamt\": 7916.8208550749505,\n          \"taxpereszidx\": 8683.680552333057,\n          \"taxyear\": 3095\n        },\n        \"owner\": {\n          \"corporateindicator\": \"string\",\n          \"owner1\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"owner2\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"mailingaddressoneline\": \"string\"\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 7981,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 3442\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"assessment\": {\n        \"appraised\": {\n          \"apprimprvalue\": 6853,\n          \"apprlandvalue\": 8179,\n          \"apprttlvalue\": 5997\n        },\n        \"assessed\": {\n          \"assdimprvalue\": 4899,\n          \"assdlandvalue\": 6583,\n          \"assdttlvalue\": 4879\n        },\n        \"market\": {\n          \"mktimprvalue\": 9714,\n          \"mktlandvalue\": 6512,\n          \"mktttlvalue\": 707\n        },\n        \"tax\": {\n          \"taxamt\": 6915.0498641410395,\n          \"taxpereszidx\": 5100.101626638104,\n          \"taxyear\": 4633\n        },\n        \"owner\": {\n          \"corporateindicator\": \"string\",\n          \"owner1\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"owner2\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"mailingaddressoneline\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4574f6fc-2f22-47b9-a768-73d355eba418",
+          "name": "Get Assessment History Detail",
+          "request": {
+            "name": "Get Assessment History Detail",
+            "description": {
+              "content": "Multi-year history of assessed values and tax amounts for a property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assessmenthistory",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9bd0296e-fe22-4323-8436-c428ddc0936a",
+              "name": "Assessment envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assessmenthistory",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 547,\n    \"msg\": \"string\",\n    \"total\": 8030,\n    \"page\": 928,\n    \"pagesize\": 2380\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 6120,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 5064\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"assessment\": {\n        \"appraised\": {\n          \"apprimprvalue\": 1494,\n          \"apprlandvalue\": 3095,\n          \"apprttlvalue\": 5716\n        },\n        \"assessed\": {\n          \"assdimprvalue\": 6208,\n          \"assdlandvalue\": 7693,\n          \"assdttlvalue\": 8567\n        },\n        \"market\": {\n          \"mktimprvalue\": 7173,\n          \"mktlandvalue\": 6227,\n          \"mktttlvalue\": 844\n        },\n        \"tax\": {\n          \"taxamt\": 7916.8208550749505,\n          \"taxpereszidx\": 8683.680552333057,\n          \"taxyear\": 3095\n        },\n        \"owner\": {\n          \"corporateindicator\": \"string\",\n          \"owner1\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"owner2\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"mailingaddressoneline\": \"string\"\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 7981,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 3442\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"assessment\": {\n        \"appraised\": {\n          \"apprimprvalue\": 6853,\n          \"apprlandvalue\": 8179,\n          \"apprttlvalue\": 5997\n        },\n        \"assessed\": {\n          \"assdimprvalue\": 4899,\n          \"assdlandvalue\": 6583,\n          \"assdttlvalue\": 4879\n        },\n        \"market\": {\n          \"mktimprvalue\": 9714,\n          \"mktlandvalue\": 6512,\n          \"mktttlvalue\": 707\n        },\n        \"tax\": {\n          \"taxamt\": 6915.0498641410395,\n          \"taxpereszidx\": 5100.101626638104,\n          \"taxyear\": 4633\n        },\n        \"owner\": {\n          \"corporateindicator\": \"string\",\n          \"owner1\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"owner2\": {\n            \"firstnameandmi\": \"string\",\n            \"lastname\": \"string\"\n          },\n          \"mailingaddressoneline\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f55f8d3a-bf1c-4088-b9e0-a223993e6f5c",
+    "name": "ATTOM Area All Events Assessment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

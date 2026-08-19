@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events Boundary API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Boundary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Boundary Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/areaapi/area/boundary/detail",
+            "params": [
+              {
+                "name": "geoIdV4",
+                "value": "",
+                "type": "query",
+                "description": "ATTOM v4 geography identifier."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Boundary serialization format."
+              },
+              {
+                "name": "mime",
+                "value": "",
+                "type": "query",
+                "description": "Response media type."
+              }
+            ]
+          },
+          "docs": "Return GeoJSON boundary polygons for the requested geography identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

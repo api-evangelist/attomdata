@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events POI Categories API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "POI Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lookup POI Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/v4/neighborhood/poi/categorylookup",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Category name to look up."
+              },
+              {
+                "name": "lineofbusiness",
+                "value": "",
+                "type": "query",
+                "description": "Line-of-business code or name."
+              },
+              {
+                "name": "industry",
+                "value": "",
+                "type": "query",
+                "description": "Industry code or name."
+              }
+            ]
+          },
+          "docs": "Look up POI category metadata by category name, line of business, or industry."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

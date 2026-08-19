@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ATTOM Area All Events API",
+    "version": "v1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "apikey",
+      "value": "{{apikey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "All Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Events Snapshot",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/allevents/snapshot",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              },
+              {
+                "name": "address1",
+                "value": "4529 Winona Court",
+                "type": "query",
+                "description": "Street component of the property address."
+              },
+              {
+                "name": "address2",
+                "value": "Denver, CO 80212",
+                "type": "query",
+                "description": "City, state, and ZIP component of the property address."
+              }
+            ]
+          },
+          "docs": "Combined snapshot of assessment, AVM, and sales events for a property."
+        },
+        {
+          "info": {
+            "name": "Get All Events Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gateway.attomdata.com/allevents/detail",
+            "params": [
+              {
+                "name": "AttomID",
+                "value": "145423726",
+                "type": "query",
+                "description": "ATTOM property identifier."
+              },
+              {
+                "name": "address",
+                "value": "4529 Winona Court, Denver, CO 80212",
+                "type": "query",
+                "description": "Full street address as a single string."
+              },
+              {
+                "name": "address1",
+                "value": "4529 Winona Court",
+                "type": "query",
+                "description": "Street component of the property address."
+              },
+              {
+                "name": "address2",
+                "value": "Denver, CO 80212",
+                "type": "query",
+                "description": "City, state, and ZIP component of the property address."
+              }
+            ]
+          },
+          "docs": "Combined detail of assessment, AVM, and sales events for a property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

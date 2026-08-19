@@ -1,0 +1,155 @@
+{
+  "item": [
+    {
+      "id": "ab4007b0-39be-482e-ba54-bc0dbeb2a50d",
+      "name": "Hierarchy",
+      "description": {
+        "content": "Geographic hierarchy lookup from coordinates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbbc0b8d-840c-41dc-9398-d022801fdd34",
+          "name": "Lookup Geographic Hierarchy",
+          "request": {
+            "name": "Lookup Geographic Hierarchy",
+            "description": {
+              "content": "Return the geographic hierarchy (state, county, CBSA, ZIP, neighborhood) for a latitude/longitude.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "areaapi",
+                "area",
+                "hierarchy",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<float>",
+                  "description": "(Required) Latitude of the location."
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<float>",
+                  "description": "(Required) Longitude of the location."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e8d8178-1a22-4a1c-9ce6-41a5ca8e9467",
+              "name": "Geographic hierarchy envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "areaapi",
+                    "area",
+                    "hierarchy",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "latitude",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 9024,\n    \"msg\": \"string\",\n    \"total\": 5303\n  },\n  \"response\": {\n    \"hierarchy\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geoTypeAbbreviation\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geoTypeAbbreviation\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a8dd5c4e-16da-45f4-a909-b3700c627693",
+    "name": "ATTOM Area All Events Hierarchy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

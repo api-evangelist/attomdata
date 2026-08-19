@@ -1,0 +1,571 @@
+{
+  "item": [
+    {
+      "id": "e838c8b0-c18d-448e-9a46-9548ef761ccf",
+      "name": "Sale",
+      "description": {
+        "content": "Sales transactions, sales history, and comparable sales.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10b37a29-dc7e-4fb2-bcbf-1d8e954edae6",
+          "name": "Get Sale Snapshot",
+          "request": {
+            "name": "Get Sale Snapshot",
+            "description": {
+              "content": "Most-recent sale event for a property (compact).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sale",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e86491d3-575d-4188-801a-88969a0e8eb5",
+              "name": "Sale envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sale",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 9010,\n    \"msg\": \"string\",\n    \"total\": 2596,\n    \"page\": 7622,\n    \"pagesize\": 8998\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 2349,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 6576\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 1751,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 2633,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 5624.5044045516615\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 6157,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 2361\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 4319,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 7718,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 5041.897394968942\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82269555-5173-48ec-9b23-129460e52fa7",
+          "name": "Get Sale Detail",
+          "request": {
+            "name": "Get Sale Detail",
+            "description": {
+              "content": "Most-recent sale event with full transaction, deed, and recording attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sale",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7c16ca7-6702-4e4d-9f85-dcb8209b596c",
+              "name": "Sale envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sale",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8412,\n    \"msg\": \"string\",\n    \"total\": 5509,\n    \"page\": 4766,\n    \"pagesize\": 6130\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 1195,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 2699\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 7692,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 3026,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 2915.933573667797\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 3469,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 7013\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 2364,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 2285,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 7989.622512219448\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "caf21c09-ff5c-4bff-b2c7-201483a89f76",
+          "name": "Get Sales History Snapshot",
+          "request": {
+            "name": "Get Sales History Snapshot",
+            "description": {
+              "content": "Compact list of historical sale events for a property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "saleshistory",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf7f12db-2e43-4e6b-baee-dfe72fd72699",
+              "name": "Sale envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "saleshistory",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8412,\n    \"msg\": \"string\",\n    \"total\": 5509,\n    \"page\": 4766,\n    \"pagesize\": 6130\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 1195,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 2699\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 7692,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 3026,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 2915.933573667797\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 3469,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 7013\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 2364,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 2285,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 7989.622512219448\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d11ee72b-3dc4-42a6-9d69-cc5ef269b3be",
+          "name": "Get Sales History Detail",
+          "request": {
+            "name": "Get Sales History Detail",
+            "description": {
+              "content": "Detailed list of historical sale events for a property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "saleshistory",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e10166d2-224b-41e1-8069-adb92b509016",
+              "name": "Sale envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "saleshistory",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8412,\n    \"msg\": \"string\",\n    \"total\": 5509,\n    \"page\": 4766,\n    \"pagesize\": 6130\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 1195,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 2699\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 7692,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 3026,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 2915.933573667797\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 3469,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 7013\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 2364,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 2285,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 7989.622512219448\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e58eb7f8-c846-4961-a370-54587aac890b",
+          "name": "Get Sales Comparables",
+          "request": {
+            "name": "Get Sales Comparables",
+            "description": {
+              "content": "Return comparable sales (comps) for a subject property by street and city/state/ZIP.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "salescomparables",
+                "address",
+                ":street",
+                ":citystatezip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "street",
+                  "description": "(Required) Street component of the subject address."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "citystatezip",
+                  "description": "(Required) City, state, and ZIP component of the subject address."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4e61014-8d49-40d5-a94f-1d0ba036b1ba",
+              "name": "Sale envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "salescomparables",
+                    "address",
+                    ":street",
+                    ":citystatezip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "street",
+                      "description": "(Required) Street component of the subject address."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "citystatezip",
+                      "description": "(Required) City, state, and ZIP component of the subject address."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 8412,\n    \"msg\": \"string\",\n    \"total\": 5509,\n    \"page\": 4766,\n    \"pagesize\": 6130\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 1195,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 2699\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 7692,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 3026,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 2915.933573667797\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 3469,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 7013\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"sale\": {\n        \"amount\": {\n          \"saleamt\": 2364,\n          \"salecode\": \"string\",\n          \"saledisclosuretype\": 2285,\n          \"saledocnum\": \"string\",\n          \"saledocType\": \"string\",\n          \"saletranstype\": \"string\"\n        },\n        \"calculation\": {\n          \"pricepersizeunit\": 7989.622512219448\n        },\n        \"salesearchdate\": \"string\",\n        \"saleTransDate\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "09b3e27c-7661-4b01-995f-287ec8014618",
+    "name": "ATTOM Area All Events Sale API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

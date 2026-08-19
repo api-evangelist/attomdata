@@ -1,0 +1,153 @@
+{
+  "item": [
+    {
+      "id": "f1c9cff0-8682-4016-99b3-bc63f5392ccc",
+      "name": "Location",
+      "description": {
+        "content": "Resolve a location by geoIdV4.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "787bb3fc-7bd4-4cf4-924f-37a1ea44366a",
+          "name": "Lookup Location By GeoIdV4",
+          "request": {
+            "name": "Lookup Location By GeoIdV4",
+            "description": {
+              "content": "Resolve a geoIdV4 plus optional geography-type abbreviation to a location record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "location",
+                "lookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "geoIdV4",
+                  "value": "<string>",
+                  "description": "(Required) ATTOM v4 geography identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "geographyTypeAbbreviation",
+                  "value": "<string>",
+                  "description": "Two-letter geography-type abbreviation (ZI ZIP, ND neighborhood, CO county, ST state)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "868b1dfc-0445-4821-a19b-afd3dee078be",
+              "name": "Location envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "location",
+                    "lookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "geoIdV4",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographyTypeAbbreviation",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 2383,\n    \"msg\": \"string\",\n    \"total\": 1562\n  },\n  \"response\": {\n    \"results\": [\n      {\n        \"geoIdV4\": \"string\",\n        \"geographyTypeAbbreviation\": \"string\",\n        \"name\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"boundary\": {}\n      },\n      {\n        \"geoIdV4\": \"string\",\n        \"geographyTypeAbbreviation\": \"string\",\n        \"name\": \"string\",\n        \"countrySubd\": \"string\",\n        \"country\": \"string\",\n        \"boundary\": {}\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a88a2b8-05e8-4f39-8ba1-e8364340726b",
+    "name": "ATTOM Area All Events Location API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

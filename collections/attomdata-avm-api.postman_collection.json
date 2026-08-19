@@ -1,0 +1,559 @@
+{
+  "item": [
+    {
+      "id": "a5a84753-4563-4baf-bc15-4dc16334febc",
+      "name": "AVM",
+      "description": {
+        "content": "Automated Valuation Model — current AVM, AVM history, and rental AVM.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75a1b693-e26f-4dd3-acf2-a09deb259c2b",
+          "name": "Get ATTOM AVM Detail",
+          "request": {
+            "name": "Get ATTOM AVM Detail",
+            "description": {
+              "content": "Return ATTOM Automated Valuation Model (AVM) value, confidence score, and value range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "attomavm",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3c40d74-3e6c-4b7a-8617-6264de519d97",
+              "name": "AVM envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "attomavm",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 4894,\n    \"msg\": \"string\",\n    \"total\": 5564,\n    \"page\": 2116,\n    \"pagesize\": 3720\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 919,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 6778\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 567,\n          \"value\": 706,\n          \"high\": 2690,\n          \"low\": 6259,\n          \"valueRange\": 36,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 8334\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 3871,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 5489\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 9985,\n          \"value\": 7528,\n          \"high\": 5465,\n          \"low\": 3516,\n          \"valueRange\": 610,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 5997\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d384b37-76b8-4c54-a8ae-a556d0548829",
+          "name": "Get AVM Snapshot",
+          "request": {
+            "name": "Get AVM Snapshot",
+            "description": {
+              "content": "Compact AVM record for a property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "avm",
+                "snapshot"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98941264-6247-4f79-b70d-e97667966236",
+              "name": "AVM envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "avm",
+                    "snapshot"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 6287,\n    \"msg\": \"string\",\n    \"total\": 8747,\n    \"page\": 5664,\n    \"pagesize\": 2212\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 4471,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 4557\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 7830,\n          \"value\": 359,\n          \"high\": 8215,\n          \"low\": 7391,\n          \"valueRange\": 6195,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9117\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 4744,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 9424\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 9805,\n          \"value\": 9451,\n          \"high\": 33,\n          \"low\": 4474,\n          \"valueRange\": 2389,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9304\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d168b6bf-4c2a-44c6-8369-62581bb25a1d",
+          "name": "Get AVM Detail",
+          "request": {
+            "name": "Get AVM Detail",
+            "description": {
+              "content": "Detailed AVM record with confidence band and as-of date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "avm",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd5e16f2-866d-4d77-b2a6-e7427e66b200",
+              "name": "AVM envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "avm",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 6287,\n    \"msg\": \"string\",\n    \"total\": 8747,\n    \"page\": 5664,\n    \"pagesize\": 2212\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 4471,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 4557\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 7830,\n          \"value\": 359,\n          \"high\": 8215,\n          \"low\": 7391,\n          \"valueRange\": 6195,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9117\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 4744,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 9424\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 9805,\n          \"value\": 9451,\n          \"high\": 33,\n          \"low\": 4474,\n          \"valueRange\": 2389,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9304\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0610e639-4213-4966-825d-ec61b510a819",
+          "name": "Get AVM History",
+          "request": {
+            "name": "Get AVM History",
+            "description": {
+              "content": "Historical AVM valuations for a property across multiple as-of dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "avmhistory",
+                "detail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d4f5c61-2449-4375-8e00-6c23683a2f7e",
+              "name": "AVM envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "avmhistory",
+                    "detail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 6287,\n    \"msg\": \"string\",\n    \"total\": 8747,\n    \"page\": 5664,\n    \"pagesize\": 2212\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 4471,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 4557\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 7830,\n          \"value\": 359,\n          \"high\": 8215,\n          \"low\": 7391,\n          \"valueRange\": 6195,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9117\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 4744,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 9424\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 9805,\n          \"value\": 9451,\n          \"high\": 33,\n          \"low\": 4474,\n          \"valueRange\": 2389,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9304\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c4c67dd-e551-429c-81db-a3bfcaaa7263",
+          "name": "Get Rental AVM",
+          "request": {
+            "name": "Get Rental AVM",
+            "description": {
+              "content": "Estimated monthly rent for a property using ATTOM's rental AVM model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "valuation",
+                "rentalavm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "AttomID",
+                  "value": "<string>",
+                  "description": "ATTOM property identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "<string>",
+                  "description": "Full street address as a single string."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9623c93f-0340-490c-96e5-dc96fa7e9360",
+              "name": "AVM envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "valuation",
+                    "rentalavm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "AttomID",
+                      "value": "145423726"
+                    },
+                    {
+                      "key": "address",
+                      "value": "4529 Winona Court, Denver, CO 80212"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 6287,\n    \"msg\": \"string\",\n    \"total\": 8747,\n    \"page\": 5664,\n    \"pagesize\": 2212\n  },\n  \"property\": [\n    {\n      \"identifier\": {\n        \"Id\": 4471,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 4557\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 7830,\n          \"value\": 359,\n          \"high\": 8215,\n          \"low\": 7391,\n          \"valueRange\": 6195,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9117\n        }\n      }\n    },\n    {\n      \"identifier\": {\n        \"Id\": 4744,\n        \"fips\": \"string\",\n        \"apn\": \"string\",\n        \"attomId\": 9424\n      },\n      \"address\": {\n        \"country\": \"string\",\n        \"countrySubd\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"locality\": \"string\",\n        \"matchCode\": \"string\",\n        \"oneLine\": \"string\",\n        \"postal1\": \"string\",\n        \"postal2\": \"string\",\n        \"postal3\": \"string\"\n      },\n      \"avm\": {\n        \"amount\": {\n          \"scr\": 9805,\n          \"value\": 9451,\n          \"high\": 33,\n          \"low\": 4474,\n          \"valueRange\": 2389,\n          \"confidence\": \"string\"\n        },\n        \"eventDate\": \"string\",\n        \"AVMModel\": {\n          \"FSDscore\": 9304\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d88ce509-a397-4a6f-ab92-27aaafc2b804",
+    "name": "ATTOM Area All Events AVM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}

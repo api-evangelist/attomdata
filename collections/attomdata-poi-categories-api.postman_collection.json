@@ -1,0 +1,165 @@
+{
+  "item": [
+    {
+      "id": "1d7c4838-a4c7-4498-9100-63a7e68b0a68",
+      "name": "POI Categories",
+      "description": {
+        "content": "Lookup of POI categories, lines of business, and industries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9fa3ee0-1dc4-4845-a699-ded191156c6b",
+          "name": "Lookup POI Categories",
+          "request": {
+            "name": "Lookup POI Categories",
+            "description": {
+              "content": "Look up POI category metadata by category name, line of business, or industry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v4",
+                "neighborhood",
+                "poi",
+                "categorylookup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Category name to look up."
+                },
+                {
+                  "disabled": false,
+                  "key": "lineofbusiness",
+                  "value": "<string>",
+                  "description": "Line-of-business code or name."
+                },
+                {
+                  "disabled": false,
+                  "key": "industry",
+                  "value": "<string>",
+                  "description": "Industry code or name."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26b8dab7-9890-42c6-9cc6-ba2ddfdd0fa0",
+              "name": "Category lookup envelope.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "neighborhood",
+                    "poi",
+                    "categorylookup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lineofbusiness",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "industry",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "apikey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": {\n    \"version\": \"string\",\n    \"code\": 5120,\n    \"msg\": \"string\",\n    \"total\": 2566\n  },\n  \"response\": {\n    \"categories\": [\n      {\n        \"category\": \"string\",\n        \"lineOfBusiness\": \"string\",\n        \"industry\": \"string\",\n        \"code\": \"string\"\n      },\n      {\n        \"category\": \"string\",\n        \"lineOfBusiness\": \"string\",\n        \"industry\": \"string\",\n        \"code\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gateway.attomdata.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "apikey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a3164b5d-ee05-4671-9f5c-b78cc676097b",
+    "name": "ATTOM Area All Events POI Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.\nstates, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a\nlatitude/longitude to a geographic hierarchy, list counties within a state,\nfetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography\nidentifier (geoIdV4) to its location metadata.\n\n\nContact Support:\n Name: ATTOM Data Customer Care\n Email: datacustomercare@attomdata.com",
+      "type": "text/plain"
+    }
+  }
+}
