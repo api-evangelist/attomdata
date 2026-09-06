@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ATTOM Area All Events AVM API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
@@ -96,38 +96,6 @@ paths:
           $ref: '#/components/responses/AvmResponse'
 components:
   schemas:
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    AvmEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              avm:
-                $ref: '#/components/schemas/AVM'
     Address:
       type: object
       properties:
@@ -151,16 +119,21 @@ components:
           type: string
         postal3:
           type: string
-    Identifier:
+    Status:
       type: object
+      description: ATTOM standard response status block.
       properties:
-        Id:
+        version:
+          type: string
+        code:
           type: integer
-        fips:
+        msg:
           type: string
-        apn:
-          type: string
-        attomId:
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
           type: integer
     AVM:
       type: object
@@ -187,15 +160,41 @@ components:
           properties:
             FSDscore:
               type: integer
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    AvmEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              avm:
+                $ref: '#/components/schemas/AVM'
+  responses:
+    AvmResponse:
+      description: AVM envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AvmEnvelope'
   parameters:
-    AddressQuery:
-      name: address
-      in: query
-      required: false
-      description: Full street address as a single string.
-      schema:
-        type: string
-      example: 4529 Winona Court, Denver, CO 80212
     AttomIDQuery:
       name: AttomID
       in: query
@@ -204,13 +203,14 @@ components:
       schema:
         type: string
       example: '145423726'
-  responses:
-    AvmResponse:
-      description: AVM envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AvmEnvelope'
+    AddressQuery:
+      name: address
+      in: query
+      required: false
+      description: Full street address as a single string.
+      schema:
+        type: string
+      example: 4529 Winona Court, Denver, CO 80212
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

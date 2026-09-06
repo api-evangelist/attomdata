@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ATTOM Area All Events Hierarchy API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
@@ -72,6 +72,15 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/HierarchyLevel'
+    HierarchyLevel:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        geoTypeAbbreviation:
+          type: string
+        name:
+          type: string
     Status:
       type: object
       properties:
@@ -83,15 +92,6 @@ components:
           type: string
         total:
           type: integer
-    HierarchyLevel:
-      type: object
-      properties:
-        geoIdV4:
-          type: string
-        geoTypeAbbreviation:
-          type: string
-        name:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

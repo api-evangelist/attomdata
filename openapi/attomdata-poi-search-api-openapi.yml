@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ATTOM Area All Events POI Search API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
@@ -94,6 +94,14 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -105,26 +113,6 @@ components:
           type: string
         total:
           type: integer
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
-    PoiEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Poi'
     Poi:
       type: object
       properties:
@@ -155,6 +143,18 @@ components:
           type: string
         Industry:
           type: string
+    PoiEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Poi'
   responses:
     ErrorResponse:
       description: ATTOM error envelope.

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ATTOM Area All Events Community API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
@@ -56,52 +56,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    Status:
-      type: object
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-    Commute:
-      type: object
-      properties:
-        avgCommuteMinutes:
-          type: number
-        commuteByCarPercent:
-          type: number
-        commuteByPublicTransitPercent:
-          type: number
-    Weather:
-      type: object
-      properties:
-        annualAvgPrecipitation:
-          type: number
-        annualAvgSnowfall:
-          type: number
-        januaryAvgLowTemp:
-          type: number
-        julyAvgHighTemp:
-          type: number
-    Demographics:
-      type: object
-      properties:
-        population:
-          type: integer
-        households:
-          type: integer
-        medianAge:
-          type: number
-        medianHouseholdIncome:
-          type: integer
-        ownerOccupiedPercent:
-          type: number
-        renterOccupiedPercent:
-          type: number
     CommunityEnvelope:
       type: object
       properties:
@@ -112,6 +66,23 @@ components:
           properties:
             community:
               $ref: '#/components/schemas/Community'
+    Commute:
+      type: object
+      properties:
+        avgCommuteMinutes:
+          type: number
+        commuteByCarPercent:
+          type: number
+        commuteByPublicTransitPercent:
+          type: number
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     Community:
       type: object
       properties:
@@ -127,14 +98,28 @@ components:
           $ref: '#/components/schemas/Weather'
         commute:
           $ref: '#/components/schemas/Commute'
-    Error:
+    Weather:
       type: object
       properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
+        annualAvgPrecipitation:
+          type: number
+        annualAvgSnowfall:
+          type: number
+        januaryAvgLowTemp:
+          type: number
+        julyAvgHighTemp:
+          type: number
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
     Crime:
       type: object
       properties:
@@ -143,6 +128,21 @@ components:
         violentCrimeIndex:
           type: number
         propertyCrimeIndex:
+          type: number
+    Demographics:
+      type: object
+      properties:
+        population:
+          type: integer
+        households:
+          type: integer
+        medianAge:
+          type: number
+        medianHouseholdIncome:
+          type: integer
+        ownerOccupiedPercent:
+          type: number
+        renterOccupiedPercent:
           type: number
   responses:
     ErrorResponse:

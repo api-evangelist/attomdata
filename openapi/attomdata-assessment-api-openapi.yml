@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ATTOM Area All Events Assessment API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
@@ -69,60 +69,14 @@ paths:
         '200':
           $ref: '#/components/responses/AssessmentResponse'
 components:
+  responses:
+    AssessmentResponse:
+      description: Assessment envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssessmentEnvelope'
   schemas:
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    Owner:
-      type: object
-      properties:
-        corporateindicator:
-          type: string
-        owner1:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        owner2:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        mailingaddressoneline:
-          type: string
-    AssessmentEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              assessment:
-                $ref: '#/components/schemas/Assessment'
     Address:
       type: object
       properties:
@@ -146,6 +100,38 @@ components:
           type: string
         postal3:
           type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
+    AssessmentEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              assessment:
+                $ref: '#/components/schemas/Assessment'
     Identifier:
       type: object
       properties:
@@ -198,15 +184,28 @@ components:
               type: integer
         owner:
           $ref: '#/components/schemas/Owner'
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
   parameters:
-    AddressQuery:
-      name: address
-      in: query
-      required: false
-      description: Full street address as a single string.
-      schema:
-        type: string
-      example: 4529 Winona Court, Denver, CO 80212
     AttomIDQuery:
       name: AttomID
       in: query
@@ -215,13 +214,14 @@ components:
       schema:
         type: string
       example: '145423726'
-  responses:
-    AssessmentResponse:
-      description: Assessment envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AssessmentEnvelope'
+    AddressQuery:
+      name: address
+      in: query
+      required: false
+      description: Full street address as a single string.
+      schema:
+        type: string
+      example: 4529 Winona Court, Denver, CO 80212
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

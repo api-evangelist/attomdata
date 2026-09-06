@@ -43,6 +43,26 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "attomdata-all-events-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-assessment-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-avm-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-boundary-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-building-permits-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-community-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-hierarchy-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-home-equity-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-location-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-lookup-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-parcel-tiles-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-poi-categories-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-poi-search-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-pre-foreclosure-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-property-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-sale-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-sales-trends-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "attomdata-school-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

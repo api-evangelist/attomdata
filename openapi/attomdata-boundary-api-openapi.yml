@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: ATTOM Area All Events Boundary API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
@@ -76,6 +76,30 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
+    BoundaryEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - FeatureCollection
+            features:
+              type: array
+              items:
+                $ref: '#/components/schemas/Boundary'
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -109,30 +133,6 @@ components:
                 type: array
         properties:
           type: object
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
-    BoundaryEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - FeatureCollection
-            features:
-              type: array
-              items:
-                $ref: '#/components/schemas/Boundary'
   responses:
     ErrorResponse:
       description: ATTOM error envelope.
