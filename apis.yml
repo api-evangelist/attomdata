@@ -848,10 +848,16 @@ common:
   url: vocabulary/attomdata-vocabulary.yml
 - type: SpectralRules
   url: rules/attomdata-rules.yml
+- name: MCP Documentation
+  url: https://www.attomdata.com/news/company-news/delivery-solutions/connecting-ai-agents-to-property-data-with-mcp/
+  type: MCPDocumentation
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-09-15'
 specificationVersion: '0.23'
+description: ATTOM is a property-data provider. Its API covers assessments, automated valuation models,
+  sales and transaction history, building permits, foreclosures, owner and boundary data, school and community
+  attributes, and property events.
