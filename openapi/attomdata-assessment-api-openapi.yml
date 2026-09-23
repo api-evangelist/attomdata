@@ -1,17 +1,9 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Assessment API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM Property Assessment API
+  description: 'ATTOM Property API delivers comprehensive property intelligence for more than
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
-
-    latitude/longitude to a geographic hierarchy, list counties within a state,
-
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
-
-    identifier (geoIdV4) to its location metadata.
-
-    '
+    160 million U.S.'
   version: v1.0.0
   contact:
     name: ATTOM Data Customer Care
@@ -21,8 +13,8 @@ info:
     name: ATTOM Data Terms of Use
     url: https://www.attomdata.com/terms-of-use/
 servers:
-- url: https://api.gateway.attomdata.com
-  description: ATTOM API Production Gateway
+- url: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  description: ATTOM Property API Production Gateway
 security:
 - ApiKeyAuth: []
 tags:
@@ -69,14 +61,23 @@ paths:
         '200':
           $ref: '#/components/responses/AssessmentResponse'
 components:
-  responses:
-    AssessmentResponse:
-      description: Assessment envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AssessmentEnvelope'
   schemas:
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Address:
       type: object
       properties:
@@ -100,38 +101,6 @@ components:
           type: string
         postal3:
           type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    AssessmentEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              assessment:
-                $ref: '#/components/schemas/Assessment'
     Identifier:
       type: object
       properties:
@@ -205,15 +174,23 @@ components:
               type: string
         mailingaddressoneline:
           type: string
+    AssessmentEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              assessment:
+                $ref: '#/components/schemas/Assessment'
   parameters:
-    AttomIDQuery:
-      name: AttomID
-      in: query
-      required: false
-      description: ATTOM property identifier.
-      schema:
-        type: string
-      example: '145423726'
     AddressQuery:
       name: address
       in: query
@@ -222,9 +199,30 @@ components:
       schema:
         type: string
       example: 4529 Winona Court, Denver, CO 80212
+    AttomIDQuery:
+      name: AttomID
+      in: query
+      required: false
+      description: ATTOM property identifier.
+      schema:
+        type: string
+      example: '145423726'
+  responses:
+    AssessmentResponse:
+      description: Assessment envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssessmentEnvelope'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: 'ATTOM-issued API key. Obtain a free 30-day trial key at
+
+        https://api.developer.attomdata.com/signup. Pass the key in the `apikey`
+
+        request header on every call.
+
+        '

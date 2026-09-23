@@ -1,18 +1,14 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events POI Categories API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM POI POI Categories API
+  description: 'ATTOM Points of Interest (POI) API returns businesses and points of interest
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+    by point (lat/lon + radius) or by address. Supports 120+ business categories
 
-    latitude/longitude to a geographic hierarchy, list counties within a state,
+    including restaurants, banks, retail, services, and recreation, with optional
 
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
-
-    identifier (geoIdV4) to its location metadata.
-
-    '
-  version: v1.0.0
+    filters by line of business, industry, and category name.'
+  version: v4
   contact:
     name: ATTOM Data Customer Care
     email: datacustomercare@attomdata.com
@@ -103,4 +99,4 @@ components:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: ATTOM-issued API key.

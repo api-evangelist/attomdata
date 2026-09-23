@@ -1,18 +1,16 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Location API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM Community Location API
+  description: 'ATTOM Community API returns neighborhood-level community profile data including
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+    demographics, population, household income, crime indices, weather, commute
 
-    latitude/longitude to a geographic hierarchy, list counties within a state,
+    times, education, and quality-of-life metrics. Use `geoIdV4` and optional
 
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
+    geography-type abbreviation to resolve community profiles for neighborhoods,
 
-    identifier (geoIdV4) to its location metadata.
-
-    '
-  version: v1.0.0
+    ZIPs, counties, and other geographies.'
+  version: v4.0.0
   contact:
     name: ATTOM Data Customer Care
     email: datacustomercare@attomdata.com
@@ -108,4 +106,4 @@ components:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: ATTOM-issued API key.

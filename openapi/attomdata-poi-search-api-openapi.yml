@@ -1,18 +1,14 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events POI Search API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM POI POI Search API
+  description: 'ATTOM Points of Interest (POI) API returns businesses and points of interest
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+    by point (lat/lon + radius) or by address. Supports 120+ business categories
 
-    latitude/longitude to a geographic hierarchy, list counties within a state,
+    including restaurants, banks, retail, services, and recreation, with optional
 
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
-
-    identifier (geoIdV4) to its location metadata.
-
-    '
-  version: v1.0.0
+    filters by line of business, industry, and category name.'
+  version: v4
   contact:
     name: ATTOM Data Customer Care
     email: datacustomercare@attomdata.com
@@ -36,9 +32,7 @@ paths:
 
         plus a `radius`. Optional filters narrow results to categories, lines of business,
 
-        or specific industries.
-
-        '
+        or specific industries.'
       operationId: searchPois
       tags:
       - POI Search
@@ -93,15 +87,14 @@ paths:
         '401':
           $ref: '#/components/responses/ErrorResponse'
 components:
+  responses:
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -113,6 +106,18 @@ components:
           type: string
         total:
           type: integer
+    PoiEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Poi'
     Poi:
       type: object
       properties:
@@ -143,28 +148,17 @@ components:
           type: string
         Industry:
           type: string
-    PoiEnvelope:
+    Error:
       type: object
       properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
+        Response:
           type: object
           properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Poi'
-  responses:
-    ErrorResponse:
-      description: ATTOM error envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+            status:
+              $ref: '#/components/schemas/Status'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: ATTOM-issued API key.

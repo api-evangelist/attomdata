@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Hierarchy API
+  title: ATTOM Area Hierarchy API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
 
     states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
@@ -9,9 +9,7 @@ info:
 
     fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
 
-    identifier (geoIdV4) to its location metadata.
-
-    '
+    identifier (geoIdV4) to its location metadata.'
   version: v1.0.0
   contact:
     name: ATTOM Data Customer Care
@@ -60,6 +58,15 @@ paths:
                 $ref: '#/components/schemas/HierarchyEnvelope'
 components:
   schemas:
+    HierarchyLevel:
+      type: object
+      properties:
+        geoIdV4:
+          type: string
+        geoTypeAbbreviation:
+          type: string
+        name:
+          type: string
     HierarchyEnvelope:
       type: object
       properties:
@@ -72,15 +79,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/HierarchyLevel'
-    HierarchyLevel:
-      type: object
-      properties:
-        geoIdV4:
-          type: string
-        geoTypeAbbreviation:
-          type: string
-        name:
-          type: string
     Status:
       type: object
       properties:

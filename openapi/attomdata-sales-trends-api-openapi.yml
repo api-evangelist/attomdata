@@ -1,17 +1,9 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Sales Trends API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM Property Sales Trends API
+  description: 'ATTOM Property API delivers comprehensive property intelligence for more than
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
-
-    latitude/longitude to a geographic hierarchy, list counties within a state,
-
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
-
-    identifier (geoIdV4) to its location metadata.
-
-    '
+    160 million U.S.'
   version: v1.0.0
   contact:
     name: ATTOM Data Customer Care
@@ -21,8 +13,8 @@ info:
     name: ATTOM Data Terms of Use
     url: https://www.attomdata.com/terms-of-use/
 servers:
-- url: https://api.gateway.attomdata.com
-  description: ATTOM API Production Gateway
+- url: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  description: ATTOM Property API Production Gateway
 security:
 - ApiKeyAuth: []
 tags:
@@ -65,28 +57,32 @@ components:
           schema:
             $ref: '#/components/schemas/SaleEnvelope'
   schemas:
-    Address:
+    Sale:
       type: object
       properties:
-        country:
+        amount:
+          type: object
+          properties:
+            saleamt:
+              type: integer
+            salecode:
+              type: string
+            saledisclosuretype:
+              type: integer
+            saledocnum:
+              type: string
+            saledocType:
+              type: string
+            saletranstype:
+              type: string
+        calculation:
+          type: object
+          properties:
+            pricepersizeunit:
+              type: number
+        salesearchdate:
           type: string
-        countrySubd:
-          type: string
-        line1:
-          type: string
-        line2:
-          type: string
-        locality:
-          type: string
-        matchCode:
-          type: string
-        oneLine:
-          type: string
-        postal1:
-          type: string
-        postal2:
-          type: string
-        postal3:
+        saleTransDate:
           type: string
     Status:
       type: object
@@ -131,36 +127,38 @@ components:
           type: string
         attomId:
           type: integer
-    Sale:
+    Address:
       type: object
       properties:
-        amount:
-          type: object
-          properties:
-            saleamt:
-              type: integer
-            salecode:
-              type: string
-            saledisclosuretype:
-              type: integer
-            saledocnum:
-              type: string
-            saledocType:
-              type: string
-            saletranstype:
-              type: string
-        calculation:
-          type: object
-          properties:
-            pricepersizeunit:
-              type: number
-        salesearchdate:
+        country:
           type: string
-        saleTransDate:
+        countrySubd:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        locality:
+          type: string
+        matchCode:
+          type: string
+        oneLine:
+          type: string
+        postal1:
+          type: string
+        postal2:
+          type: string
+        postal3:
           type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: 'ATTOM-issued API key. Obtain a free 30-day trial key at
+
+        https://api.developer.attomdata.com/signup. Pass the key in the `apikey`
+
+        request header on every call.
+
+        '

@@ -1,17 +1,9 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Property API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM Property API
+  description: 'ATTOM Property API delivers comprehensive property intelligence for more than
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
-
-    latitude/longitude to a geographic hierarchy, list counties within a state,
-
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
-
-    identifier (geoIdV4) to its location metadata.
-
-    '
+    160 million U.S.'
   version: v1.0.0
   contact:
     name: ATTOM Data Customer Care
@@ -21,8 +13,8 @@ info:
     name: ATTOM Data Terms of Use
     url: https://www.attomdata.com/terms-of-use/
 servers:
-- url: https://api.gateway.attomdata.com
-  description: ATTOM API Production Gateway
+- url: https://api.gateway.attomdata.com/propertyapi/v1.0.0
+  description: ATTOM Property API Production Gateway
 security:
 - ApiKeyAuth: []
 tags:
@@ -225,14 +217,30 @@ paths:
           $ref: '#/components/responses/PropertyResponse'
 components:
   schemas:
-    Error:
+    PropertyEnvelope:
       type: object
       properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Summary:
+      type: object
+      properties:
+        absenteeInd:
+          type: string
+        propclass:
+          type: string
+        propsubtype:
+          type: string
+        proptype:
+          type: string
+        yearbuilt:
+          type: integer
+        propLandUse:
+          type: string
     Mortgage:
       type: object
       properties:
@@ -254,76 +262,6 @@ components:
               type: string
             trustDeedDocumentNumber:
               type: string
-    Address:
-      type: object
-      properties:
-        country:
-          type: string
-        countrySubd:
-          type: string
-        line1:
-          type: string
-        line2:
-          type: string
-        locality:
-          type: string
-        matchCode:
-          type: string
-        oneLine:
-          type: string
-        postal1:
-          type: string
-        postal2:
-          type: string
-        postal3:
-          type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    Location:
-      type: object
-      properties:
-        accuracy:
-          type: string
-        latitude:
-          type: string
-        longitude:
-          type: string
-        distance:
-          type: number
-        geoid:
-          type: string
-        geoIdV4:
-          type: object
-    PropertyListEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Vintage:
-      type: object
-      properties:
-        lastModified:
-          type: string
-        pubDate:
-          type: string
     Owner:
       type: object
       properties:
@@ -345,6 +283,50 @@ components:
               type: string
         mailingaddressoneline:
           type: string
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    PropertyListEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Building:
       type: object
       properties:
@@ -386,52 +368,51 @@ components:
               type: integer
             yearbuilt:
               type: integer
-    PropertyEnvelope:
+    Address:
       type: object
       properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Summary:
+        country:
+          type: string
+        countrySubd:
+          type: string
+        line1:
+          type: string
+        line2:
+          type: string
+        locality:
+          type: string
+        matchCode:
+          type: string
+        oneLine:
+          type: string
+        postal1:
+          type: string
+        postal2:
+          type: string
+        postal3:
+          type: string
+    Vintage:
       type: object
       properties:
-        absenteeInd:
+        lastModified:
           type: string
-        propclass:
+        pubDate:
           type: string
-        propsubtype:
-          type: string
-        proptype:
-          type: string
-        yearbuilt:
-          type: integer
-        propLandUse:
-          type: string
-    Identifier:
+    Location:
       type: object
       properties:
-        Id:
-          type: integer
-        fips:
+        accuracy:
           type: string
-        apn:
+        latitude:
           type: string
-        attomId:
-          type: integer
-    Lot:
-      type: object
-      properties:
-        lotnum:
+        longitude:
           type: string
-        lotsize1:
+        distance:
           type: number
-        lotsize2:
-          type: number
-        zoningType:
+        geoid:
           type: string
+        geoIdV4:
+          type: object
     Property:
       type: object
       properties:
@@ -455,7 +436,52 @@ components:
           $ref: '#/components/schemas/Mortgage'
         vintage:
           $ref: '#/components/schemas/Vintage'
+    Lot:
+      type: object
+      properties:
+        lotnum:
+          type: string
+        lotsize1:
+          type: number
+        lotsize2:
+          type: number
+        zoningType:
+          type: string
   parameters:
+    AddressQuery:
+      name: address
+      in: query
+      required: false
+      description: Full street address as a single string.
+      schema:
+        type: string
+      example: 4529 Winona Court, Denver, CO 80212
+    AttomIDQuery:
+      name: AttomID
+      in: query
+      required: false
+      description: ATTOM property identifier.
+      schema:
+        type: string
+      example: '145423726'
+    PageSizeQuery:
+      name: pagesize
+      in: query
+      required: false
+      description: Records per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Address2Query:
+      name: address2
+      in: query
+      required: false
+      description: City, state, and ZIP component of the property address.
+      schema:
+        type: string
+      example: Denver, CO 80212
     Address1Query:
       name: address1
       in: query
@@ -473,53 +499,19 @@ components:
         type: integer
         minimum: 1
         default: 1
-    Address2Query:
-      name: address2
-      in: query
-      required: false
-      description: City, state, and ZIP component of the property address.
-      schema:
-        type: string
-      example: Denver, CO 80212
-    PageSizeQuery:
-      name: pagesize
-      in: query
-      required: false
-      description: Records per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    AttomIDQuery:
-      name: AttomID
-      in: query
-      required: false
-      description: ATTOM property identifier.
-      schema:
-        type: string
-      example: '145423726'
-    AddressQuery:
-      name: address
-      in: query
-      required: false
-      description: Full street address as a single string.
-      schema:
-        type: string
-      example: 4529 Winona Court, Denver, CO 80212
   responses:
-    PropertyResponse:
-      description: Property record envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PropertyEnvelope'
     PropertyListResponse:
       description: Paginated list of property records.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/PropertyListEnvelope'
+    PropertyResponse:
+      description: Property record envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PropertyEnvelope'
     ErrorResponse:
       description: ATTOM error envelope.
       content:
@@ -531,4 +523,10 @@ components:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: 'ATTOM-issued API key. Obtain a free 30-day trial key at
+
+        https://api.developer.attomdata.com/signup. Pass the key in the `apikey`
+
+        request header on every call.
+
+        '

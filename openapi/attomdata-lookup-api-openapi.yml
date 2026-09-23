@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Lookup API
+  title: ATTOM Area Lookup API
   description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
 
     states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
@@ -9,9 +9,7 @@ info:
 
     fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
 
-    identifier (geoIdV4) to its location metadata.
-
-    '
+    identifier (geoIdV4) to its location metadata.'
   version: v1.0.0
   contact:
     name: ATTOM Data Customer Care
@@ -217,6 +215,17 @@ components:
               type: string
             longitude:
               type: string
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
     AreaEnvelope:
       type: object
       properties:
@@ -229,17 +238,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Area'
-    Status:
-      type: object
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

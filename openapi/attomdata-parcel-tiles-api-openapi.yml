@@ -1,18 +1,14 @@
 openapi: 3.2.0
 info:
-  title: ATTOM Area All Events Parcel Tiles API
-  description: 'ATTOM Area API provides geographic boundary and hierarchy lookup for U.S.
+  title: ATTOM Parcel Tiles API
+  description: 'ATTOM Parcel Tiles API delivers vector tiles of U.S. parcel boundaries suitable
 
-    states, counties, CBSAs, ZIPs, neighborhoods, and school zones. Resolve a
+    for rendering on web/mobile maps (Mapbox, MapLibre, Leaflet). Tiles are addressed
 
-    latitude/longitude to a geographic hierarchy, list counties within a state,
+    by zoom (z), tile column (x), and tile row (y) and authenticated with an ATTOM
 
-    fetch GeoJSON parcel/area boundaries, and resolve any ATTOM v4 geography
-
-    identifier (geoIdV4) to its location metadata.
-
-    '
-  version: v1.0.0
+    API key.'
+  version: v1
   contact:
     name: ATTOM Data Customer Care
     email: datacustomercare@attomdata.com
@@ -75,14 +71,6 @@ paths:
           description: Tile not available at the requested zoom/position.
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -92,9 +80,17 @@ components:
           type: integer
         msg:
           type: string
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
       in: header
       name: apikey
-      description: ATTOM-issued API key. Pass on every request via the `apikey` header.
+      description: ATTOM-issued API key.
