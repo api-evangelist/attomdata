@@ -27,8 +27,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -65,8 +63,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -103,8 +99,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -141,8 +135,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -179,8 +171,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -217,8 +207,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -255,8 +243,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -293,8 +279,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -331,8 +315,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -369,8 +351,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -407,8 +387,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -445,8 +423,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -483,8 +459,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -521,8 +495,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -559,8 +531,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -597,8 +567,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -635,8 +603,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -673,8 +639,6 @@ apis:
     url: json-ld/attomdata-context.jsonld
   - type: Examples
     url: examples/attom-property-detail-example.json
-  - type: GraphQL
-    url: graphql/attomdata-graphql.md
   - type: JSONSchema
     url: json-schema/attom-area-schema.json
   - type: Examples
@@ -687,7 +651,7 @@ apis:
     url: examples/attom-community-neighborhood-example.json
 name: ATTOM
 tags:
-- Real-Estate
+- Real Estate
 - Property Data
 - Property Intelligence
 - Mortgage
@@ -724,6 +688,7 @@ tags_raw:
 - Insurance
 - Mortgage Technology
 - PropTech
+- Real-Estate
 kind: contract
 deliveryModel:
   model: saas
