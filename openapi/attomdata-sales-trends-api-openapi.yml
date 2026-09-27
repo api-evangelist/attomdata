@@ -84,21 +84,16 @@ components:
           type: string
         saleTransDate:
           type: string
-    Status:
+    Identifier:
       type: object
-      description: ATTOM standard response status block.
       properties:
-        version:
+        Id:
+          type: integer
+        fips:
           type: string
-        code:
-          type: integer
-        msg:
+        apn:
           type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
+        attomId:
           type: integer
     SaleEnvelope:
       type: object
@@ -116,17 +111,6 @@ components:
                 $ref: '#/components/schemas/Address'
               sale:
                 $ref: '#/components/schemas/Sale'
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
     Address:
       type: object
       properties:
@@ -150,6 +134,22 @@ components:
           type: string
         postal3:
           type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

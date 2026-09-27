@@ -35,23 +35,14 @@ paths:
         '200':
           $ref: '#/components/responses/AvmResponse'
 components:
+  responses:
+    AvmResponse:
+      description: AVM envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AvmEnvelope'
   schemas:
-    AvmEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              avm:
-                $ref: '#/components/schemas/AVM'
     AVM:
       type: object
       properties:
@@ -77,22 +68,22 @@ components:
           properties:
             FSDscore:
               type: integer
-    Status:
+    AvmEnvelope:
       type: object
-      description: ATTOM standard response status block.
       properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              avm:
+                $ref: '#/components/schemas/AVM'
     Identifier:
       type: object
       properties:
@@ -127,15 +118,23 @@ components:
           type: string
         postal3:
           type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
   parameters:
-    AddressQuery:
-      name: address
-      in: query
-      required: false
-      description: Full street address as a single string.
-      schema:
-        type: string
-      example: 4529 Winona Court, Denver, CO 80212
     AttomIDQuery:
       name: AttomID
       in: query
@@ -144,13 +143,14 @@ components:
       schema:
         type: string
       example: '145423726'
-  responses:
-    AvmResponse:
-      description: AVM envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AvmEnvelope'
+    AddressQuery:
+      name: address
+      in: query
+      required: false
+      description: Full street address as a single string.
+      schema:
+        type: string
+      example: 4529 Winona Court, Denver, CO 80212
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

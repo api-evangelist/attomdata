@@ -87,25 +87,15 @@ paths:
         '401':
           $ref: '#/components/responses/ErrorResponse'
 components:
-  responses:
-    ErrorResponse:
-      description: ATTOM error envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Status:
+    Error:
       type: object
       properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     PoiEnvelope:
       type: object
       properties:
@@ -148,14 +138,24 @@ components:
           type: string
         Industry:
           type: string
-    Error:
+    Status:
       type: object
       properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+  responses:
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

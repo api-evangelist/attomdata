@@ -193,6 +193,29 @@ paths:
                 $ref: '#/components/schemas/AreaEnvelope'
 components:
   schemas:
+    AreaEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Area'
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
     Area:
       type: object
       properties:
@@ -215,29 +238,6 @@ components:
               type: string
             longitude:
               type: string
-    Status:
-      type: object
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-    AreaEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Area'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

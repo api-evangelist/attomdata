@@ -72,17 +72,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Category'
-    Status:
-      type: object
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
     Category:
       type: object
       properties:
@@ -94,6 +83,17 @@ components:
           type: string
         code:
           type: string
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -63,16 +63,6 @@ components:
           type: number
         commuteByPublicTransitPercent:
           type: number
-    CommunityEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            community:
-              $ref: '#/components/schemas/Community'
     Community:
       type: object
       properties:
@@ -88,6 +78,14 @@ components:
           $ref: '#/components/schemas/Weather'
         commute:
           $ref: '#/components/schemas/Commute'
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     Demographics:
       type: object
       properties:
@@ -103,17 +101,6 @@ components:
           type: number
         renterOccupiedPercent:
           type: number
-    Status:
-      type: object
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
     Weather:
       type: object
       properties:
@@ -125,14 +112,6 @@ components:
           type: number
         julyAvgHighTemp:
           type: number
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
     Crime:
       type: object
       properties:
@@ -142,6 +121,27 @@ components:
           type: number
         propertyCrimeIndex:
           type: number
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    CommunityEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            community:
+              $ref: '#/components/schemas/Community'
   responses:
     ErrorResponse:
       description: ATTOM error envelope.

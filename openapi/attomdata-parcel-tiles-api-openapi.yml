@@ -71,6 +71,14 @@ paths:
           description: Tile not available at the requested zoom/position.
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -80,14 +88,6 @@ components:
           type: integer
         msg:
           type: string
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
