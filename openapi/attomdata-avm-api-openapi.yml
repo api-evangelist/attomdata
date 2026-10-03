@@ -87,14 +87,18 @@ paths:
         '200':
           $ref: '#/components/responses/AvmResponse'
 components:
-  responses:
-    AvmResponse:
-      description: AVM envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AvmEnvelope'
   schemas:
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
     AVM:
       type: object
       properties:
@@ -120,6 +124,22 @@ components:
           properties:
             FSDscore:
               type: integer
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     AvmEnvelope:
       type: object
       properties:
@@ -136,17 +156,6 @@ components:
                 $ref: '#/components/schemas/Address'
               avm:
                 $ref: '#/components/schemas/AVM'
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
     Address:
       type: object
       properties:
@@ -170,22 +179,6 @@ components:
           type: string
         postal3:
           type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
   parameters:
     AttomIDQuery:
       name: AttomID
@@ -203,6 +196,13 @@ components:
       schema:
         type: string
       example: 4529 Winona Court, Denver, CO 80212
+  responses:
+    AvmResponse:
+      description: AVM envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AvmEnvelope'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

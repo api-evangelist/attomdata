@@ -74,22 +74,6 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    BoundaryEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - FeatureCollection
-            features:
-              type: array
-              items:
-                $ref: '#/components/schemas/Boundary'
     Boundary:
       type: object
       properties:
@@ -112,14 +96,6 @@ components:
                 type: array
         properties:
           type: object
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -131,6 +107,30 @@ components:
           type: string
         total:
           type: integer
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    BoundaryEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - FeatureCollection
+            features:
+              type: array
+              items:
+                $ref: '#/components/schemas/Boundary'
   responses:
     ErrorResponse:
       description: ATTOM error envelope.

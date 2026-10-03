@@ -72,17 +72,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Category'
-    Category:
-      type: object
-      properties:
-        category:
-          type: string
-        lineOfBusiness:
-          type: string
-        industry:
-          type: string
-        code:
-          type: string
     Status:
       type: object
       properties:
@@ -94,6 +83,17 @@ components:
           type: string
         total:
           type: integer
+    Category:
+      type: object
+      properties:
+        category:
+          type: string
+        lineOfBusiness:
+          type: string
+        industry:
+          type: string
+        code:
+          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

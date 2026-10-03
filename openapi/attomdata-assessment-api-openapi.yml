@@ -62,6 +62,54 @@ paths:
           $ref: '#/components/responses/AssessmentResponse'
 components:
   schemas:
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Assessment:
       type: object
       properties:
@@ -119,38 +167,6 @@ components:
                 $ref: '#/components/schemas/Address'
               assessment:
                 $ref: '#/components/schemas/Assessment'
-    Owner:
-      type: object
-      properties:
-        corporateindicator:
-          type: string
-        owner1:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        owner2:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        mailingaddressoneline:
-          type: string
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
     Address:
       type: object
       properties:
@@ -174,29 +190,6 @@ components:
           type: string
         postal3:
           type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-  responses:
-    AssessmentResponse:
-      description: Assessment envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/AssessmentEnvelope'
   parameters:
     AttomIDQuery:
       name: AttomID
@@ -214,6 +207,13 @@ components:
       schema:
         type: string
       example: 4529 Winona Court, Denver, CO 80212
+  responses:
+    AssessmentResponse:
+      description: Assessment envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AssessmentEnvelope'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

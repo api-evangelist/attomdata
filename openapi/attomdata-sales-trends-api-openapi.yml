@@ -49,14 +49,34 @@ paths:
         '200':
           $ref: '#/components/responses/SaleResponse'
 components:
-  responses:
-    SaleResponse:
-      description: Sale envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SaleEnvelope'
   schemas:
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Sale:
       type: object
       properties:
@@ -84,17 +104,6 @@ components:
           type: string
         saleTransDate:
           type: string
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
     SaleEnvelope:
       type: object
       properties:
@@ -134,22 +143,13 @@ components:
           type: string
         postal3:
           type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
+  responses:
+    SaleResponse:
+      description: Sale envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SaleEnvelope'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
