@@ -100,17 +100,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Poi'
-    Status:
-      type: object
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
     Error:
       type: object
       properties:
@@ -149,6 +138,17 @@ components:
           type: string
         Industry:
           type: string
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
   responses:
     ErrorResponse:
       description: ATTOM error envelope.

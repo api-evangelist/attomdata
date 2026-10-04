@@ -63,18 +63,6 @@ paths:
                 $ref: '#/components/schemas/LocationEnvelope'
 components:
   schemas:
-    LocationEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -90,6 +78,18 @@ components:
           type: string
         boundary:
           type: object
+    LocationEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Location'
     Status:
       type: object
       properties:

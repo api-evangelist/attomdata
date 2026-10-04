@@ -54,14 +54,20 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    Crime:
+    Demographics:
       type: object
       properties:
-        crimeIndex:
+        population:
+          type: integer
+        households:
+          type: integer
+        medianAge:
           type: number
-        violentCrimeIndex:
+        medianHouseholdIncome:
+          type: integer
+        ownerOccupiedPercent:
           type: number
-        propertyCrimeIndex:
+        renterOccupiedPercent:
           type: number
     Community:
       type: object
@@ -87,17 +93,23 @@ components:
           type: number
         commuteByPublicTransitPercent:
           type: number
-    Weather:
+    Crime:
       type: object
       properties:
-        annualAvgPrecipitation:
+        crimeIndex:
           type: number
-        annualAvgSnowfall:
+        violentCrimeIndex:
           type: number
-        januaryAvgLowTemp:
+        propertyCrimeIndex:
           type: number
-        julyAvgHighTemp:
-          type: number
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
     Status:
       type: object
       properties:
@@ -119,28 +131,16 @@ components:
           properties:
             community:
               $ref: '#/components/schemas/Community'
-    Error:
+    Weather:
       type: object
       properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
-    Demographics:
-      type: object
-      properties:
-        population:
-          type: integer
-        households:
-          type: integer
-        medianAge:
+        annualAvgPrecipitation:
           type: number
-        medianHouseholdIncome:
-          type: integer
-        ownerOccupiedPercent:
+        annualAvgSnowfall:
           type: number
-        renterOccupiedPercent:
+        januaryAvgLowTemp:
+          type: number
+        julyAvgHighTemp:
           type: number
   responses:
     ErrorResponse:

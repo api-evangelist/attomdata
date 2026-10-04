@@ -52,54 +52,63 @@ paths:
         '200':
           $ref: '#/components/responses/PropertyResponse'
 components:
+  parameters:
+    Address2Query:
+      name: address2
+      in: query
+      required: false
+      description: City, state, and ZIP component of the property address.
+      schema:
+        type: string
+      example: Denver, CO 80212
+    AttomIDQuery:
+      name: AttomID
+      in: query
+      required: false
+      description: ATTOM property identifier.
+      schema:
+        type: string
+      example: '145423726'
+    AddressQuery:
+      name: address
+      in: query
+      required: false
+      description: Full street address as a single string.
+      schema:
+        type: string
+      example: 4529 Winona Court, Denver, CO 80212
+    Address1Query:
+      name: address1
+      in: query
+      required: false
+      description: Street component of the property address.
+      schema:
+        type: string
+      example: 4529 Winona Court
   schemas:
-    Summary:
+    Address:
       type: object
       properties:
-        absenteeInd:
+        country:
           type: string
-        propclass:
+        countrySubd:
           type: string
-        propsubtype:
+        line1:
           type: string
-        proptype:
+        line2:
           type: string
-        yearbuilt:
-          type: integer
-        propLandUse:
+        locality:
           type: string
-    Owner:
-      type: object
-      properties:
-        corporateindicator:
+        matchCode:
           type: string
-        owner1:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        owner2:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        mailingaddressoneline:
+        oneLine:
           type: string
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
+        postal1:
           type: string
-        apn:
+        postal2:
           type: string
-        attomId:
-          type: integer
+        postal3:
+          type: string
     Location:
       type: object
       properties:
@@ -115,49 +124,29 @@ components:
           type: string
         geoIdV4:
           type: object
-    Vintage:
+    Property:
       type: object
       properties:
-        lastModified:
-          type: string
-        pubDate:
-          type: string
-    PropertyEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    Lot:
-      type: object
-      properties:
-        lotnum:
-          type: string
-        lotsize1:
-          type: number
-        lotsize2:
-          type: number
-        zoningType:
-          type: string
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        lot:
+          $ref: '#/components/schemas/Lot'
+        area:
+          type: object
+        address:
+          $ref: '#/components/schemas/Address'
+        location:
+          $ref: '#/components/schemas/Location'
+        summary:
+          $ref: '#/components/schemas/Summary'
+        building:
+          $ref: '#/components/schemas/Building'
+        owner:
+          $ref: '#/components/schemas/Owner'
+        mortgage:
+          $ref: '#/components/schemas/Mortgage'
+        vintage:
+          $ref: '#/components/schemas/Vintage'
     Building:
       type: object
       properties:
@@ -199,6 +188,48 @@ components:
               type: integer
             yearbuilt:
               type: integer
+    Summary:
+      type: object
+      properties:
+        absenteeInd:
+          type: string
+        propclass:
+          type: string
+        propsubtype:
+          type: string
+        proptype:
+          type: string
+        yearbuilt:
+          type: integer
+        propLandUse:
+          type: string
+    Lot:
+      type: object
+      properties:
+        lotnum:
+          type: string
+        lotsize1:
+          type: number
+        lotsize2:
+          type: number
+        zoningType:
+          type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Mortgage:
       type: object
       properties:
@@ -220,85 +251,54 @@ components:
               type: string
             trustDeedDocumentNumber:
               type: string
-    Property:
+    Vintage:
       type: object
       properties:
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        lot:
-          $ref: '#/components/schemas/Lot'
-        area:
+        lastModified:
+          type: string
+        pubDate:
+          type: string
+    PropertyEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
           type: object
-        address:
-          $ref: '#/components/schemas/Address'
-        location:
-          $ref: '#/components/schemas/Location'
-        summary:
-          $ref: '#/components/schemas/Summary'
-        building:
-          $ref: '#/components/schemas/Building'
-        owner:
-          $ref: '#/components/schemas/Owner'
-        mortgage:
-          $ref: '#/components/schemas/Mortgage'
-        vintage:
-          $ref: '#/components/schemas/Vintage'
-    Address:
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
+    Identifier:
       type: object
       properties:
-        country:
+        Id:
+          type: integer
+        fips:
           type: string
-        countrySubd:
+        apn:
           type: string
-        line1:
-          type: string
-        line2:
-          type: string
-        locality:
-          type: string
-        matchCode:
-          type: string
-        oneLine:
-          type: string
-        postal1:
-          type: string
-        postal2:
-          type: string
-        postal3:
-          type: string
-  parameters:
-    Address2Query:
-      name: address2
-      in: query
-      required: false
-      description: City, state, and ZIP component of the property address.
-      schema:
-        type: string
-      example: Denver, CO 80212
-    Address1Query:
-      name: address1
-      in: query
-      required: false
-      description: Street component of the property address.
-      schema:
-        type: string
-      example: 4529 Winona Court
-    AttomIDQuery:
-      name: AttomID
-      in: query
-      required: false
-      description: ATTOM property identifier.
-      schema:
-        type: string
-      example: '145423726'
-    AddressQuery:
-      name: address
-      in: query
-      required: false
-      description: Full street address as a single string.
-      schema:
-        type: string
-      example: 4529 Winona Court, Denver, CO 80212
+        attomId:
+          type: integer
   responses:
     PropertyResponse:
       description: Property record envelope.

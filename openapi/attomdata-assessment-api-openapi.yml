@@ -62,54 +62,6 @@ paths:
           $ref: '#/components/responses/AssessmentResponse'
 components:
   schemas:
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
-    Owner:
-      type: object
-      properties:
-        corporateindicator:
-          type: string
-        owner1:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        owner2:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        mailingaddressoneline:
-          type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
     Assessment:
       type: object
       properties:
@@ -151,22 +103,6 @@ components:
               type: integer
         owner:
           $ref: '#/components/schemas/Owner'
-    AssessmentEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              assessment:
-                $ref: '#/components/schemas/Assessment'
     Address:
       type: object
       properties:
@@ -190,6 +126,70 @@ components:
           type: string
         postal3:
           type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
+    AssessmentEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              assessment:
+                $ref: '#/components/schemas/Assessment'
   parameters:
     AttomIDQuery:
       name: AttomID

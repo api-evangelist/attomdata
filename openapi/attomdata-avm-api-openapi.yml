@@ -88,17 +88,45 @@ paths:
           $ref: '#/components/responses/AvmResponse'
 components:
   schemas:
-    Identifier:
+    Address:
       type: object
       properties:
-        Id:
-          type: integer
-        fips:
+        country:
           type: string
-        apn:
+        countrySubd:
           type: string
-        attomId:
-          type: integer
+        line1:
+          type: string
+        line2:
+          type: string
+        locality:
+          type: string
+        matchCode:
+          type: string
+        oneLine:
+          type: string
+        postal1:
+          type: string
+        postal2:
+          type: string
+        postal3:
+          type: string
+    AvmEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              avm:
+                $ref: '#/components/schemas/AVM'
     AVM:
       type: object
       properties:
@@ -140,45 +168,17 @@ components:
           type: integer
         pagesize:
           type: integer
-    AvmEnvelope:
+    Identifier:
       type: object
       properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              avm:
-                $ref: '#/components/schemas/AVM'
-    Address:
-      type: object
-      properties:
-        country:
+        Id:
+          type: integer
+        fips:
           type: string
-        countrySubd:
+        apn:
           type: string
-        line1:
-          type: string
-        line2:
-          type: string
-        locality:
-          type: string
-        matchCode:
-          type: string
-        oneLine:
-          type: string
-        postal1:
-          type: string
-        postal2:
-          type: string
-        postal3:
-          type: string
+        attomId:
+          type: integer
   parameters:
     AttomIDQuery:
       name: AttomID
