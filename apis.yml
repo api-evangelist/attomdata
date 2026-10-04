@@ -655,7 +655,6 @@ tags:
 - Property Data
 - Property Intelligence
 - Mortgage
-- Assessment
 - AVM
 - Foreclosure
 - Transaction
@@ -673,7 +672,6 @@ tags_raw:
 - Property Data
 - Property Intelligence
 - Mortgage
-- Assessment
 - AVM
 - Foreclosure
 - Transactions
@@ -825,3 +823,5 @@ specificationVersion: '0.23'
 description: ATTOM is a property-data provider. Its API covers assessments, automated valuation models,
   sales and transaction history, building permits, foreclosures, owner and boundary data, school and community
   attributes, and property events.
+x-tags-removed:
+- Assessment
