@@ -240,23 +240,6 @@ components:
           type: string
         postal3:
           type: string
-    Error:
-      type: object
-      properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
-    PropertyListEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
     Lot:
       type: object
       properties:
@@ -283,6 +266,22 @@ components:
           type: string
         geoIdV4:
           type: object
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     PropertyEnvelope:
       type: object
       properties:
@@ -292,38 +291,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Property'
-    Owner:
-      type: object
-      properties:
-        corporateindicator:
-          type: string
-        owner1:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        owner2:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        mailingaddressoneline:
-          type: string
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
     Building:
       type: object
       properties:
@@ -365,6 +332,63 @@ components:
               type: integer
             yearbuilt:
               type: integer
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
+    Error:
+      type: object
+      properties:
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    Vintage:
+      type: object
+      properties:
+        lastModified:
+          type: string
+        pubDate:
+          type: string
+    Mortgage:
+      type: object
+      properties:
+        FirstConcurrent:
+          type: object
+          properties:
+            amount:
+              type: integer
+            date:
+              type: string
+            lender:
+              type: object
+              properties:
+                fullName:
+                  type: string
+            interestRate:
+              type: number
+            term:
+              type: string
+            trustDeedDocumentNumber:
+              type: string
     Property:
       type: object
       properties:
@@ -388,43 +412,26 @@ components:
           $ref: '#/components/schemas/Mortgage'
         vintage:
           $ref: '#/components/schemas/Vintage'
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    Mortgage:
+    Identifier:
       type: object
       properties:
-        FirstConcurrent:
-          type: object
-          properties:
-            amount:
-              type: integer
-            date:
-              type: string
-            lender:
-              type: object
-              properties:
-                fullName:
-                  type: string
-            interestRate:
-              type: number
-            term:
-              type: string
-            trustDeedDocumentNumber:
-              type: string
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    PropertyListEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
     Summary:
       type: object
       properties:
@@ -440,33 +447,25 @@ components:
           type: integer
         propLandUse:
           type: string
-    Vintage:
-      type: object
-      properties:
-        lastModified:
-          type: string
-        pubDate:
-          type: string
-  responses:
-    ErrorResponse:
-      description: ATTOM error envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    PropertyResponse:
-      description: Property record envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PropertyEnvelope'
-    PropertyListResponse:
-      description: Paginated list of property records.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/PropertyListEnvelope'
   parameters:
+    PageSizeQuery:
+      name: pagesize
+      in: query
+      required: false
+      description: Records per page.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    Address2Query:
+      name: address2
+      in: query
+      required: false
+      description: City, state, and ZIP component of the property address.
+      schema:
+        type: string
+      example: Denver, CO 80212
     AttomIDQuery:
       name: AttomID
       in: query
@@ -500,24 +499,25 @@ components:
       schema:
         type: string
       example: 4529 Winona Court
-    Address2Query:
-      name: address2
-      in: query
-      required: false
-      description: City, state, and ZIP component of the property address.
-      schema:
-        type: string
-      example: Denver, CO 80212
-    PageSizeQuery:
-      name: pagesize
-      in: query
-      required: false
-      description: Records per page.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
+  responses:
+    PropertyListResponse:
+      description: Paginated list of property records.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PropertyListEnvelope'
+    PropertyResponse:
+      description: Property record envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PropertyEnvelope'
+    ErrorResponse:
+      description: ATTOM error envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

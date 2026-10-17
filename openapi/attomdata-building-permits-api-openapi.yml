@@ -36,6 +36,64 @@ paths:
           $ref: '#/components/responses/PropertyResponse'
 components:
   schemas:
+    Mortgage:
+      type: object
+      properties:
+        FirstConcurrent:
+          type: object
+          properties:
+            amount:
+              type: integer
+            date:
+              type: string
+            lender:
+              type: object
+              properties:
+                fullName:
+                  type: string
+            interestRate:
+              type: number
+            term:
+              type: string
+            trustDeedDocumentNumber:
+              type: string
+    Owner:
+      type: object
+      properties:
+        corporateindicator:
+          type: string
+        owner1:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        owner2:
+          type: object
+          properties:
+            firstnameandmi:
+              type: string
+            lastname:
+              type: string
+        mailingaddressoneline:
+          type: string
+    Status:
+      type: object
+      description: ATTOM standard response status block.
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Address:
       type: object
       properties:
@@ -59,21 +117,6 @@ components:
           type: string
         postal3:
           type: string
-    Location:
-      type: object
-      properties:
-        accuracy:
-          type: string
-        latitude:
-          type: string
-        longitude:
-          type: string
-        distance:
-          type: number
-        geoid:
-          type: string
-        geoIdV4:
-          type: object
     Property:
       type: object
       properties:
@@ -97,6 +140,74 @@ components:
           $ref: '#/components/schemas/Mortgage'
         vintage:
           $ref: '#/components/schemas/Vintage'
+    Lot:
+      type: object
+      properties:
+        lotnum:
+          type: string
+        lotsize1:
+          type: number
+        lotsize2:
+          type: number
+        zoningType:
+          type: string
+    Location:
+      type: object
+      properties:
+        accuracy:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+        distance:
+          type: number
+        geoid:
+          type: string
+        geoIdV4:
+          type: object
+    PropertyEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
+    Summary:
+      type: object
+      properties:
+        absenteeInd:
+          type: string
+        propclass:
+          type: string
+        propsubtype:
+          type: string
+        proptype:
+          type: string
+        yearbuilt:
+          type: integer
+        propLandUse:
+          type: string
+    Vintage:
+      type: object
+      properties:
+        lastModified:
+          type: string
+        pubDate:
+          type: string
     Building:
       type: object
       properties:
@@ -138,117 +249,6 @@ components:
               type: integer
             yearbuilt:
               type: integer
-    Summary:
-      type: object
-      properties:
-        absenteeInd:
-          type: string
-        propclass:
-          type: string
-        propsubtype:
-          type: string
-        proptype:
-          type: string
-        yearbuilt:
-          type: integer
-        propLandUse:
-          type: string
-    Vintage:
-      type: object
-      properties:
-        lastModified:
-          type: string
-        pubDate:
-          type: string
-    Lot:
-      type: object
-      properties:
-        lotnum:
-          type: string
-        lotsize1:
-          type: number
-        lotsize2:
-          type: number
-        zoningType:
-          type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    Mortgage:
-      type: object
-      properties:
-        FirstConcurrent:
-          type: object
-          properties:
-            amount:
-              type: integer
-            date:
-              type: string
-            lender:
-              type: object
-              properties:
-                fullName:
-                  type: string
-            interestRate:
-              type: number
-            term:
-              type: string
-            trustDeedDocumentNumber:
-              type: string
-    PropertyEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-    Owner:
-      type: object
-      properties:
-        corporateindicator:
-          type: string
-        owner1:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        owner2:
-          type: object
-          properties:
-            firstnameandmi:
-              type: string
-            lastname:
-              type: string
-        mailingaddressoneline:
-          type: string
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
   responses:
     PropertyResponse:
       description: Property record envelope.

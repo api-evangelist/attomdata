@@ -98,22 +98,22 @@ paths:
           $ref: '#/components/responses/SaleResponse'
 components:
   schemas:
-    SaleEnvelope:
+    Status:
       type: object
+      description: ATTOM standard response status block.
       properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        property:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                $ref: '#/components/schemas/Identifier'
-              address:
-                $ref: '#/components/schemas/Address'
-              sale:
-                $ref: '#/components/schemas/Sale'
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+        page:
+          type: integer
+        pagesize:
+          type: integer
     Address:
       type: object
       properties:
@@ -137,6 +137,33 @@ components:
           type: string
         postal3:
           type: string
+    SaleEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        property:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                $ref: '#/components/schemas/Identifier'
+              address:
+                $ref: '#/components/schemas/Address'
+              sale:
+                $ref: '#/components/schemas/Sale'
+    Identifier:
+      type: object
+      properties:
+        Id:
+          type: integer
+        fips:
+          type: string
+        apn:
+          type: string
+        attomId:
+          type: integer
     Sale:
       type: object
       properties:
@@ -164,33 +191,13 @@ components:
           type: string
         saleTransDate:
           type: string
-    Status:
-      type: object
-      description: ATTOM standard response status block.
-      properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
-        page:
-          type: integer
-        pagesize:
-          type: integer
-    Identifier:
-      type: object
-      properties:
-        Id:
-          type: integer
-        fips:
-          type: string
-        apn:
-          type: string
-        attomId:
-          type: integer
+  responses:
+    SaleResponse:
+      description: Sale envelope.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SaleEnvelope'
   parameters:
     AttomIDQuery:
       name: AttomID
@@ -208,13 +215,6 @@ components:
       schema:
         type: string
       example: 4529 Winona Court, Denver, CO 80212
-  responses:
-    SaleResponse:
-      description: Sale envelope.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/SaleEnvelope'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

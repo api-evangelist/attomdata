@@ -54,6 +54,28 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
+    Status:
+      type: object
+      properties:
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
+    Weather:
+      type: object
+      properties:
+        annualAvgPrecipitation:
+          type: number
+        annualAvgSnowfall:
+          type: number
+        januaryAvgLowTemp:
+          type: number
+        julyAvgHighTemp:
+          type: number
     Demographics:
       type: object
       properties:
@@ -69,21 +91,24 @@ components:
           type: number
         renterOccupiedPercent:
           type: number
-    Community:
+    Error:
       type: object
       properties:
-        geoIdV4:
-          type: string
-        name:
-          type: string
-        demographics:
-          $ref: '#/components/schemas/Demographics'
-        crime:
-          $ref: '#/components/schemas/Crime'
-        weather:
-          $ref: '#/components/schemas/Weather'
-        commute:
-          $ref: '#/components/schemas/Commute'
+        Response:
+          type: object
+          properties:
+            status:
+              $ref: '#/components/schemas/Status'
+    CommunityEnvelope:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            community:
+              $ref: '#/components/schemas/Community'
     Commute:
       type: object
       properties:
@@ -102,46 +127,21 @@ components:
           type: number
         propertyCrimeIndex:
           type: number
-    Error:
+    Community:
       type: object
       properties:
-        Response:
-          type: object
-          properties:
-            status:
-              $ref: '#/components/schemas/Status'
-    Status:
-      type: object
-      properties:
-        version:
+        geoIdV4:
           type: string
-        code:
-          type: integer
-        msg:
+        name:
           type: string
-        total:
-          type: integer
-    CommunityEnvelope:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            community:
-              $ref: '#/components/schemas/Community'
-    Weather:
-      type: object
-      properties:
-        annualAvgPrecipitation:
-          type: number
-        annualAvgSnowfall:
-          type: number
-        januaryAvgLowTemp:
-          type: number
-        julyAvgHighTemp:
-          type: number
+        demographics:
+          $ref: '#/components/schemas/Demographics'
+        crime:
+          $ref: '#/components/schemas/Crime'
+        weather:
+          $ref: '#/components/schemas/Weather'
+        commute:
+          $ref: '#/components/schemas/Commute'
   responses:
     ErrorResponse:
       description: ATTOM error envelope.

@@ -60,17 +60,17 @@ paths:
                 $ref: '#/components/schemas/CategoryEnvelope'
 components:
   schemas:
-    Category:
+    Status:
       type: object
       properties:
-        category:
-          type: string
-        lineOfBusiness:
-          type: string
-        industry:
+        version:
           type: string
         code:
+          type: integer
+        msg:
           type: string
+        total:
+          type: integer
     CategoryEnvelope:
       type: object
       properties:
@@ -83,17 +83,17 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Category'
-    Status:
+    Category:
       type: object
       properties:
-        version:
+        category:
+          type: string
+        lineOfBusiness:
+          type: string
+        industry:
           type: string
         code:
-          type: integer
-        msg:
           type: string
-        total:
-          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

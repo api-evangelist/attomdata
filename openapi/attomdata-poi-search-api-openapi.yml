@@ -88,18 +88,17 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
 components:
   schemas:
-    PoiEnvelope:
+    Status:
       type: object
       properties:
-        status:
-          $ref: '#/components/schemas/Status'
-        response:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/Poi'
+        version:
+          type: string
+        code:
+          type: integer
+        msg:
+          type: string
+        total:
+          type: integer
     Error:
       type: object
       properties:
@@ -138,17 +137,18 @@ components:
           type: string
         Industry:
           type: string
-    Status:
+    PoiEnvelope:
       type: object
       properties:
-        version:
-          type: string
-        code:
-          type: integer
-        msg:
-          type: string
-        total:
-          type: integer
+        status:
+          $ref: '#/components/schemas/Status'
+        response:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/Poi'
   responses:
     ErrorResponse:
       description: ATTOM error envelope.
