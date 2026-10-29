@@ -1,4 +1,4 @@
-# ATTOM (attomdata)
+# ATTOM
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,205 +64,203 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/attomdata/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/attomdata/refs/heads/main/apis.yml)
+ATTOM is a property-data provider. Its API covers assessments, automated valuation models, sales and transaction history, building permits, foreclosures, owner and boundary data, school and community attributes, and property events.
 
-## Scope
+**Areas:** Real Estate · Property Data · Property Intelligence · Mortgage · AVM · Foreclosure · Transaction · Owner Data · Building Permits · Geospatial · Boundaries · Demographics
 
-- **Access:** 3rd-Party
+## ATTOM on APIs.io
 
-## Tags
+Everything profiled for ATTOM is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/attomdata/](https://apis.io/providers/attomdata/)** — or go straight to one of the APIs or properties below.
 
-- Real Estate
-- Property Data
-- Property Intelligence
-- Mortgage
-- Assessment
-- AVM
-- Foreclosure
-- Transactions
-- Owner Data
-- Building Permits
-- Geospatial
-- Boundaries
-- Demographics
-- Neighborhood
-- POI
-- Insurance
-- Mortgage Technology
-- PropTech
+### APIs (18)
 
-## Timestamps
+- [ATTOM All Events API](https://apis.io/apis/attomdata/attomdata-all-events-api/) — Combined assessment, AVM, and sales-transaction events.
+- [ATTOM Assessment API](https://apis.io/apis/attomdata/attomdata-assessment-api/) — Assessed value, tax liability, and assessment history.
+- [ATTOM AVM API](https://apis.io/apis/attomdata/attomdata-avm-api/) — Automated Valuation Model — current AVM, AVM history, and rental AVM.
+- [ATTOM Boundary API](https://apis.io/apis/attomdata/attomdata-boundary-api/) — GeoJSON boundary polygons by geography identifier.
+- [ATTOM Building Permits API](https://apis.io/apis/attomdata/attomdata-building-permits-api/) — Building permit records associated with a property.
+- [ATTOM Community API](https://apis.io/apis/attomdata/attomdata-community-api/) — Neighborhood community profile (demographics, crime, weather, commute).
+- [ATTOM Hierarchy API](https://apis.io/apis/attomdata/attomdata-hierarchy-api/) — Geographic hierarchy lookup from coordinates.
+- [ATTOM Home Equity API](https://apis.io/apis/attomdata/attomdata-home-equity-api/) — Estimated home equity calculations.
+- [ATTOM Location API](https://apis.io/apis/attomdata/attomdata-location-api/) — Resolve a location by geoIdV4.
+- [ATTOM Lookup API](https://apis.io/apis/attomdata/attomdata-lookup-api/) — Lookup of state, county, CBSA, and geoID metadata.
+- [ATTOM Parcel Tiles API](https://apis.io/apis/attomdata/attomdata-parcel-tiles-api/) — Vector parcel boundary tiles.
+- [ATTOM POI Categories API](https://apis.io/apis/attomdata/attomdata-poi-categories-api/) — Lookup of POI categories, lines of business, and industries.
+- [ATTOM POI Search API](https://apis.io/apis/attomdata/attomdata-poi-search-api/) — Search points of interest by point or address.
+- [ATTOM Pre-Foreclosure API](https://apis.io/apis/attomdata/attomdata-pre-foreclosure-api/) — Pre-foreclosure status and notice records.
+- [ATTOM Property API](https://apis.io/apis/attomdata/attomdata-property-api/) — Property characteristics, ownership, mortgage, and address resolution.
+- [ATTOM Sale API](https://apis.io/apis/attomdata/attomdata-sale-api/) — Sales transactions, sales history, and comparable sales.
+- [ATTOM Sales Trends API](https://apis.io/apis/attomdata/attomdata-sales-trends-api/) — Aggregated sales trends for a geography.
+- [ATTOM School API](https://apis.io/apis/attomdata/attomdata-school-api/) — School assignments and attendance-zone associations.
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### ATTOM Property API
+#### GraphQL (1)
 
-Comprehensive property intelligence for 160M+ U.S. properties. Resources cover /property, /assessment, /assessmenthistory, /sale, /saleshistory, /salescomparables, /attomavm, /avm, /avmhistory, /rentalavm, /homeequity, /allevents, /school, /transportationnoise, /preforeclosure, and /property/buildingpermits, each available in `snapshot` and `detail` packages. Returns property characteristics, ownership and mortgage records, assessed values and tax history, sales history, AVM valuations (current and historical), rental AVM, home equity, school assignments, transportation noise, foreclosure status, and building permits. Inputs include AttomID, address, address1/address2, and geographic radius/bounding box.
+GraphQL schemas.
 
-- **Human URL:** [https://api.developer.attomdata.com/docs](https://api.developer.attomdata.com/docs)
-- **Base URL:** `https://api.gateway.attomdata.com/propertyapi/v1.0.0`
+- [Moved to /providers/attomdata/](https://apis.io/graphqls/attomdata/attomdata-graphql/)
 
-#### Tags
+#### Agentic access (1)
 
-- Property
-- Real Estate
-- Assessment
-- AVM
-- Sales
-- Mortgage
-- Owner
-- Building Permits
-- Foreclosure
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Attomdata Agentic Access](https://apis.io/agentic-access/attomdata/attomdata-agentic-access/)
 
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [ATTOM Area](https://apis.io/schemas/attomdata/attom-area/)
+- [ATTOM Assessment](https://apis.io/schemas/attomdata/attom-assessment/)
+- [ATTOM AVM](https://apis.io/schemas/attomdata/attom-avm/)
+- [ATTOM Community](https://apis.io/schemas/attomdata/attom-community/)
+- [ATTOM Property](https://apis.io/schemas/attomdata/attom-property/)
+- [ATTOM Sale](https://apis.io/schemas/attomdata/attom-sale/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Attomdata Context](https://apis.io/jsonld/attomdata/attomdata-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Attomdata Vocabulary](https://apis.io/vocabularies/attomdata/attomdata-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Attom Area Hierarchy Example](https://apis.io/examples/attomdata/attom-area-hierarchy-example/)
+- [Attom Community Neighborhood Example](https://apis.io/examples/attomdata/attom-community-neighborhood-example/)
+- [Attom Poi Search Example](https://apis.io/examples/attomdata/attom-poi-search-example/)
+- [Attom Property Detail Example](https://apis.io/examples/attomdata/attom-property-detail-example/)
+
+#### Collections (23)
+
+Postman and Open Collection request collections.
+
+- [ATTOM Area API](https://apis.io/collections/attomdata/open-attom-area-api/)
+- [ATTOM Community API](https://apis.io/collections/attomdata/open-attom-community-api/)
+- [ATTOM Parcel Tiles API](https://apis.io/collections/attomdata/open-attom-parcel-tiles-api/)
+- [ATTOM POI API](https://apis.io/collections/attomdata/open-attom-poi-api/)
+- [ATTOM Property API](https://apis.io/collections/attomdata/open-attom-property-api/)
+- [ATTOM Area All Events API](https://apis.io/collections/attomdata/open-attomdata-all-events-api/)
+- [ATTOM Area All Events Assessment API](https://apis.io/collections/attomdata/open-attomdata-assessment-api/)
+- [ATTOM Area All Events AVM API](https://apis.io/collections/attomdata/open-attomdata-avm-api/)
+- [ATTOM Area All Events Boundary API](https://apis.io/collections/attomdata/open-attomdata-boundary-api/)
+- [ATTOM Area All Events Building Permits API](https://apis.io/collections/attomdata/open-attomdata-building-permits-api/)
+- [ATTOM Area All Events Community API](https://apis.io/collections/attomdata/open-attomdata-community-api/)
+- [ATTOM Area All Events Hierarchy API](https://apis.io/collections/attomdata/open-attomdata-hierarchy-api/)
+- [ATTOM Area All Events Home Equity API](https://apis.io/collections/attomdata/open-attomdata-home-equity-api/)
+- [ATTOM Area All Events Location API](https://apis.io/collections/attomdata/open-attomdata-location-api/)
+- [ATTOM Area All Events Lookup API](https://apis.io/collections/attomdata/open-attomdata-lookup-api/)
+- [ATTOM Area All Events Parcel Tiles API](https://apis.io/collections/attomdata/open-attomdata-parcel-tiles-api/)
+- [ATTOM Area All Events POI Categories API](https://apis.io/collections/attomdata/open-attomdata-poi-categories-api/)
+- [ATTOM Area All Events POI Search API](https://apis.io/collections/attomdata/open-attomdata-poi-search-api/)
+- [ATTOM Area All Events Pre-Foreclosure API](https://apis.io/collections/attomdata/open-attomdata-pre-foreclosure-api/)
+- [ATTOM Area All Events Property API](https://apis.io/collections/attomdata/open-attomdata-property-api/)
+- [ATTOM Area All Events Sale API](https://apis.io/collections/attomdata/open-attomdata-sale-api/)
+- [ATTOM Area All Events Sales Trends API](https://apis.io/collections/attomdata/open-attomdata-sales-trends-api/)
+- [ATTOM Area All Events School API](https://apis.io/collections/attomdata/open-attomdata-school-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [ATTOM — jsonschema rules](https://apis.io/rules/attomdata/attomdata-jsonschema-spectral-rules/)
+- [ATTOM API Rules](https://apis.io/rules/attomdata/attomdata-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Attomdata Authentication](https://apis.io/security/attomdata/attomdata-authentication/)
+- [Attomdata Domain Security](https://apis.io/security/attomdata/attomdata-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Attomdata Plans Pricing](https://apis.io/plans/attomdata/attomdata-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Attomdata Rate Limits](https://apis.io/rate-limits/attomdata/attomdata-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Attomdata Finops](https://apis.io/finops/attomdata/attomdata-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.attomdata.com)
 - [Documentation](https://api.developer.attomdata.com/docs)
-- [OpenAPI](openapi/attom-property-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/attom-property-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/attom-property-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman](https://github.com/AttomDataSolutions/postman-collections) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [JSON Schema](json-schema/attom-property-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/attom-assessment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/attom-sale-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/attom-avm-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/attomdata-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Example](examples/attom-property-detail-example.json)
-
-### ATTOM Area API
-
-Area and boundary lookup for state, county, CBSA, neighborhood, school zone, ZIP, and other geographic units. Resources include /area/boundary/detail (GeoJSON boundary polygons), /area/hierarchy/lookup (geographic hierarchy for a lat/lon), /area/state/lookup, /area/county/lookup, /area/cbsa/lookup, /area/geoid/lookup, /area/geoId/legacyLookup, and the v4 /v4/location/lookup that resolves any geoIdV4 to its location metadata.
-
-- **Human URL:** [https://api.developer.attomdata.com/docs](https://api.developer.attomdata.com/docs)
-- **Base URL:** `https://api.gateway.attomdata.com/areaapi`
-
-#### Tags
-
-- Geography
-- Boundary
-- Parcel
-- GeoID
-- CBSA
-- County
-- State
-
-#### Properties
-
-- [Documentation](https://api.developer.attomdata.com/docs)
-- [OpenAPI](openapi/attom-area-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/attom-area-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/attom-area-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/attom-area-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/attom-area-hierarchy-example.json)
-
-### ATTOM POI API
-
-Points of Interest search and category lookup across 120+ business categories — restaurants, banks, shopping, services, and more. Search by point (lat/lon + radius) or address; filter by category, line of business, and industry. Returns POIs with names, categories, distances, and addresses.
-
-- **Human URL:** [https://api.developer.attomdata.com/docs](https://api.developer.attomdata.com/docs)
-- **Base URL:** `https://api.gateway.attomdata.com`
-
-#### Tags
-
-- Points Of Interest
-- Neighborhood
-- Business
-- Search
-
-#### Properties
-
-- [Documentation](https://api.developer.attomdata.com/docs)
-- [OpenAPI](openapi/attom-poi-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/attom-poi-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/attom-poi-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/attom-poi-search-example.json)
-
-### ATTOM Community API
-
-Neighborhood-level community profile data including demographics, population, household income, crime indices, weather, commute, education, and quality-of-life metrics. Resources cover /v4.0.0/neighborhood/community (community profile by geoIdV4) and /v4/location/lookup for resolving locations by geoIdV4 and geography-type abbreviation (ZI, ND, CO, ST, etc.).
-
-- **Human URL:** [https://api.developer.attomdata.com/docs](https://api.developer.attomdata.com/docs)
-- **Base URL:** `https://api.gateway.attomdata.com`
-
-#### Tags
-
-- Community
-- Neighborhood
-- Demographics
-- Crime
-- Weather
-- Schools
-- Location
-
-#### Properties
-
-- [Documentation](https://api.developer.attomdata.com/docs)
-- [OpenAPI](openapi/attom-community-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/attom-community-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/attom-community-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/attom-community-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/attom-community-neighborhood-example.json)
-
-### ATTOM Parcel Tiles API
-
-Vector parcel tile service for rendering ATTOM parcel boundaries on web/mobile maps. Tile endpoints return styled parcel geometries suitable for Mapbox, MapLibre, and Leaflet integrations. Includes authentication via API key and per-zoom-level tile endpoints.
-
-- **Human URL:** [https://api.developer.attomdata.com/docs](https://api.developer.attomdata.com/docs)
-- **Base URL:** `https://api.gateway.attomdata.com`
-
-#### Tags
-
-- Parcel
-- Tiles
-- Mapping
-- GeoJSON
-- Vector Tiles
-
-#### Properties
-
-- [Documentation](https://api.developer.attomdata.com/docs)
-- [OpenAPI](openapi/attom-parcel-tiles-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/attom-parcel-tiles-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/attom-parcel-tiles-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://www.attomdata.com/)
-- [Developer Portal](https://api.developer.attomdata.com/)
-- [Documentation](https://api.developer.attomdata.com/docs)
-- [Documentation](https://api.developer.attomdata.com/docs/guides)
-- [Sign Up](https://api.developer.attomdata.com/signup)
-- [Login](https://api.developer.attomdata.com/login)
-- [Documentation](https://www.attomdata.com/solutions/property-data-api/)
-- [Documentation](https://www.attomdata.com/solutions/bulk-data-licensing/)
-- [Documentation](https://www.attomdata.com/solutions/cloud-delivery/)
-- [Documentation](https://www.attomdata.com/data/)
-- [Blog](https://www.attomdata.com/news/most-recent/)
-- [Documentation](https://www.attomdata.com/insights/white-papers/)
-- [Documentation](https://www.attomdata.com/webinars/)
-- [Documentation](https://www.attomdata.com/glossary/)
 - [Support](https://www.attomdata.com/contact-us/)
-- [LinkedIn](https://www.linkedin.com/company/attomdata)
-- [Twitter](https://twitter.com/attomdata)
-- [Facebook](https://www.facebook.com/attomdata)
-- [Git Hub](https://github.com/AttomDataSolutions)
-- [Postman](https://github.com/AttomDataSolutions/postman-collections) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [SDK](https://github.com/AttomDataSolutions/Sample_Code)
-- [SDK](https://github.com/AttomDataSolutions/School_Sample_Code)
-- [SDK](https://github.com/AttomDataSolutions/POI_Sample_Code)
-- [SDK](https://github.com/AttomDataSolutions/Community_Sample_Code)
-- [Contact Email](mailto:datacustomercare@attomdata.com)
-- [Contact Phone](tel:+18004625125)
-- [Plans](plans/attomdata-plans-pricing.yml)
-- [Rate Limits](rate-limits/attomdata-rate-limits.yml)
-- [Fin Ops](finops/attomdata-finops.yml)
-- [Vocabulary](vocabulary/attomdata-vocabulary.yml)
-- [Spectral Rules](rules/attomdata-rules.yml)
+- [Blog](https://www.attomdata.com/news/most-recent/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 43.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 65.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 59.5 |
+| Access clarity | 21.1 |
+
+**Agent readiness 24.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 14.9** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/attomdata/](https://apis.io/providers/attomdata/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for ATTOM: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/attomdata/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
